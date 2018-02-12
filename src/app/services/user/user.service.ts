@@ -25,6 +25,7 @@ export class UserService {
   public list() {
     return this.collection.valueChanges();
   }
+
   public user(): Observable<User> {
     return this.user$.asObservable();
   }
