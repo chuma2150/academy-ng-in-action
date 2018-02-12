@@ -54,12 +54,14 @@ export class ChatServiceService {
   }
 
   public add(message: Message) {
+      message.date  = new Date();
       this.collection.add(message);
   }
 
 
   public init() {
     for (const message of dummy){
+      message.date = new Date();
       this.collection.add(message);
     }
   }
