@@ -5,9 +5,13 @@
     <div>
         <textarea matInput cols="30" rows="10" [(ngModel)]="text"></textarea> 
        <button (click)="send()">Send</button>
+
        <br>
         [textt: {{text}}] <br>
-        [msg: {{msg|json}}]
+        [msg: {{msg|json}}]<br/>
+        [receiver: {{receiver?.name}}]
+
+        <app-list (select)="selectReceiver($event)"></app-list>
     </div>
     <div>
         <app-chat-board></app-chat-board>

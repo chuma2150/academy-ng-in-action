@@ -1,10 +1,5 @@
-<p>
-  list works!
-</p>
-
-
 <mat-nav-list>
-  <mat-list-item *ngFor="let user of users | async" >
+  <mat-list-item *ngFor="let user of users | async" (click)="select.emit(user)" >
     {{user.name}}
   </mat-list-item>
 </mat-nav-list>

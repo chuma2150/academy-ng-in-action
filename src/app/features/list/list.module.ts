@@ -11,6 +11,7 @@ import { MatListModule } from '@angular/material';
     ListRoutingModule,
     MatListModule
   ],
-  declarations: [ListComponent]
+  declarations: [ListComponent],
+  exports: [ListComponent]
 })
 export class ListModule { }
