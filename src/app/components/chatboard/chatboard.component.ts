@@ -13,7 +13,7 @@ export class ChatboardComponent implements OnInit {
   public msgs: Observable<Message[]>;
 
   constructor(public service: ChatServiceService) {
-    this.msgs = service.messages();
+    this.msgs = service.messages(null);
    }
 
   ngOnInit() {

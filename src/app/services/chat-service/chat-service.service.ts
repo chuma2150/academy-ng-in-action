@@ -21,12 +21,12 @@ const dummy: Message[] = [
   {
     'text': 'Cupidatat dolor nostrud ipsum et aute ut irure esse id ad.',
     'sender': 'Velez',
-    'receiver': 'Guy'
+    'receiver': null
   },
   {
     'text': 'Et aute amet in sint enim occaecat duis ea esse id nostrud enim quis nostrud.',
     'sender': 'Rose',
-    'receiver': 'Conner'
+    'receiver': null
   },
   {
     'text': 'Cupidatat nostrud sunt dolore laborum eu laborum occaecat excepteur.',
@@ -46,13 +46,15 @@ export class ChatServiceService {
   private _messages: Observable<Message[]>;
 
   constructor(private db: AngularFirestore) {
-    this.collection = db.collection<Message>('messages', ref => ref.orderBy('date', 'desc'));
-    this._messages = this.collection.valueChanges();
+    this.collection = db.collection<Message>('messages');
   }
 
-  public messages(): Observable<Message[]> {
+  public messages(receiver: string | null): Observable<Message[]> {
+    const collection = this.db.collection<Message>('messages', ref => ref
+      .where('receiver', '==', receiver)
+      .orderBy('date', 'desc'));
     // return Observable.of(this._messages);
-    return this._messages;
+    return collection.valueChanges();
   }
 
   public add(message: Message) {
