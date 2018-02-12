@@ -24,6 +24,9 @@ export class ChatComponent implements OnInit {
     this.sendMessage(this.msg);
   }
 
+  public reset(){
+    this.chat.init();
+  }
 
   private sendMessage(message: Message) {
     this.chat.add(message);

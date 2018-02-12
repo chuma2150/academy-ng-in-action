@@ -41,17 +41,26 @@ const dummy: Message[] = [
 @Injectable()
 export class ChatServiceService {
   private collection: AngularFirestoreCollection<Message>;
+  private _messages: Observable<Message[]>;
 
   constructor(private db: AngularFirestore) {
     this.collection = db.collection<Message>('messages');
+    this._messages = this.collection.valueChanges();
   }
 
   public messages(): Observable<Message[]> {
-    return Observable.of(dummy);
+    // return Observable.of(this._messages);
+    return this._messages;
   }
 
   public add(message: Message) {
-    console.log('chat message ', message);
       this.collection.add(message);
+  }
+
+
+  public init(){
+    for(let message of dummy){
+      this.collection.add(message);
+    }
   }
 }
