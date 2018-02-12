@@ -1,4 +1,4 @@
-import { UserService } from './../../services/user/user.service';
+import { UserService, User } from './../../services/user/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -16,8 +16,12 @@ export class ProfileComponent implements OnInit {
   }
 
   register() {
-     this.user.set({name: this.name});
+     this.user.add({name: this.name});
      this.navigate();
+  }
+  login(user: User) {
+    this.user.set(user);
+    this.navigate();
   }
 
   private navigate() {

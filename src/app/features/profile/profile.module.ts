@@ -1,3 +1,4 @@
+import { ListModule } from './../list/list.module';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -15,7 +16,8 @@ import { MatFormField, MatButton, MatFormFieldModule, MatButtonModule, MatInputM
     ProfileRoutingModule,
     MatFormFieldModule,
     MatButtonModule,
-    MatInputModule
+    MatInputModule,
+    ListModule
   ],
   declarations: [ProfileComponent]
 })

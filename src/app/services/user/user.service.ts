@@ -19,6 +19,10 @@ export class UserService {
 
   public set(user: User) {
     this.user$.next(user);
+  }
+
+  public add(user: User) {
+    this.set(user);
     this.collection.add(user);
   }
 

@@ -29,16 +29,11 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   public send() {
     this.msg = {text: this.text, sender: this.user.name, receiver: this.receiver && this.receiver.name};
-
     this.sendMessage(this.msg);
   }
 
   public reset() {
     this.chat.reset().subscribe();
-  }
-
-  public selectReceiver(user: User) {
-      this.receiver = user;
   }
 
   private sendMessage(message: Message) {
