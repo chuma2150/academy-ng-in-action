@@ -25,6 +25,6 @@ export class ProfileComponent implements OnInit {
   }
 
   private navigate() {
-    this.router.navigate(['/list']);
+    this.router.navigate(['/chat']);
   }
 }
