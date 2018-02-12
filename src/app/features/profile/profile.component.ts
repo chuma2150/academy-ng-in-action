@@ -17,7 +17,10 @@ export class ProfileComponent implements OnInit {
 
   register() {
      this.user.set({name: this.name});
+     this.navigate();
   }
 
-
+  private navigate() {
+    this.router.navigate(['/list']);
+  }
 }
