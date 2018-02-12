@@ -58,8 +58,8 @@ export class ChatServiceService {
   }
 
 
-  public init(){
-    for(let message of dummy){
+  public init() {
+    for (const message of dummy){
       this.collection.add(message);
     }
   }
