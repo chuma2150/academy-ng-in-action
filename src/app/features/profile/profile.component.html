@@ -1,3 +1,7 @@
-<p>
-  profile works!
-</p>
+<form action="">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="username" [(ngModel)]="name" name="name">
+  </mat-form-field>
+
+  <button mat-button (click)="register()">Click me!</button>
+</form>
