@@ -1,0 +1,10 @@
+<div [ngClass]="{'sent': message.sender == current}">
+  <div>
+      <app-avatar></app-avatar>
+      <span>{{message.sender}}</span>
+  </div>
+  <p>
+    {{message.text}} 
+  </p>
+</div>
+<hr>

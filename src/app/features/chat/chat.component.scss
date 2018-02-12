@@ -1,0 +1,9 @@
+.chat {
+    display: flex;
+    justify-content: space-between;
+
+    div{
+        flex: 1;
+        outline: 1px dashed blue;
+    }
+}

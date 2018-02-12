@@ -1,0 +1,12 @@
+<div class="chat">
+    <div>
+        <textarea matInput cols="30" rows="10" [(ngModel)]="text"></textarea> 
+       <button (click)="send()">Send</button>
+       <br>
+        [textt: {{text}}] <br>
+        [msg: {{msg|json}}]
+    </div>
+    <div>
+        <app-chat-board></app-chat-board>
+    </div>
+</div>
