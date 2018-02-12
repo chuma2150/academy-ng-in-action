@@ -1,3 +1,5 @@
+import { ListModule } from './../list/list.module';
+import { FeaturesModule } from './../features.module';
 import { ComponentsModule } from './../../components/components.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -11,7 +13,8 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     ChatRoutingModule,
     ComponentsModule,
-    FormsModule
+    FormsModule,
+    ListModule
   ],
   declarations: [ChatComponent]
 })

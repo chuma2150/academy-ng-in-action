@@ -14,6 +14,7 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   private user: User;
   private subscription: Subscription;
+  private receiver: User;
 
   constructor(private userService: UserService, private chat: ChatServiceService) { }
 
@@ -34,6 +35,10 @@ export class ChatComponent implements OnInit, OnDestroy {
 
   public reset() {
     this.chat.reset().subscribe();
+  }
+
+  public selectReceiver(user: User) {
+      this.receiver = user;
   }
 
   private sendMessage(message: Message) {
