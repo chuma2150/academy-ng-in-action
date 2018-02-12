@@ -1,7 +1,8 @@
 <div [ngClass]="{'sent': message.sender == current}">
   <div>
       <app-avatar></app-avatar>
-      <span>{{message.sender}}</span>
+      <span>Sender: {{message.sender}}</span><br>
+      <span>Receiver: {{message.receiver}}</span>
   </div>
   <p style="font-size: smaller">
     {{message.date|date:long}}

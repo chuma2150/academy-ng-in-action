@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { ChatRoutingModule } from './chat-routing.module';
 import { ChatComponent } from './chat.component';
 import { FormsModule } from '@angular/forms';
+import { MatTabsModule } from '@angular/material';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import { FormsModule } from '@angular/forms';
     ChatRoutingModule,
     ComponentsModule,
     FormsModule,
-    ListModule
+    ListModule,
+    MatTabsModule
   ],
   declarations: [ChatComponent]
 })

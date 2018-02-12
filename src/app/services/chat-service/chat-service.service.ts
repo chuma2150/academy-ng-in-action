@@ -1,3 +1,4 @@
+import { User } from './../user/user.service';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/from';
@@ -49,11 +50,11 @@ export class ChatServiceService {
     this.collection = db.collection<Message>('messages');
   }
 
-  public messages(receiver: string | null): Observable<Message[]> {
+  public messages(receiver: User | null): Observable<Message[]> {
     const collection = this.db.collection<Message>('messages', ref => ref
-      .where('receiver', '==', receiver)
+      .where('receiver', '==', receiver && receiver.name)
       .orderBy('date', 'desc'));
-    // return Observable.of(this._messages);
+
     return collection.valueChanges();
   }
 
