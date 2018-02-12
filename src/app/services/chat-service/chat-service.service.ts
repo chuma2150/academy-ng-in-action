@@ -2,8 +2,10 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/from';
 import 'rxjs/add/observable/of';
+import 'rxjs/add/observable/defer';
 import { Message } from './message';
 import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { QueryDocumentSnapshot } from '@firebase/firestore-types';
 
 const dummy: Message[] = [
   {
@@ -59,7 +61,25 @@ export class ChatServiceService {
   }
 
 
-  public init() {
+  public reset(): Observable<void> {
+    return Observable.defer(async() => {
+      await this.deleteAll();
+      this.init();
+    });
+  }
+
+  private async deleteAll() {
+    const qry = await this.collection.ref.get();
+    const batch = this.db.firestore.batch();
+
+    // You can use the QuerySnapshot above like in the example i linked
+    qry.forEach((doc: QueryDocumentSnapshot) => {
+      batch.delete(doc.ref);
+    });
+    batch.commit();
+  }
+
+  private init() {
     for (const message of dummy){
       message.date = new Date();
       this.collection.add(message);
