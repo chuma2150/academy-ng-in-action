@@ -3,8 +3,11 @@
       <app-avatar></app-avatar>
       <span>{{message.sender}}</span>
   </div>
+  <p style="font-size: smaller">
+    {{message.date|date:long}}
+  </p>
   <p>
-    {{message.text}} 
+    {{message.text}}
   </p>
 </div>
 <hr>
