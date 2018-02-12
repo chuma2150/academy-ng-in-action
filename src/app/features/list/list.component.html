@@ -4,7 +4,7 @@
 
 
 <mat-nav-list>
-  <mat-list-item *ngFor="let user of users" >
+  <mat-list-item *ngFor="let user of users | async" >
     {{user.name}}
   </mat-list-item>
 </mat-nav-list>
