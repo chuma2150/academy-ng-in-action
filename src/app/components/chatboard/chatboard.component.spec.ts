@@ -1,8 +1,18 @@
-import { ChatServiceService } from './../../services/chat-service/chat-service.service';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {ChatboardComponent} from './chatboard.component';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
+import {ChatServiceService} from '../../services/chat-service/chat-service.service';
 
-import { ChatboardComponent } from './chatboard.component';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+const mockUsers = [{
+  text: 'test',
+  sender: 'test',
+  receiver: 'test'
+}];
+
+export class MockChatService {
+  public messages = () => Observable.of(mockUsers);
+}
 
 describe('ChatboardComponent', () => {
   let component: ChatboardComponent;
@@ -10,16 +20,14 @@ describe('ChatboardComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ChatboardComponent ],
+      declarations: [ChatboardComponent],
       providers: [{
         provide: ChatServiceService,
-        useFactory: () => {
-          console.log('test service');
-        }
+        useClass: MockChatService
       }],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

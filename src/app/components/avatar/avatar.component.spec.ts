@@ -13,11 +13,11 @@ describe('AvatarComponent', () => {
     .compileComponents();
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(AvatarComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+   beforeEach(() => {
+     fixture = TestBed.createComponent(AvatarComponent);
+     component = fixture.componentInstance;
+     fixture.detectChanges();
+   });
 
   it('should create', () => {
     expect(component).toBeTruthy();

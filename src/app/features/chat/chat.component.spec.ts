@@ -2,6 +2,11 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ChatComponent } from './chat.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import {FormsModule} from '@angular/forms';
+import {UserService} from '../../services/user/user.service';
+import {MockUserService} from '../../components/user/user.component.spec';
+import {MockChatService} from '../../components/chatboard/chatboard.component.spec';
+import {ChatServiceService} from '../../services/chat-service/chat-service.service';
 
 describe('ChatComponent', () => {
   let component: ChatComponent;
@@ -9,7 +14,12 @@ describe('ChatComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [FormsModule],
       declarations: [ ChatComponent ],
+      providers: [
+        { provide: UserService, useClass: MockUserService},
+        { provide: ChatServiceService, useClass: MockChatService}
+        ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();

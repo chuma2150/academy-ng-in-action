@@ -1,11 +1,15 @@
-import { TestBed, inject } from '@angular/core/testing';
-
-import { UserService } from './user.service';
+import {inject, TestBed} from '@angular/core/testing';
+import {UserService} from './user.service';
+import {AngularFirestore} from 'angularfire2/firestore';
+import {MockAngularFireStore} from '../chat-service/chat-service.service.spec';
 
 describe('UserService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [UserService]
+      providers: [
+        {provide: AngularFirestore, useClass: MockAngularFireStore},
+        UserService
+      ]
     });
   });
 
