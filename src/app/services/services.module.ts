@@ -1,13 +1,15 @@
 import { UserService } from './user/user.service';
-import { ChatServiceService } from './chat-service/chat-service.service';
+import { ChatService } from './chat/chat.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    HttpClientModule
   ],
   declarations: [],
-  providers: [ChatServiceService, UserService]
+  providers: [ChatService, UserService]
 })
 export class ServicesModule { }

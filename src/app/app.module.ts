@@ -2,7 +2,7 @@ import { environment } from './../environments/environment';
 import { ComponentsModule } from './components/components.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {MatToolbarModule} from '@angular/material';
+import {MatButtonModule, MatToolbarModule} from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -19,6 +19,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
   ],
   imports: [
     BrowserModule,
+    MatButtonModule,
     AppRoutingModule,
     FeaturesModule,
     MatToolbarModule,

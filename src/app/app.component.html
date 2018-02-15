@@ -1,15 +1,16 @@
-<!--The content below is only a placeholder and can be replaced.-->
+<header>
+  <mat-toolbar color="primary" class="navigation">
+    <mat-toolbar-row>
+      <button mat-button routerLink="/profile" mat-list-item>Profile</button>
+      <button mat-button routerLink="/main" mat-list-item>Main</button>
+      <button mat-button routerLink="/chat" mat-list-item>Chat</button>
+      <button mat-button routerLink="/list" mat-list-item>List</button>
 
-<mat-toolbar color="primary" class="navigation">
-  <nav>
-    <a routerLink="/profile" mat-list-item>Profile</a>
-    <a routerLink="/main" mat-list-item>main</a>
-    <a routerLink="/chat" mat-list-item>Chat</a>
-    <a routerLink="/list" mat-list-item>List</a>
-  </nav>
-
-  <app-user></app-user>
-</mat-toolbar> 
+      <span class="example-fill-remaining-space"></span>
+      <app-user></app-user>
+    </mat-toolbar-row>
+  </mat-toolbar>
+</header>
 
 <main>
   <router-outlet></router-outlet>

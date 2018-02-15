@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-avatar',
   templateUrl: './avatar.component.html',
-  styleUrls: ['./avatar.component.scss']
+  styleUrls: ['./avatar.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AvatarComponent implements OnInit {
+export class AvatarComponent {
+  private _url: string;
 
-  constructor() { }
-
-  ngOnInit() {
+  @Input()
+  set url(url: string){
+    this._url = url;
   }
 
+  get url(){
+    return `url(${this._url})`;
+  }
 }

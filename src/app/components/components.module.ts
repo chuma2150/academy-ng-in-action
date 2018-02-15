@@ -1,17 +1,28 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ChatboardComponent } from './chatboard/chatboard.component';
-import { ChatmessageComponent } from './chatmessage/chatmessage.component';
-import { AvatarComponent } from './avatar/avatar.component';
-import { UserComponent } from './user/user.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {ChatboardComponent} from './chatboard/chatboard.component';
+import {ChatmessageComponent} from './chatmessage/chatmessage.component';
+import {AvatarComponent} from './avatar/avatar.component';
+import {UserComponent} from './user/user.component';
+import {AvatarListComponent} from './avatar-list/avatar-list.component';
+import {MatListModule, MatSelectModule} from '@angular/material';
 
-const comps = [ChatboardComponent, ChatmessageComponent, AvatarComponent, UserComponent];
+const components = [
+  ChatboardComponent,
+  ChatmessageComponent,
+  AvatarComponent,
+  UserComponent,
+  AvatarListComponent
+];
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    MatListModule,
+    MatSelectModule
   ],
-  declarations: comps,
-  exports: comps
+  declarations: components,
+  exports: components
 })
-export class ComponentsModule { }
+export class ComponentsModule {
+}

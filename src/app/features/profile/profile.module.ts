@@ -6,7 +6,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { ProfileRoutingModule } from './profile-routing.module';
 import { ProfileComponent } from './profile.component';
-import { MatFormField, MatButton, MatFormFieldModule, MatButtonModule, MatInputModule } from '@angular/material';
+import {MatFormField, MatButton, MatFormFieldModule, MatButtonModule, MatInputModule, MatCardModule} from '@angular/material';
+import {ComponentsModule} from '../../components/components.module';
 
 @NgModule({
   imports: [
@@ -17,7 +18,9 @@ import { MatFormField, MatButton, MatFormFieldModule, MatButtonModule, MatInputM
     MatFormFieldModule,
     MatButtonModule,
     MatInputModule,
-    ListModule
+    ListModule,
+    ComponentsModule,
+    MatCardModule
   ],
   declarations: [ProfileComponent]
 })

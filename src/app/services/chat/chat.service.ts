@@ -1,12 +1,15 @@
-import { User } from './../user/user.service';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import {User} from './../user/user.service';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/from';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/defer';
-import { Message } from './message';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
-import { QueryDocumentSnapshot } from '@firebase/firestore-types';
+import {Message} from './message';
+import {AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firestore';
+import {QueryDocumentSnapshot} from '@firebase/firestore-types';
+import {HttpClient, HttpResponse} from '@angular/common/http';
+
+const MESSAGE_ENDPOINT = 'https://us-central1-ng-in-action.cloudfunctions.net/messages/';
 
 const dummy: Message[] = [
   {
@@ -42,11 +45,11 @@ const dummy: Message[] = [
 ];
 
 @Injectable()
-export class ChatServiceService {
+export class ChatService {
   private collection: AngularFirestoreCollection<Message>;
   private _messages: Observable<Message[]>;
 
-  constructor(private db: AngularFirestore) {
+  constructor(private db: AngularFirestore, private http: HttpClient) {
     this.collection = db.collection<Message>('messages');
   }
 
@@ -59,13 +62,18 @@ export class ChatServiceService {
   }
 
   public add(message: Message) {
-      message.date  = new Date();
-      this.collection.add(message);
+
+    this.http
+      .post(MESSAGE_ENDPOINT, {...message, date: new Date()})
+      .subscribe((response) => {
+          console.log('CharServiceService.add', message , 'id ', response);
+      });
+    // this.collection.add(message);
   }
 
 
   public reset(): Observable<void> {
-    return Observable.defer(async() => {
+    return Observable.defer(async () => {
       await this.deleteAll();
       this.init();
     });
@@ -83,7 +91,7 @@ export class ChatServiceService {
   }
 
   private init() {
-    for (const message of dummy){
+    for (const message of dummy) {
       message.date = new Date();
       this.collection.add(message);
     }

@@ -1,23 +1,32 @@
 <div>
-    <button (click)="reset()">Reset</button>
+    <button mat-raised-button color="primary" (click)="reset()">Reset</button>
 </div>
 <div class="chat">
-    <div>
-        <textarea matInput cols="30" rows="10" [(ngModel)]="text"></textarea> 
-       <button (click)="send()">Send</button>
-
-       <br>
-        [textt: {{text}}] <br>
-        [msg: {{msg|json}}]<br/>
-        [receiver: {{receiver?.name}}]
-
-        <app-list (select)="selectReceiver($event)"></app-list>
-    </div>
-    <div>
-        
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title color="primary">
+          Chat
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
         <mat-tab-group>
-                <mat-tab label="All"><app-chat-board></app-chat-board></mat-tab>
-                <mat-tab label="My Messages"><app-chat-board [user]="user"></app-chat-board></mat-tab>
+          <mat-tab label="All"><app-chat-board></app-chat-board></mat-tab>
+          <mat-tab label="My Messages"><app-chat-board [user]="user"></app-chat-board></mat-tab>
         </mat-tab-group>
-    </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+      <mat-card-title>Message</mat-card-title>
+      <mat-card-content>
+        <mat-form-field>
+          <textarea matInput cols="30" rows="10" [(ngModel)]="text"></textarea>
+        </mat-form-field>
+        <div>
+          <button mat-raised-button color="primary" (click)="send()">Send</button>
+        </div>
+        <br>
+        <app-list (select)="selectReceiver($event)"></app-list>
+      </mat-card-content>
+    </mat-card>
 </div>

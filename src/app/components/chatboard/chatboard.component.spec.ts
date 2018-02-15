@@ -2,7 +2,7 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {ChatboardComponent} from './chatboard.component';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
-import {ChatServiceService} from '../../services/chat-service/chat-service.service';
+import {ChatService} from '../../services/chat/chat.service';
 
 const mockUsers = [{
   text: 'test',
@@ -22,7 +22,7 @@ describe('ChatboardComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ChatboardComponent],
       providers: [{
-        provide: ChatServiceService,
+        provide: ChatService,
         useClass: MockChatService
       }],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]

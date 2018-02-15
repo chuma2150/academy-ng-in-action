@@ -1,23 +1,23 @@
 import {inject, TestBed} from '@angular/core/testing';
 
-import {ChatServiceService} from './chat-service.service';
+import {ChatService} from './chat.service';
 import {AngularFirestore} from 'angularfire2/firestore';
 
 export class MockAngularFireStore {
   public collection() {}
 }
 
-describe('ChatServiceService', () => {
+describe('ChatService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
         {provide: AngularFirestore, useClass: MockAngularFireStore},
-        ChatServiceService
+        ChatService
       ]
     });
   });
 
-  it('should be created', inject([ChatServiceService], (service: ChatServiceService) => {
+  it('should be created', inject([ChatService], (service: ChatService) => {
     expect(service).toBeTruthy();
   }));
 });

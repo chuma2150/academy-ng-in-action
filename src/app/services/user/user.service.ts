@@ -3,17 +3,28 @@ import { AngularFirestoreCollection, AngularFirestore } from 'angularfire2/fires
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Subject } from 'rxjs/Subject';
+import 'rxjs/operators/take';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 export interface User {
   name: string;
 }
+
+// const USER_ENDPOINT = '/assets/user.json';
+const USER_ENDPOINT = 'https://us-central1-ng-in-action.cloudfunctions.net/user/';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json'
+  })
+};
 
 @Injectable()
 export class UserService {
   private collection: AngularFirestoreCollection<User>;
   private user$: Subject<User> = new BehaviorSubject<User>({name: 'No user'});
 
-  constructor(private db: AngularFirestore) {
+  constructor(private db: AngularFirestore, private http: HttpClient) {
     this.collection = db.collection<User>('user', ref => ref.orderBy('name'));
    }
 
@@ -22,11 +33,12 @@ export class UserService {
   }
 
   public add(user: User) {
-    this.set(user);
-    this.collection.add(user);
-  }
+    this.http
+      .post(USER_ENDPOINT, user, httpOptions)
+      .subscribe( (response) => this.set(user) );
+    }
 
-  public list() {
+  public list(): Observable<User[]> {
     return this.collection.valueChanges();
   }
 

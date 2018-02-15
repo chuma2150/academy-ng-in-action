@@ -1,6 +1,6 @@
 .navigation{
     display: flex;
-    
+
 
     a{
         margin-right: 1rem;
@@ -9,4 +9,8 @@
 
 main{
     padding: 1rem;
+}
+
+.example-fill-remaining-space {
+  flex: 1 1 auto;
 }
