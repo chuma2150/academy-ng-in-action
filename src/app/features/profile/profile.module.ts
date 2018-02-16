@@ -1,6 +1,6 @@
 import {FormsModule} from '@angular/forms';
 import {NgModule} from '@angular/core';
-import {MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule} from '@angular/material';
+import {MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatSnackBarModule} from '@angular/material';
 import {CommonModule} from '@angular/common';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -20,7 +20,8 @@ import {ComponentsModule} from '../../components/components.module';
     MatInputModule,
     ListModule,
     ComponentsModule,
-    MatCardModule
+    MatCardModule,
+    MatSnackBarModule
   ],
   declarations: [ProfileComponent]
 })
