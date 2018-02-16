@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { UserComponent } from './user.component';
 import {User, UserService} from '../../services/user/user.service';
 import {Observable} from 'rxjs/Observable';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 const users: User[] = [
   {name: 'TEST USER'},
@@ -21,7 +22,8 @@ describe('UserComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ UserComponent ],
-      providers: [{ provide: UserService, useClass: MockUserService}]
+      providers: [{ provide: UserService, useClass: MockUserService}],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
   }));

@@ -30,7 +30,7 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Edge'],
+    browsers: ['ChromeHeadless'],
     singleRun: false,
     // browserDisconnectTolerance: 2,
     browserNoActivityTimeout: 10000

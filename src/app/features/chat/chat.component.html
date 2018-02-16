@@ -13,14 +13,7 @@
         <app-list (select)="selectReceiver($event)" [user]="user"></app-list>
       </div>
       <div class="chat-list">
-        <mat-tab-group>
-          <mat-tab label="All">
-            <app-chat-board [user]="user"></app-chat-board>
-          </mat-tab>
-          <mat-tab label="My Messages">
-            <app-chat-board [user]="user" [ownMessages]="true"></app-chat-board>
-          </mat-tab>
-        </mat-tab-group>
+        <app-chat-board [user]="user"></app-chat-board>
         <form  novalidate
                #chatForm="ngForm">
           <div class="chat-message">

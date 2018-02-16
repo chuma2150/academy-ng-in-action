@@ -1,4 +1,4 @@
-<div [ngClass]="{'sent': message.sender == current?.name}" class="chat-message-container">
+<div [ngClass]="{'sent': message.sender === current?.name, 'private': message.receiver === current?.name}" class="chat-message-container">
   <div class="avatar">
     <app-avatar [name]="message.sender"></app-avatar>
   </div>

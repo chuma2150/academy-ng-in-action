@@ -1,3 +1,4 @@
+import { FilterUserPipe } from './../../pipe/filter-user.pipe';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ListComponent } from './list.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
@@ -10,7 +11,10 @@ describe('ListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ListComponent ],
+      declarations: [
+        ListComponent,
+        FilterUserPipe
+      ],
       providers: [{ provide: UserService, useClass: MockUserService}],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })

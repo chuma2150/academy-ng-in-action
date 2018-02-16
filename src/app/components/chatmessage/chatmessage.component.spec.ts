@@ -22,7 +22,7 @@ describe('ChatmessageComponent', () => {
     fixture = TestBed.createComponent(ChatmessageComponent);
     component = fixture.componentInstance;
 
-    component.message = {text: 'TEST', sender: 'ABC'};
+    component.message = {text: 'TEST', sender: 'ABC', receiver: null};
     fixture.detectChanges();
   });
 
@@ -31,7 +31,7 @@ describe('ChatmessageComponent', () => {
   });
 
   it('should have a sent class', () => {
-    component.current = 'ABC';
+    component.current = {name: 'ABC'};
     fixture.detectChanges();
     const sent = getSentCssClass(fixture);
 
@@ -39,7 +39,7 @@ describe('ChatmessageComponent', () => {
   });
 
   it('should have a not sent class', () => {
-    component.current = 'NOTABC';
+    component.current = {name: 'NOTABC'};
     fixture.detectChanges();
     const sent = getSentCssClass(fixture);
 

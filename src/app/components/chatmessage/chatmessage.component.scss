@@ -21,7 +21,9 @@
     padding: 1rem;
     border-radius: 10px;
   }
-
+  &.private .chat-message{
+    background-color: rgba(255, 0, 242, 0.37);
+  }
   header{
     display: flex;
     justify-content: space-between;

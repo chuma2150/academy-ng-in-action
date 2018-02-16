@@ -2,7 +2,7 @@ import {User} from './../user/user.service';
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/from';
-import 'rxjs/add/observable/of';
+import 'rxjs/add/observable/combineLatest';
 import 'rxjs/add/observable/defer';
 import {Message} from './message';
 import {AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firestore';
@@ -53,12 +53,24 @@ export class ChatService {
     this.collection = db.collection<Message>('messages');
   }
 
-  public messages(receiver: User | null): Observable<Message[]> {
-    const collection = this.db.collection<Message>('messages', ref => ref
-      .where('receiver', '==', receiver && receiver.name)
+  public messages(user: User): Observable<Message[]> {
+    const senderCollection = this.db.collection<Message>('messages', ref => ref
+      .where('receiver', '==', user.name)
       .orderBy('date', 'desc'));
 
-    return collection.valueChanges();
+    const receiverCollection = this.db.collection<Message>('messages', ref => ref
+      .where('receiver', '==', user.name)
+      .orderBy('date', 'desc'));
+
+    const publicCollection = this.db.collection<Message>('messages', ref => ref
+      .where('receiver', '==', null)
+      .orderBy('date', 'desc'));
+
+    const collections = [senderCollection, receiverCollection, publicCollection];
+    return Observable.combineLatest(collections.map(c => c.valueChanges()))
+      .map(messagesByCollection => [].concat(...messagesByCollection)
+        .sort((message1: Message, message2: Message) =>
+          message1.date.valueOf() - message2.date.valueOf()));
   }
 
   public add(message: Message) {

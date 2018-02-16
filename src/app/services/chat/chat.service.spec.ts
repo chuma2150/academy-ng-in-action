@@ -1,3 +1,4 @@
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import {inject, TestBed} from '@angular/core/testing';
 
 import {ChatService} from './chat.service';
@@ -10,6 +11,7 @@ export class MockAngularFireStore {
 describe('ChatService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
+      imports: [ HttpClientTestingModule ],
       providers: [
         {provide: AngularFirestore, useClass: MockAngularFireStore},
         ChatService

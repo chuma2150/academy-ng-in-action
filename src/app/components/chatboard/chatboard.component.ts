@@ -11,13 +11,12 @@ import { Observable } from 'rxjs/Observable';
 })
 export class ChatboardComponent implements OnInit {
   @Input() user: User = null;
-  @Input() ownMessages: boolean;
   public msgs: Observable<Message[]>;
 
   constructor(public service: ChatService) {}
 
   ngOnInit() {
-    this.msgs = this.service.messages( this.ownMessages ? this.user : null);
+    this.msgs = this.service.messages(this.user);
   }
 
 }
