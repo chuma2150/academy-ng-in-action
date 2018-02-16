@@ -32,10 +32,6 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.sendMessage(this.msg);
   }
 
-  public reset() {
-    this.chat.reset().subscribe();
-  }
-
   public selectReceiver(user: User) {
     this.receiver = user;
   }
