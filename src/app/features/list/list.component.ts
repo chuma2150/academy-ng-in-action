@@ -22,7 +22,11 @@ export class ListComponent implements OnInit {
   }
 
   selectUser(user: User) {
-    this.select.emit(user);
-    this.selected = user;
+    let newUser = user;
+    if (this.selected === user) {
+      newUser = null;
+    }
+    this.select.emit(newUser);
+    this.selected = newUser;
   }
 }
