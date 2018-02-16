@@ -32,6 +32,12 @@ export class ProfileComponent {
     this.navigate();
   }
 
+  update(user: User) {
+    const newUser: User = {...user, firstName: 'John', lastName: 'Doe'};
+    this.user.update(newUser).subscribe( (hallo) => console.log('result of the update', hallo) , (error) => console.error(error));
+    this.navigate();
+  }
+
   showError(error: string) {
     this.snackBar.open(error, null, {duration: 5000});
   }
