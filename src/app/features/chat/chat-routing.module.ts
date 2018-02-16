@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ChatComponent } from './chat.component';
+import { HasUserGuard } from '../../guards/has-user/has-user.guard';
 
 const routes: Routes = [
   {
     path: 'chat',
-    component: ChatComponent
+    component: ChatComponent,
+    canActivate: [HasUserGuard]
   }
 ];
 

@@ -1,3 +1,4 @@
+import { HasUserGuard } from './guards/has-user/has-user.guard';
 import {environment} from './../environments/environment';
 import {ComponentsModule} from './components/components.module';
 import {BrowserModule} from '@angular/platform-browser';
@@ -28,7 +29,9 @@ import {AngularFirestoreModule} from 'angularfire2/firestore';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule
   ],
-  providers: [],
+  providers: [
+    HasUserGuard
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
