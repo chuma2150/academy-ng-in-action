@@ -39,7 +39,7 @@ export class UserService {
   }
 
   public list(): Observable<User[]> {
-    return this.collection.valueChanges();
+    return this.http.get<User[]>(USER_ENDPOINT);
   }
 
   public user(): Observable<User> {
