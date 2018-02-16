@@ -1,4 +1,4 @@
-<header>
+<header *ngIf="false">
   <mat-toolbar color="primary" class="navigation">
     <mat-toolbar-row>
       <button mat-button routerLink="/profile" mat-list-item>Profile</button>
@@ -10,6 +10,17 @@
       <app-user></app-user>
     </mat-toolbar-row>
   </mat-toolbar>
+</header>
+<header>
+  <tim-nav-bar>
+    <tim-logo></tim-logo>
+    <tim-nav-item-group>
+      <tim-nav-item routerLink="/profile" routerLinkActive="active" title="Profile"></tim-nav-item>
+      <tim-nav-item routerLink="/main" routerLinkActive="active" title="Main"></tim-nav-item>
+      <tim-nav-item routerLink="/chat" routerLinkActive="active" title="Chat"></tim-nav-item>
+      <tim-nav-item routerLink="/list" routerLinkActive="active" title="List"></tim-nav-item>
+    </tim-nav-item-group>
+  </tim-nav-bar>
 </header>
 
 <main>

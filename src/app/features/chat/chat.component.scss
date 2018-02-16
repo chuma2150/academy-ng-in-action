@@ -1,9 +1,30 @@
 .chat {
     display: flex;
-    justify-content: space-between;
 
-    div{
-        flex: 1;
-        outline: 1px dashed blue;
+    .chat-content{
+      display: flex;
+      flex-direction: row;
+
+      .chat-users{
+        width: 20%;
+        padding-right: 2rem;
+        //background-color: magenta;
+      }
+
+      .chat-list{
+        flex: 2;
+      }
+
+      .chat-message{
+
+        mat-form-field{
+          width: 80%;
+        }
+
+        button{
+          margin-left: 12%;
+        }
+      }
     }
+
 }

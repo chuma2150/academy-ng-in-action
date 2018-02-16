@@ -1,32 +1,35 @@
-<div>
+<!--<div>
     <button mat-raised-button color="primary" (click)="reset()">Reset</button>
-</div>
+</div>-->
 <div class="chat">
-    <mat-card>
-      <mat-card-header>
-        <mat-card-title color="primary">
-          Chat
-        </mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
+  <mat-card class="large-centred-content">
+    <!--     <mat-card-header>
+           <mat-card-title color="primary">
+             Chat
+           </mat-card-title>
+         </mat-card-header>-->
+    <mat-card-content class="chat-content">
+      <div class="chat-users">
+        <app-list (select)="selectReceiver($event)"></app-list>
+      </div>
+      <div class="chat-list">
         <mat-tab-group>
-          <mat-tab label="All"><app-chat-board></app-chat-board></mat-tab>
-          <mat-tab label="My Messages"><app-chat-board [user]="user"></app-chat-board></mat-tab>
+          <mat-tab label="All">
+            <app-chat-board></app-chat-board>
+          </mat-tab>
+          <mat-tab label="My Messages">
+            <app-chat-board [user]="user"></app-chat-board>
+          </mat-tab>
         </mat-tab-group>
-      </mat-card-content>
-    </mat-card>
-
-    <mat-card>
-      <mat-card-title>Message</mat-card-title>
-      <mat-card-content>
-        <mat-form-field>
-          <textarea matInput cols="30" rows="10" [(ngModel)]="text"></textarea>
-        </mat-form-field>
-        <div>
+        <div class="chat-message">
+          <mat-form-field>
+            <textarea matInput [(ngModel)]="text"></textarea>
+            <!--<input matInput [(ngModel)]="text"/>-->
+          </mat-form-field>
           <button mat-raised-button color="primary" (click)="send()">Send</button>
         </div>
-        <br>
-        <app-list (select)="selectReceiver($event)"></app-list>
-      </mat-card-content>
-    </mat-card>
+
+      </div>
+    </mat-card-content>
+  </mat-card>
 </div>

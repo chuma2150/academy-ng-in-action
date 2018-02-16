@@ -1,7 +1,7 @@
 import { environment } from './../environments/environment';
 import { ComponentsModule } from './components/components.module';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {MatButtonModule, MatToolbarModule} from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -29,6 +29,7 @@ import { AngularFirestoreModule } from 'angularfire2/firestore';
     AngularFirestoreModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
