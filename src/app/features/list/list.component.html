@@ -1,5 +1,8 @@
 <mat-nav-list>
-  <mat-list-item *ngFor="let user of users | async" (click)="select.emit(user)" >
-    {{user.name}}
+  <mat-list-item *ngFor="let _user of users | async | filterUser:user"
+                 [ngClass]="{'selected': _user === selected}"
+                 (click)="selectUser(_user)" >
+    <app-avatar [name]="_user.name"></app-avatar>
+    <span >{{_user.name}}</span>
   </mat-list-item>
 </mat-nav-list>

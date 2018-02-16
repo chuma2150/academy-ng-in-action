@@ -1,0 +1,76 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="tim-nav-item-user">
+  <template>
+    <style>
+      :host {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
+        display: inline-block;
+        padding: 0 1rem;
+        border-left: 1px solid #ccc;
+        line-height: 53px;
+      }
+
+      span{
+        font-size: 11px;
+        text-transform: uppercase;
+        font-weight: 600;
+        letter-spacing: 1px;
+        color: #292929;
+        opacity: .5;
+        transition: all .3s ease;
+        -webkit-transition: all .3s ease;
+        -moz-transition: all .3s ease;
+        max-width: 100%;
+        white-space: normal;
+        text-decoration: none;
+        outline: 0;
+      }
+
+      img{
+        width: calc(40px/2);
+        height: calc(40px/2);
+        background-color: #ccc;
+        display: inline-block;
+        margin-right: .2rem;
+        vertical-align: middle;
+        border-radius: calc(40px/2);
+      }
+
+    </style>
+    <li>
+      <img src="[[url]]" >
+      <span><slot></slot></span>
+    </li>
+  </template>
+
+  <script>
+    class TimNavItemUser extends Polymer.Element {
+      static get is() {
+        return 'tim-nav-item-user';
+      }
+
+      static get properties() {
+        return {
+          user: {
+            type: String
+          },
+          avatar: {
+            type: String
+          },
+          url: {
+            type: String,
+            computed: 'getUrl(avatar)'
+          }
+        };
+      }
+
+      getUrl(avatar){
+        return `https://api.adorable.io/avatars/40/${avatar}.png`
+      }
+
+    }
+
+    window.customElements.define(TimNavItemUser.is, TimNavItemUser);
+  </script>
+</dom-module>

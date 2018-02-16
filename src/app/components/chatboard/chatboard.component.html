@@ -1,2 +1,3 @@
-<app-chatmessage *ngFor="let msg of msgs|async" [message]="msg" current="Mcdowell"></app-chatmessage>
+<app-chatmessage *ngFor="let msg of msgs|async"
+                 [message]="msg" [current]="user"></app-chatmessage>
 

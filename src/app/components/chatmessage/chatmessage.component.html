@@ -1,14 +1,18 @@
-<div [ngClass]="{'sent': message.sender == current}">
-  <div>
-      <app-avatar></app-avatar>
-      <span>Sender: {{message.sender}}</span><br>
-      <span>Receiver: {{message.receiver}}</span>
+<div [ngClass]="{'sent': message.sender == current?.name}" class="chat-message-container">
+  <div class="avatar">
+    <app-avatar [name]="message.sender"></app-avatar>
   </div>
-  <p style="font-size: smaller">
-    {{message.date|date:long}}
-  </p>
-  <p>
-    {{message.text}}
-  </p>
+  <div class="chat-message">
+    <header>
+      <div>
+        <span>{{message.sender}}</span>
+        <span>Receiver: {{message.receiver}}</span>
+      </div>
+      <span class="date">{{message.date|date:long}}</span>
+    </header>
+    <main>
+      {{message.text}}
+    </main>
+  </div>
+
 </div>
-<hr>

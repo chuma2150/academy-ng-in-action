@@ -36,3 +36,24 @@ h1, h2, h3, h4 {
   width: 80%;
   margin: 5vh auto;
 }
+
+.mat-card > .mat-card-header> :first-child{
+  margin: -24px -24px 0 -24px;
+  padding: 24px 24px 0 24px;
+  width: 100%;
+  background-color: #3f51b5;
+  font-weight: bold;
+}
+
+.mat-card-title{
+  font-weight: bold;
+  color: white;
+}
+
+.mat-card-content{
+  padding-top: 24px;
+}
+
+.mat-tab-body-wrapper{
+  height: 60vh;
+}

@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ChatboardComponent} from './chatboard/chatboard.component';
 import {ChatmessageComponent} from './chatmessage/chatmessage.component';
@@ -22,7 +22,8 @@ const components = [
     MatSelectModule
   ],
   declarations: components,
-  exports: components
+  exports: components,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class ComponentsModule {
 }

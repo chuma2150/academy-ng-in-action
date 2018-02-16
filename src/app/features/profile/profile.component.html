@@ -5,18 +5,26 @@
     </mat-card-title>
   </mat-card-header>
   <mat-card-content >
-    <form action="">
+    <form novalidate #userForm="ngForm">
       <mat-form-field class="example-full-width" class="full-width">
-        <input matInput placeholder="username" [(ngModel)]="name" name="name">
+        <input matInput
+               name="username"
+               placeholder="New user"
+               required
+               [(ngModel)]="name"
+               name="name">
       </mat-form-field>
       <br>
-      <app-avatar-list  class="full-width"></app-avatar-list>
+      <button mat-raised-button
+              color="primary"
+              class="full-width"
+              [disabled]="!userForm.valid"
+              (click)="register()">Add user</button>
       <br>
-      <button mat-raised-button color="primary" class="full-width" (click)="register()">Click me!</button>
-
-      <!--<app-list (select)="login($event)"></app-list>-->
+      <p>
+        Or choose an existing user
+      </p>
+      <app-list (select)="login($event)"></app-list>
     </form>
-
-
   </mat-card-content>
 </mat-card>

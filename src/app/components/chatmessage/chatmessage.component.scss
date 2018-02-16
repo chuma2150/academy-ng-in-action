@@ -1,3 +1,43 @@
-.sent{
-    background-color: magenta;
+:host{
+  display: block;
+}
+
+.chat-message-container.sent{
+  flex-direction: row-reverse;
+
+  .chat-message{
+    background-color: rgba(0, 255, 159, 0.37);
+  }
+}
+
+.chat-message-container{
+  display: flex;
+  flex-direction: row;
+  padding: 1rem;
+
+  .chat-message{
+    flex: 2;
+    background-color: #f8f8f8;
+    padding: 1rem;
+    border-radius: 10px;
+  }
+
+  header{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    font-size: smaller;
+  }
+
+
+  main{
+    margin-top: .5rem;
+    font-size: larger;
+  }
+
+
+}
+
+.avatar{
+  margin: 0 1rem;
 }

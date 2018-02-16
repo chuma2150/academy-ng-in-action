@@ -1,6 +1,6 @@
-import { UserService, User } from './../../services/user/user.service';
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import {UserService, User} from './../../services/user/user.service';
+import {Component, OnInit, EventEmitter, Output, Input} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
 
 @Component({
   selector: 'app-list',
@@ -8,12 +8,21 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-  @Output() select: EventEmitter<User> =  new EventEmitter<User>();
+  @Input() user: User;
+  @Output() select: EventEmitter<User> = new EventEmitter<User>();
   public users: Observable<User[]>;
 
-  constructor(private userService: UserService) { }
+  private selected: User;
+
+  constructor(private userService: UserService) {
+  }
 
   ngOnInit() {
     this.users = this.userService.list();
+  }
+
+  selectUser(user: User) {
+    this.select.emit(user);
+    this.selected = user;
   }
 }

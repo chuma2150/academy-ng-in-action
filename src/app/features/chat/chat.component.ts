@@ -12,7 +12,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   public text: string;
   public msg: Message;
 
-  private user: User;
+  public user: User;
   private subscription: Subscription;
   private receiver: User = null;
 
