@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { UserService } from './services/user/user.service';
 import 'rxjs/add/observable/of';
+import { MockUserService } from './components/user/user.component.spec';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -16,11 +17,7 @@ describe('AppComponent', () => {
         AppComponent
       ],
       providers: [
-        { provide: UserService, useValue: {
-          user() {
-            return Observable.of(null);
-          }
-        }}
+        { provide: UserService, useClass: MockUserService }
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     }).compileComponents();
