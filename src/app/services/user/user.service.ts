@@ -10,7 +10,6 @@ export interface User {
   name: string;
 }
 
-// const USER_ENDPOINT = '/assets/user.json';
 const USER_ENDPOINT = 'https://us-central1-ng-in-action.cloudfunctions.net/user/';
 
 const httpOptions = {
