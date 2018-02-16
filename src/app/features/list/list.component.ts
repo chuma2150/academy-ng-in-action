@@ -21,7 +21,7 @@ export class ListComponent implements OnInit {
     this.users = this.userService.list();
   }
 
-  selectUser(user: User) {
+  toggleUser(user: User) {
     let newUser = user;
     if (this.selected === user) {
       newUser = null;
