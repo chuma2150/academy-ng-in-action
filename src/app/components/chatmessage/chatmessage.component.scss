@@ -4,10 +4,6 @@
 
 .chat-message-container.sent{
   flex-direction: row-reverse;
-
-  .chat-message{
-    background-color: rgba(0, 255, 159, 0.37);
-  }
 }
 
 .chat-message-container{
@@ -21,8 +17,16 @@
     padding: 1rem;
     border-radius: 10px;
   }
-  &.private .chat-message{
-    background-color: rgba(255, 0, 242, 0.37);
+  &.private {
+    .chat-message {
+      background-color: rgba(255, 0, 242, 0.37);
+    }
+    &.sent .chat-message {
+      background-color: rgba(255, 153, 0, 0.37);
+    }
+  }
+  &.sent .chat-message {
+    background-color: rgba(0, 255, 159, 0.37);
   }
   header{
     display: flex;

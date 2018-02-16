@@ -55,18 +55,20 @@ export class ChatService {
 
   public messages(user: User): Observable<Message[]> {
     const senderCollection = this.db.collection<Message>('messages', ref => ref
-      .where('receiver', '==', user.name)
-      .orderBy('date', 'desc'));
+      .where('sender', '==', user.name));
 
     const receiverCollection = this.db.collection<Message>('messages', ref => ref
-      .where('receiver', '==', user.name)
-      .orderBy('date', 'desc'));
+      .where('receiver', '==', user.name));
 
-    const publicCollection = this.db.collection<Message>('messages', ref => ref
+    const publicCollection1 = this.db.collection<Message>('messages', ref => ref
       .where('receiver', '==', null)
-      .orderBy('date', 'desc'));
+      .where('sender', '<', user.name));
 
-    const collections = [senderCollection, receiverCollection, publicCollection];
+    const publicCollection2 = this.db.collection<Message>('messages', ref => ref
+      .where('receiver', '==', null)
+      .where('sender', '>', user.name));
+
+    const collections = [senderCollection, receiverCollection, publicCollection1, publicCollection2];
     return Observable.combineLatest(collections.map(c => c.valueChanges()))
       .map(messagesByCollection => [].concat(...messagesByCollection)
         .sort((message1: Message, message2: Message) =>
@@ -74,7 +76,6 @@ export class ChatService {
   }
 
   public add(message: Message) {
-
     this.http
       .post(MESSAGE_ENDPOINT, {...message, date: new Date()})
       .subscribe((response) => {
