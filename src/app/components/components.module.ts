@@ -4,15 +4,13 @@ import {ChatboardComponent} from './chatboard/chatboard.component';
 import {ChatmessageComponent} from './chatmessage/chatmessage.component';
 import {AvatarComponent} from './avatar/avatar.component';
 import {UserComponent} from './user/user.component';
-import {AvatarListComponent} from './avatar-list/avatar-list.component';
 import {MatListModule, MatSelectModule} from '@angular/material';
 
 const components = [
   ChatboardComponent,
   ChatmessageComponent,
   AvatarComponent,
-  UserComponent,
-  AvatarListComponent
+  UserComponent
 ];
 
 @NgModule({
