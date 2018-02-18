@@ -20,7 +20,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscriptions.push(
       Observable.combineLatest(
-        this.route.queryParams.map((queryParams: Params) => queryParams['profile'] as string),
+        this.route.params.map((params: Params) => params['profile'] as string),
         this.userService.list(),
         (viewUser: string, users: User[]) => {
           return users.find(u => u.name === viewUser);
@@ -31,7 +31,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   }
 
   selectProfile(user: User) {
-    this.router.navigate([], { relativeTo: this.route, queryParams: { profile: user.name }});
+    this.router.navigate(['profile', user.name]);
   }
 
   ngOnDestroy() {

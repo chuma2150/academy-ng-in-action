@@ -1,4 +1,4 @@
-<a *ngIf="user|async"  routerLink="/profile" [queryParams]="{profile: (user|async)?.name}">
+<a *ngIf="user|async"  [routerLink]="['profile', (user|async)?.name]">
   <tim-nav-item-user
     avatar="{{ (user|async)?.name}}">{{ (user|async)?.name}}</tim-nav-item-user>
 </a>
