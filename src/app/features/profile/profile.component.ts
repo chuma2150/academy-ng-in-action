@@ -11,9 +11,6 @@ import 'rxjs/add/operator/map';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit, OnDestroy {
-
-  public user: User;
-
   public currentProfile: User;
   private subscriptions: Subscription[] = [];
   constructor(private userService: UserService,
@@ -21,7 +18,6 @@ export class ProfileComponent implements OnInit, OnDestroy {
               private router: Router) { }
 
   ngOnInit() {
-    this.subscriptions.push(this.userService.user().subscribe(user => this.user = user));
     this.subscriptions.push(
       Observable.combineLatest(
         this.route.queryParams.map((queryParams: Params) => queryParams['profile'] as string),
