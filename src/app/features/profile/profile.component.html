@@ -1,31 +1,3 @@
-<mat-card class="centred-content">
-  <mat-card-header>
-    <mat-card-title color="primary">
-      Login
-    </mat-card-title>
-  </mat-card-header>
-  <mat-card-content >
-    <form novalidate #userForm="ngForm">
-      <mat-form-field class="example-full-width" class="full-width">
-        <input matInput
-               name="username"
-               placeholder="New user"
-               required
-               [(ngModel)]="name"
-               name="name">
-      </mat-form-field>
-      <br>
-
-      <button mat-raised-button
-              color="primary"
-              class="full-width"
-              [disabled]="!userForm.valid"
-              (click)="register()">Add user</button>
-      <br>
-      <p>
-        Or choose an existing user
-      </p>
-      <app-list (select)="login($event)"></app-list>
-    </form>
-  </mat-card-content>
-</mat-card>
+<p>
+  profile works!
+</p>
