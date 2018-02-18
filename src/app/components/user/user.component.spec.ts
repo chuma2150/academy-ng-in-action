@@ -1,3 +1,4 @@
+import { RouterTestingModule } from '@angular/router/testing';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserComponent } from './user.component';
@@ -21,6 +22,7 @@ describe('UserComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [RouterTestingModule],
       declarations: [ UserComponent ],
       providers: [{ provide: UserService, useClass: MockUserService}],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]

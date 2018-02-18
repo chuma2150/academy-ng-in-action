@@ -1,3 +1,4 @@
+import { ProfileViewComponent } from './profile-view/profile-view.component';
 import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {ChatboardComponent} from './chatboard/chatboard.component';
@@ -5,17 +6,20 @@ import {ChatmessageComponent} from './chatmessage/chatmessage.component';
 import {AvatarComponent} from './avatar/avatar.component';
 import {UserComponent} from './user/user.component';
 import {MatListModule, MatSelectModule} from '@angular/material';
+import { RouterModule } from '@angular/router';
 
 const components = [
   ChatboardComponent,
   ChatmessageComponent,
   AvatarComponent,
-  UserComponent
+  UserComponent,
+  ProfileViewComponent
 ];
 
 @NgModule({
   imports: [
     CommonModule,
+    RouterModule,
     MatListModule,
     MatSelectModule
   ],

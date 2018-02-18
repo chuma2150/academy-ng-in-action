@@ -1,6 +1,10 @@
+import { MockUserService } from './../../components/user/user.component.spec';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ProfileComponent } from './profile.component';
+import { UserService } from '../../services/user/user.service';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('ProfileComponent', () => {
   let component: ProfileComponent;
@@ -8,7 +12,12 @@ describe('ProfileComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProfileComponent ]
+      imports: [RouterTestingModule],
+      declarations: [ ProfileComponent],
+      providers: [
+        { provide: UserService, useClass: MockUserService},
+      ],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     })
     .compileComponents();
   }));
