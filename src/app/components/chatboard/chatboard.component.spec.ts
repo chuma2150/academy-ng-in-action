@@ -1,3 +1,4 @@
+import { By } from '@angular/platform-browser';
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {ChatboardComponent} from './chatboard.component';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
@@ -5,20 +6,30 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import {ChatService} from '../../services/chat/chat.service';
 
-const mockUsers = [{
+const mockMessages = [{
+  text: 'test',
+  sender: 'test',
+  receiver: 'test'
+},
+{
   text: 'test',
   sender: 'test',
   receiver: 'test'
 }];
 
 export class MockChatService {
-  public messages = () => Observable.of(mockUsers);
+  public messages = () => Observable.of(mockMessages);
 }
 
 describe('ChatboardComponent', () => {
   let component: ChatboardComponent;
   let fixture: ComponentFixture<ChatboardComponent>;
-
+  function getChatmessages() {
+    return fixture.debugElement.queryAll(By.css('app-chatmessage'));
+  }
+  function getFirstChatmessage() {
+    return fixture.debugElement.query(By.css('app-chatmessage'));
+  }
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ChatboardComponent],
@@ -39,5 +50,20 @@ describe('ChatboardComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should show one chat message component per message', () => {
+    expect(getChatmessages().length).toBe(mockMessages.length);
+  });
+
+  it('should assign chat message to chat message component', () => {
+    expect(getFirstChatmessage().properties['message']).toBe(mockMessages[0]);
+  });
+
+  it('should assign user to chat message component', () => {
+    const user = { name: 'Andi' };
+    component.user = user;
+    fixture.detectChanges();
+    expect(getFirstChatmessage().properties['current']).toBe(user);
   });
 });
