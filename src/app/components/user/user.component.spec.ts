@@ -12,7 +12,7 @@ const users: User[] = [
 ];
 
 export class MockUserService {
-  public user = () => Observable.of(users);
+  public user = () => Observable.of(users[0]);
   public list = () => Observable.of(users);
 }
 
