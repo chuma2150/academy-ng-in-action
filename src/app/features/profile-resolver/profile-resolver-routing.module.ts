@@ -8,7 +8,6 @@ import {ProfileResolverWrapperComponent} from './profile-resolver.wrapper.compon
 const routes: Routes = [
   {
     path: 'profile-resolver/:profile',
-    // component: ProfileResolverComponent,
     component: ProfileResolverWrapperComponent,
     canActivate: [HasUserGuard],
     resolve: {user: UserResolver}
