@@ -13,6 +13,7 @@ import {ServicesModule} from './services/services.module';
 
 import {AngularFireModule} from 'angularfire2';
 import {AngularFirestoreModule} from 'angularfire2/firestore';
+import {UserResolver} from './guards/user-resolver/user.resolver';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {AngularFirestoreModule} from 'angularfire2/firestore';
     AngularFirestoreModule
   ],
   providers: [
-    HasUserGuard
+    HasUserGuard,
+    UserResolver
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

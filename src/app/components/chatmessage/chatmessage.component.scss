@@ -9,7 +9,7 @@
 .chat-message-container{
   display: flex;
   flex-direction: row;
-  padding: 1rem;
+  padding: 1rem 1rem 1rem 0;
 
   .chat-message{
     flex: 2;

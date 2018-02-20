@@ -24,7 +24,6 @@ const httpOptions = {
 @Injectable()
 export class UserService {
   private collection: AngularFirestoreCollection<User>;
-  // private user$: Subject<User> = new BehaviorSubject<User>({name: 'No user'});
   private user$: Subject<User> = new BehaviorSubject<User>(null);
 
   constructor(private db: AngularFirestore, private http: HttpClient) {

@@ -16,6 +16,7 @@
     <tim-logo routerLink="/" ></tim-logo>
     <tim-nav-item-group *ngIf="user$|async">
       <tim-nav-item routerLink="/profile" routerLinkActive="active" title="Profile"></tim-nav-item>
+      <tim-nav-item routerLink="/profile-resolver" routerLinkActive="active" title="Resolver"></tim-nav-item>
       <!--<tim-nav-item routerLink="/main" routerLinkActive="active" title="Main"></tim-nav-item>-->
       <tim-nav-item routerLink="/chat" routerLinkActive="active" title="Chat"></tim-nav-item>
       <app-user></app-user>
