@@ -1,10 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {User} from '../../services/user/user.service';
 import {ActivatedRoute} from '@angular/router';
-import 'rxjs/add/observable/combineLatest';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/pluck';
 import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/operator/pluck';
 
 @Component({
   template: `<app-profile-resovler [profile]="user$|async"></app-profile-resovler>`
