@@ -1,5 +1,4 @@
 import {Observable} from 'rxjs/Observable';
-import {AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firestore';
 import {Injectable} from '@angular/core';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Subject} from 'rxjs/Subject';
@@ -23,11 +22,9 @@ const httpOptions = {
 
 @Injectable()
 export class UserService {
-  private collection: AngularFirestoreCollection<User>;
   private user$: Subject<User> = new BehaviorSubject<User>(null);
 
-  constructor(private db: AngularFirestore, private http: HttpClient) {
-    this.collection = db.collection<User>('user', ref => ref.orderBy('name'));
+  constructor(private http: HttpClient) {
   }
 
   public set(user: User) {
