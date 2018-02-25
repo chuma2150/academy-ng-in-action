@@ -8,7 +8,6 @@
     <form novalidate #userForm="ngForm">
       <mat-form-field class="example-full-width" class="full-width">
         <input matInput
-               name="username"
                placeholder="New user"
                required
                [(ngModel)]="name"
@@ -17,6 +16,7 @@
       <br>
 
       <button mat-raised-button
+              data-aid="register-user"
               color="primary"
               class="full-width"
               [disabled]="!userForm.valid"

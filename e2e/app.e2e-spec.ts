@@ -1,3 +1,4 @@
+import { browser } from 'protractor';
 import { AppPage } from './app.po';
 
 describe('ng-in-action App', () => {
@@ -7,8 +8,8 @@ describe('ng-in-action App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('should redirect to login', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
+    expect(browser.getCurrentUrl()).toMatch(/login$/);
   });
 });
