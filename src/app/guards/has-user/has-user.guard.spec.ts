@@ -2,7 +2,7 @@ import { MockUserService } from './../../components/user/user.component.spec';
 import { TestBed, async, inject } from '@angular/core/testing';
 import { HasUserGuard } from './has-user.guard';
 import { UserService, User } from '../../services/user/user.service';
-import { Subject } from 'rxjs/Subject';
+import { Subject } from 'rxjs';
 
 describe('HasUserGuard', () => {
   const userSubject = new Subject<User>();

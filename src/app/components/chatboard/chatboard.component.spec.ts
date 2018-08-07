@@ -2,8 +2,8 @@ import { By } from '@angular/platform-browser';
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {ChatboardComponent} from './chatboard.component';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
+import {of} from 'rxjs';
+
 import {ChatService} from '../../services/chat/chat.service';
 
 const mockMessages = [{
@@ -18,7 +18,7 @@ const mockMessages = [{
 }];
 
 export class MockChatService {
-  public messages = () => Observable.of(mockMessages);
+  public messages = () => of(mockMessages);
 }
 
 describe('ChatboardComponent', () => {

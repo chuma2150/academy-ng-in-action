@@ -1,6 +1,6 @@
 import {UserService, User} from './../../services/user/user.service';
 import {Component, OnInit, EventEmitter, Output, Input} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-list',

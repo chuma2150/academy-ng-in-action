@@ -1,12 +1,10 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, Resolve, RouterStateSnapshot} from '@angular/router';
 import {User, UserService} from '../../services/user/user.service';
-import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/operator/find';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/operator/let';
+import {Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 
-const mapFind =  <T>(findFn: (T) => boolean) => (source: Observable<T[]>) => source.map((list: T[]) => list.find(findFn));
+const mapFind =  <T>(findFn: (T) => boolean) => (source: Observable<T[]>) => source.pipe(map((list: T[]) => list.find(findFn)));
 
 @Injectable()
 export class UserResolver implements Resolve<User> {
@@ -19,7 +17,7 @@ export class UserResolver implements Resolve<User> {
     const findUser = ({name}: User) => name === userName;
     const find = mapFind<User>(findUser);
 
-    return this.userService.list().let(find);
+    return this.userService.list().pipe(find);
   }
 
 }

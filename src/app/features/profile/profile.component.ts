@@ -1,10 +1,10 @@
-import { Observable } from 'rxjs/Observable';
+import { Subscription, combineLatest } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UserService, User } from '../../services/user/user.service';
-import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import 'rxjs/add/observable/combineLatest';
-import 'rxjs/add/operator/map';
+
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -19,8 +19,8 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.subscriptions.push(
-      Observable.combineLatest(
-        this.route.params.map((params: Params) => params['profile'] as string),
+      combineLatest(
+        this.route.params.pipe(map((params: Params) => params['profile'] as string)),
         this.userService.list(),
         (viewUser: string, users: User[]) => {
           return users.find(u => u.name === viewUser);

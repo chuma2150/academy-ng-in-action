@@ -1,9 +1,7 @@
 import {User} from './../user/user.service';
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/observable/from';
-import 'rxjs/add/observable/combineLatest';
-import 'rxjs/add/observable/defer';
+import {combineLatest, Observable} from 'rxjs';
+import {map} from 'rxjs/operators';
 import {Message} from './message';
 import {AngularFirestore, AngularFirestoreCollection} from 'angularfire2/firestore';
 import {HttpClient} from '@angular/common/http';
@@ -34,10 +32,10 @@ export class ChatService {
       .where('sender', '>', user.name));
 
     const collections = [senderCollection, receiverCollection, publicCollection1, publicCollection2];
-    return Observable.combineLatest(collections.map(c => c.valueChanges()))
-      .map(messagesByCollection => [].concat(...messagesByCollection)
+    return combineLatest(collections.map(c => c.valueChanges()))
+      .pipe(map(messagesByCollection => [].concat(...messagesByCollection)
         .sort((message1: Message, message2: Message) =>
-          message1.date.valueOf() - message2.date.valueOf()));
+          message1.date.valueOf() - message2.date.valueOf())));
   }
 
   public add(message: Message) {

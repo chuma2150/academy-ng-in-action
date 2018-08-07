@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
+import { first, map } from 'rxjs/operators';
 import { UserService } from '../../services/user/user.service';
-import 'rxjs/add/operator/first';
-import 'rxjs/add/operator/map';
+
+
 
 @Injectable()
 export class HasUserGuard implements CanActivate {
@@ -11,6 +12,6 @@ export class HasUserGuard implements CanActivate {
   }
 
   canActivate(): Observable<boolean> {
-    return this.userService.user().first().map(user => !!user);
+    return this.userService.user().pipe(first(), map(user => !!user));
   }
 }

@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserComponent } from './user.component';
 import {User, UserService} from '../../services/user/user.service';
-import {Observable} from 'rxjs/Observable';
+import {of} from 'rxjs';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 const users: User[] = [
@@ -12,8 +12,8 @@ const users: User[] = [
 ];
 
 export class MockUserService {
-  public user = () => Observable.of(users[0]);
-  public list = () => Observable.of(users);
+  public user = () => of(users[0]);
+  public list = () => of(users);
 }
 
 describe('UserComponent', () => {

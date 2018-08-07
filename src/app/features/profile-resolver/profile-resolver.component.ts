@@ -1,9 +1,9 @@
 import {Component, Input} from '@angular/core';
 import {User} from '../../services/user/user.service';
 import {Router} from '@angular/router';
-import 'rxjs/add/observable/combineLatest';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/pluck';
+
+
+
 
 @Component({
   selector: 'app-profile-resovler',

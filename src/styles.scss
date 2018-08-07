@@ -14,7 +14,7 @@ $theme: mat-light-theme($primary, $accent, $warn);
 @include angular-material-theme($theme);*/
 
 body {
-    font-family: $mat-font-family;
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
     font-weight: normal;
     margin: 0;
 }

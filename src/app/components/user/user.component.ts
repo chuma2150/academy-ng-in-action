@@ -1,4 +1,4 @@
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { UserService, User } from './../../services/user/user.service';
 import { Component, OnInit } from '@angular/core';
 
