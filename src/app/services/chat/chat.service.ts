@@ -33,7 +33,11 @@ export class ChatService {
 
     const collections = [senderCollection, receiverCollection, publicCollection1, publicCollection2];
     return combineLatest(collections.map(c => c.valueChanges()))
-      .pipe(map(messagesByCollection => [].concat(...messagesByCollection)
+      .pipe(
+        map(messagesByCollection => [].concat(...messagesByCollection)
+        .map(message => {
+          return {...message, date: new Date(((message.date as any).seconds * 1000))};
+        })
         .sort((message1: Message, message2: Message) =>
           message1.date.valueOf() - message2.date.valueOf())));
   }
