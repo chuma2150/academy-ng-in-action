@@ -6,8 +6,7 @@ import { AdminService } from './admin.service';
 describe('AdminService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-      providers: [AdminService]
+      imports: [HttpClientTestingModule]
     });
   });
 

@@ -6,7 +6,9 @@ import {map} from 'rxjs/operators';
 
 const mapFind =  <T>(findFn: (T) => boolean) => (source: Observable<T[]>) => source.pipe(map((list: T[]) => list.find(findFn)));
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class UserResolver implements Resolve<User> {
 
   constructor(private userService: UserService) {

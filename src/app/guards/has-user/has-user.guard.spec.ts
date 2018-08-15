@@ -9,7 +9,6 @@ describe('HasUserGuard', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [
-        HasUserGuard,
         { provide: UserService, useValue: { user() { return userSubject; }}}
       ]
     });

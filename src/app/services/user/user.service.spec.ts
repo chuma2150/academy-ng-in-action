@@ -10,8 +10,7 @@ describe('UserService', () => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [
-        {provide: AngularFirestore, useClass: MockAngularFireStore},
-        UserService
+        {provide: AngularFirestore, useClass: MockAngularFireStore}
       ]
     });
   });

@@ -1,3 +1,4 @@
+import { ChatComponent } from './../../features/chat/chat.component';
 import {User} from './../user/user.service';
 import {Injectable} from '@angular/core';
 import {combineLatest, Observable} from 'rxjs';
@@ -8,7 +9,9 @@ import {HttpClient} from '@angular/common/http';
 
 const MESSAGE_ENDPOINT = 'https://us-central1-ng-in-action.cloudfunctions.net/messages/';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ChatService {
   private collection: AngularFirestoreCollection<Message>;
 

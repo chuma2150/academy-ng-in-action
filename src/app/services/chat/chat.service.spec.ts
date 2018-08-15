@@ -13,8 +13,7 @@ describe('ChatService', () => {
     TestBed.configureTestingModule({
       imports: [ HttpClientTestingModule ],
       providers: [
-        {provide: AngularFirestore, useClass: MockAngularFireStore},
-        ChatService
+        {provide: AngularFirestore, useClass: MockAngularFireStore}
       ]
     });
   });

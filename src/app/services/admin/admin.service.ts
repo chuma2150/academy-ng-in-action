@@ -3,7 +3,9 @@ import {HttpClient} from '@angular/common/http';
 
 const ADMIN_ENDPOINT = 'https://us-central1-ng-in-action.cloudfunctions.net/admin';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class AdminService {
 
   constructor(private http: HttpClient) {

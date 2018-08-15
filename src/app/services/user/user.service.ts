@@ -19,7 +19,9 @@ const httpOptions = {
   })
 };
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class UserService {
   private user$: Subject<User> = new BehaviorSubject<User>(null);
 
