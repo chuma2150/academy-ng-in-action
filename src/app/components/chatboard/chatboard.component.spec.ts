@@ -1,5 +1,5 @@
 import { By } from '@angular/platform-browser';
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {async, ComponentFixture, TestBed, inject} from '@angular/core/testing';
 import {ChatboardComponent} from './chatboard.component';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {of} from 'rxjs';
@@ -45,18 +45,30 @@ describe('ChatboardComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ChatboardComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
+    fixture.detectChanges();
+
     expect(component).toBeTruthy();
   });
 
+  it('should call chatService on Init', inject([ChatService], chatService => {
+    const spy = spyOn(chatService, 'messages').and.callThrough();
+
+    fixture.detectChanges();
+
+    expect(spy).toHaveBeenCalled();
+  }));
+
   it('should show one chat message component per message', () => {
+    fixture.detectChanges();
     expect(getChatmessages().length).toBe(mockMessages.length);
   });
 
   it('should assign chat message to chat message component', () => {
+    fixture.detectChanges();
+
     expect(getFirstChatmessage().properties['message']).toBe(mockMessages[0]);
   });
 
