@@ -31,11 +31,11 @@ describe('AvatarComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should set the correct background url', async(() => {
+  it('should set the correct background url', () => {
     const name = 'Hans';
     component.name = name;
     fixture.detectChanges();
     const iconStyle = fixture.debugElement.query(By.css('i')).styles;
     expect(iconStyle['background-image']).toEqual(`url(https://api.adorable.io/avatars/40/${name}.png)`);
-  }));
+  });
 });
