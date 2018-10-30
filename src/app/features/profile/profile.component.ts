@@ -1,5 +1,5 @@
-import { Subscription, combineLatest } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Subscription, combineLatest, Observable } from 'rxjs';
+import { map, switchMap, pluck } from 'rxjs/operators';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UserService, User } from '../../services/user/user.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
@@ -10,31 +10,26 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss']
 })
-export class ProfileComponent implements OnInit, OnDestroy {
-  public currentProfile: User;
-  private subscriptions: Subscription[] = [];
+export class ProfileComponent implements OnInit {
+  public currentProfile$: Observable<User>;
   constructor(private userService: UserService,
               private route: ActivatedRoute,
               private router: Router) { }
 
   ngOnInit() {
-    this.subscriptions.push(
-      combineLatest(
-        this.route.params.pipe(map((params: Params) => params['profile'] as string)),
-        this.userService.list(),
-        (viewUser: string, users: User[]) => {
-          return users.find(u => u.name === viewUser);
-        }
-      )
-      .subscribe((currentProfile: User) => this.currentProfile = currentProfile)
+    this.currentProfile$ = this.userService.list()
+      .pipe(switchMap(list =>
+        this.getCurrentFromList(list)));
+  }
+
+  private getCurrentFromList(list: User[]) {
+    return  this.route.params.pipe(
+      pluck<Params, string>('username'),
+      map(profile => list.find(u => u.name === profile))
     );
   }
 
   selectProfile(user: User) {
     this.router.navigate(['profile', user.name]);
-  }
-
-  ngOnDestroy() {
-    this.subscriptions.forEach(s => s.unsubscribe());
   }
 }

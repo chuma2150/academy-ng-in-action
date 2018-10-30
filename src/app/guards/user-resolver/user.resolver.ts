@@ -4,8 +4,6 @@ import {User, UserService} from '../../services/user/user.service';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
-const mapFind =  <T>(findFn: (T) => boolean) => (source: Observable<T[]>) => source.pipe(map((list: T[]) => list.find(findFn)));
-
 @Injectable({
   providedIn: 'root'
 })
@@ -16,10 +14,9 @@ export class UserResolver implements Resolve<User> {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<User> {
     const userName: string = route.params.profile;
-    const findUser = ({name}: User) => name === userName;
-    const find = mapFind<User>(findUser);
-
-    return this.userService.list().pipe(find);
+    return this.userService.list().pipe(map(users => {
+      return users.find(u => u.name === userName);
+    }));
   }
 
 }

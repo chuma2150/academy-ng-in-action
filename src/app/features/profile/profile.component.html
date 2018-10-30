@@ -10,7 +10,7 @@
           View Profile:
           <app-list (select)="selectProfile($event)"></app-list>
         </div>
-        <div class="profile-view" *ngIf="currentProfile">
+        <div class="profile-view" *ngIf="currentProfile$ | async as currentProfile">
           <app-profile-view [user]="currentProfile"></app-profile-view>
         </div>
       </mat-card-content>

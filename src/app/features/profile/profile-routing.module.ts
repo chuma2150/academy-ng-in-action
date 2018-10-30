@@ -5,9 +5,8 @@ import { HasUserGuard } from '../../guards/has-user/has-user.guard';
 
 const routes: Routes = [
   {
-    path: 'profile/:profile',
-    component: ProfileComponent,
-    canActivate: [HasUserGuard]
+    path: 'profile/:username',
+    component: ProfileComponent
   },
   {
     path: 'profile',
