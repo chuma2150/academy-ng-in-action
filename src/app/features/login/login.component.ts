@@ -14,6 +14,11 @@ export class LoginComponent {
   constructor(private router: Router,
               private user: UserService,
               public snackBar: MatSnackBar) {
+    this.user.user().subscribe(currentUser => {
+      if (currentUser) {
+        this.navigate();
+      }
+    });
   }
 
   register() {

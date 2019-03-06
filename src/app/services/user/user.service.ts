@@ -26,10 +26,21 @@ export class UserService {
   private user$: Subject<User> = new BehaviorSubject<User>(null);
 
   constructor(private http: HttpClient) {
+    const currentUser = localStorage.getItem('currentUser');
+
+    if (currentUser) {
+      this.set(JSON.parse(currentUser));
+    }
   }
 
   public set(user: User) {
+    localStorage.setItem('currentUser', JSON.stringify(user));
     this.user$.next(user);
+  }
+
+  public unset() {
+    localStorage.clear();
+    this.set(null);
   }
 
   public update(user: User) {

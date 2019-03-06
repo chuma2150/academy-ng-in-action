@@ -2,3 +2,4 @@
   <tim-nav-item-user
     avatar="{{ (user|async)?.name}}">{{ (user|async)?.name}}</tim-nav-item-user>
 </a>
+<tim-nav-item *ngIf="user|async" title="Logout" (click)="logout()"></tim-nav-item>
