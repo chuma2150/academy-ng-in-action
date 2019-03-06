@@ -1,9 +1,11 @@
-<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+import {LitElement, html, css, property} from 'lit-element';
 
-<dom-module id="tim-nav-item-user">
-  <template>
-    <style>
-      :host {
+// Extend the LitElement base class
+// export the class, so it can be imported where it is needed
+export class Ti8mNavItemUserCustomComponent extends LitElement {
+
+  static styles = css`
+    :host {
         font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif;
         display: inline-block;
         padding: 0 1rem;
@@ -36,41 +38,27 @@
         vertical-align: middle;
         border-radius: calc(40px/2);
       }
+  `;
 
-    </style>
-    <li>
-      <img src="[[url]]" >
+  @property( { type : String }  ) url;
+  @property( { type : String }  ) avatar;
+  // @property( { type : String }  ) user;
+
+  constructor() {
+    super();
+    this.url = this.url ? this.url : this.getUrl(this.avatar);
+  }
+
+  getUrl(avatar: string) {
+    return `https://api.adorable.io/avatars/40/${avatar}.png`;
+  }
+
+  render() {
+    return html`
+      <li>
+      <img src="${this.url}" >
       <span><slot></slot></span>
     </li>
-  </template>
-
-  <script>
-    class TimNavItemUser extends Polymer.Element {
-      static get is() {
-        return 'tim-nav-item-user';
-      }
-
-      static get properties() {
-        return {
-          user: {
-            type: String
-          },
-          avatar: {
-            type: String
-          },
-          url: {
-            type: String,
-            computed: 'getUrl(avatar)'
-          }
-        };
-      }
-
-      getUrl(avatar){
-        return `https://api.adorable.io/avatars/40/${avatar}.png`
-      }
-
-    }
-
-    window.customElements.define(TimNavItemUser.is, TimNavItemUser);
-  </script>
-</dom-module>
+    `;
+  }
+}
