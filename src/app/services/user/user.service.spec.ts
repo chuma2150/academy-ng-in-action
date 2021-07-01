@@ -1,6 +1,6 @@
 import {inject, TestBed} from '@angular/core/testing';
 import {UserService} from './user.service';
-import {AngularFirestore} from 'angularfire2/firestore';
+import {AngularFirestore} from '@angular/fire/firestore';
 import {MockAngularFireStore} from '../chat/chat.service.spec';
 import {HttpClient} from '@angular/common/http';
 import {HttpClientTestingModule} from '@angular/common/http/testing';

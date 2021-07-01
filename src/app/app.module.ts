@@ -7,12 +7,12 @@ import {MatButtonModule, MatToolbarModule} from '@angular/material';
 
 import {AppRoutingModule} from './app-routing.module';
 
-import {AppComponent} from './app.component';
-import {FeaturesModule} from './features/features.module';
+import { AppComponent } from './app.component';
+import { FeaturesModule } from './features/features.module';
 
-import {AngularFireModule} from 'angularfire2';
-import {AngularFirestoreModule} from 'angularfire2/firestore';
-import {UserResolver} from './guards/user-resolver/user.resolver';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { UserResolver } from './guards/user-resolver/user.resolver';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
