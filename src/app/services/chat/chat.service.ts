@@ -1,10 +1,9 @@
-import { ChatComponent } from './../../features/chat/chat.component';
 import { User } from './../user/user.service';
 import { Injectable } from '@angular/core';
 import { combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Message } from './message';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { AngularFirestore } from '@angular/fire/firestore';
 import { HttpClient } from '@angular/common/http';
 
 const MESSAGE_ENDPOINT = 'https://us-central1-ng-in-action.cloudfunctions.net/messages/';
@@ -13,10 +12,8 @@ const MESSAGE_ENDPOINT = 'https://us-central1-ng-in-action.cloudfunctions.net/me
   providedIn: 'root'
 })
 export class ChatService {
-  private collection: AngularFirestoreCollection<Message>;
-
   constructor(private db: AngularFirestore, private http: HttpClient) {
-    this.collection = db.collection<Message>('messages');
+    db.collection<Message>('messages');
   }
 
   public messages(user: User): Observable<Message[]> {

@@ -1,6 +1,6 @@
-import { Subscription, combineLatest, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { map, switchMap, pluck } from 'rxjs/operators';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UserService, User } from '../../services/user/user.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 

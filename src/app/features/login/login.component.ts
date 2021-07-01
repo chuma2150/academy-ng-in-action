@@ -25,8 +25,8 @@ export class LoginComponent {
     const user: User = {name: this.name};
     this.user.add(user)
       .subscribe(
-        (response) => this.navigate(),
-        (error) => {
+        () => this.navigate(),
+        () => {
           this.showError(`User ${this.name} exists already!!`);
           this.name = null;
         });

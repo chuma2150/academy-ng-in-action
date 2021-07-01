@@ -35,7 +35,7 @@ describe('HasUserGuard', () => {
   }));
 
   it('should not respond without received user', inject([HasUserGuard], (guard: HasUserGuard) => {
-    guard.canActivate().subscribe((value) => {
+    guard.canActivate().subscribe(() => {
       fail();
     });
   }));

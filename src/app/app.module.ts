@@ -1,4 +1,3 @@
-import { HasUserGuard } from './guards/has-user/has-user.guard';
 import {environment} from './../environments/environment';
 import {ComponentsModule} from './components/components.module';
 import {BrowserModule} from '@angular/platform-browser';
@@ -13,7 +12,6 @@ import { FeaturesModule } from './features/features.module';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { UserResolver } from './guards/user-resolver/user.resolver';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
