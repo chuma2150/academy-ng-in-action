@@ -6,7 +6,9 @@ import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {RouterTestingModule} from '@angular/router/testing';
 import {UserService} from '../../services/user/user.service';
 import {MockUserService} from '../../components/user/user.component.spec';
-import {MatSnackBar} from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { routes } from '../chat/chat-routing.module';
+import { ChatModule } from '../chat/chat.module';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -16,7 +18,8 @@ describe('LoginComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         FormsModule,
-        RouterTestingModule.withRoutes([]),
+        ChatModule,
+        RouterTestingModule.withRoutes(routes),
       ],
       declarations: [LoginComponent],
       providers: [

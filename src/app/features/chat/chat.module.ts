@@ -6,7 +6,12 @@ import {CommonModule} from '@angular/common';
 import {ChatRoutingModule} from './chat-routing.module';
 import {ChatComponent} from './chat.component';
 import {FormsModule} from '@angular/forms';
-import {MatButtonModule, MatCardModule, MatDividerModule, MatFormFieldModule, MatInputModule, MatTabsModule} from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   imports: [

@@ -5,7 +5,8 @@ import {ChatboardComponent} from './chatboard/chatboard.component';
 import {ChatmessageComponent} from './chatmessage/chatmessage.component';
 import {AvatarComponent} from './avatar/avatar.component';
 import {UserComponent} from './user/user.component';
-import {MatListModule, MatSelectModule} from '@angular/material';
+import { MatListModule } from '@angular/material/list';
+import { MatSelectModule } from '@angular/material/select';
 import { RouterModule } from '@angular/router';
 
 const components = [

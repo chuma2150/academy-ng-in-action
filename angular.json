@@ -120,6 +120,9 @@
     }
   },
   "defaultProject": "ng-in-action",
+  "cli": {
+    "analytics": false
+  },
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
