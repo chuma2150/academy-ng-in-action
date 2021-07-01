@@ -1,5 +1,5 @@
 import { By } from '@angular/platform-browser';
-import {async, ComponentFixture, TestBed, inject} from '@angular/core/testing';
+import {waitForAsync, ComponentFixture, TestBed, inject} from '@angular/core/testing';
 import {ChatboardComponent} from './chatboard.component';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {of} from 'rxjs';
@@ -30,7 +30,7 @@ describe('ChatboardComponent', () => {
   function getFirstChatmessage() {
     return fixture.debugElement.query(By.css('app-chatmessage'));
   }
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ChatboardComponent],
       providers: [{

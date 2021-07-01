@@ -1,5 +1,5 @@
 import {MockUserService} from './../../components/user/user.component.spec';
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import {waitForAsync, ComponentFixture, TestBed} from '@angular/core/testing';
 import {UserService} from '../../services/user/user.service';
 import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import {RouterTestingModule} from '@angular/router/testing';
@@ -9,7 +9,7 @@ describe('ProfileResolverComponent', () => {
   let component: ProfileResolverComponent;
   let fixture: ComponentFixture<ProfileResolverComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
       declarations: [ ProfileResolverComponent],

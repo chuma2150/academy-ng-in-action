@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import {By} from '@angular/platform-browser';
 
 import { ChatmessageComponent } from './chatmessage.component';
@@ -10,7 +10,7 @@ describe('ChatmessageComponent', () => {
   let component: ChatmessageComponent;
   let fixture: ComponentFixture<ChatmessageComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ChatmessageComponent ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
