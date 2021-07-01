@@ -8,7 +8,7 @@
     <mat-card-content class="chat-content">
       <div class="chat-users">
         Select Receiver:
-        <app-list (select)="selectReceiver($event)" [user]="user"></app-list>
+        <app-list (selectUser)="selectReceiver($event)" [user]="user"></app-list>
       </div>
       <div class="chat-list">
         <app-chat-board [user]="user"></app-chat-board>

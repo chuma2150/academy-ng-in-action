@@ -25,6 +25,7 @@
     "@angular/platform-browser": "~12.1.1",
     "@angular/platform-browser-dynamic": "~12.1.1",
     "@angular/router": "~12.1.1",
+    "audit": "0.0.6",
     "firebase": "^8.6.8",
     "lit-element": "^2.0.1",
     "rxjs": "~6.6.6",
@@ -33,13 +34,20 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~12.1.0",
+    "@angular-eslint/builder": "12.2.0",
+    "@angular-eslint/eslint-plugin": "12.2.0",
+    "@angular-eslint/eslint-plugin-template": "12.2.0",
+    "@angular-eslint/schematics": "12.2.0",
+    "@angular-eslint/template-parser": "12.2.0",
     "@angular/cli": "~12.1.0",
     "@angular/compiler-cli": "~12.1.1",
     "@angular/language-service": "~12.1.1",
     "@types/jasmine": "~3.7.1",
     "@types/jasminewd2": "~2.0.8",
     "@types/node": "^12.11.1",
-    "codelyzer": "^6.0.0",
+    "@typescript-eslint/eslint-plugin": "4.23.0",
+    "@typescript-eslint/parser": "4.23.0",
+    "eslint": "^7.26.0",
     "jasmine-core": "~3.7.1",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~6.3.4",
@@ -52,7 +60,6 @@
     "karma-safari-launcher": "^1.0.0",
     "protractor": "~7.0.0",
     "ts-node": "~8.6.2",
-    "tslint": "~6.1.0",
     "typescript": "4.3.5"
   }
 }

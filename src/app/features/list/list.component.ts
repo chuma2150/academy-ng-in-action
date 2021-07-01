@@ -9,7 +9,7 @@ import {Observable} from 'rxjs';
 })
 export class ListComponent implements OnInit {
   @Input() user: User;
-  @Output() select: EventEmitter<User> = new EventEmitter<User>();
+  @Output() selectUser: EventEmitter<User> = new EventEmitter<User>();
   public users: Observable<User[]>;
 
   selected: User;
@@ -26,7 +26,7 @@ export class ListComponent implements OnInit {
     if (this.selected === user) {
       newUser = null;
     }
-    this.select.emit(newUser);
+    this.selectUser.emit(newUser);
     this.selected = newUser;
   }
 }
