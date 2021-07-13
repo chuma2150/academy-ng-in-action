@@ -6,7 +6,7 @@ import { Message } from './message';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { HttpClient } from '@angular/common/http';
 
-const MESSAGE_ENDPOINT = 'https://us-central1-ng-in-action.cloudfunctions.net/messages/';
+const MESSAGE_ENDPOINT = 'https://us-central1-ng-in-action-2.cloudfunctions.net/messages/';
 
 @Injectable({
   providedIn: 'root'
