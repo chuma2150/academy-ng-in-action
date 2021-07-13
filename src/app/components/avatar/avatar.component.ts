@@ -17,7 +17,7 @@ export class AvatarComponent {
   @Input()
   set name(aName: string) {
     this._name = aName;
-    const avatar = `url(https://api.adorable.io/avatars/40/${this.name}.png)`;
+    const avatar = `url(https://avatars.dicebear.com/api/human/${this.name}.svg)`;
     this.url = this.sanitizer.bypassSecurityTrustStyle(avatar);
   }
 

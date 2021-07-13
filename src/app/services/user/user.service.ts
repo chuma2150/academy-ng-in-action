@@ -11,7 +11,8 @@ export interface User {
   lastName?: string;
 }
 
-const USER_ENDPOINT = 'https://us-central1-ng-in-action.cloudfunctions.net/user/';
+const USERS_ENDPOINT = 'https://us-central1-ng-in-action-2.cloudfunctions.net/users';
+const USER_ENDPOINT = 'https://us-central1-ng-in-action-2.cloudfunctions.net/user';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -44,11 +45,8 @@ export class UserService {
   }
 
   public update(user: User) {
-    const newUser = {...user};
-    delete  newUser['id'];
-
     return this.http
-      .patch(`${USER_ENDPOINT}${user.id}`, newUser, httpOptions)
+      .patch(USER_ENDPOINT, user, httpOptions)
       .pipe(tap((_) => this.set(user)));
   }
 
@@ -59,7 +57,7 @@ export class UserService {
   }
 
   public list(): Observable<User[]> {
-    return this.http.get<User[]>(USER_ENDPOINT);
+    return this.http.get<User[]>(USERS_ENDPOINT);
   }
 
   public user(): Observable<User> {
