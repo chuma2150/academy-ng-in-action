@@ -8,13 +8,15 @@ import {UserComponent} from './user/user.component';
 import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
 import { RouterModule } from '@angular/router';
+import { AgePipe } from './profile-view/age.pipe';
 
 const components = [
   ChatboardComponent,
   ChatmessageComponent,
   AvatarComponent,
   UserComponent,
-  ProfileViewComponent
+  ProfileViewComponent,
+  AgePipe,
 ];
 
 @NgModule({
