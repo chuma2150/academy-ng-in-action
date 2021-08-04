@@ -13,5 +13,4 @@ export class ProfileViewComponent {
 
   constructor() {
   }
-
 }
