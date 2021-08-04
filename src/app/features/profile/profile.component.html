@@ -11,7 +11,7 @@
           <app-list (selectUser)="selectProfile($event)"></app-list>
         </div>
         <div class="profile-view" *ngIf="currentProfile$ | async as currentProfile">
-          <app-profile-view [user]="currentProfile"></app-profile-view>
+          <!--  Exercise 1: Use new created UserComponent and pass currentProfile as parmameter -->
         </div>
       </mat-card-content>
     </mat-card>
