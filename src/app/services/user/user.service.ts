@@ -9,6 +9,8 @@ export interface User {
   name: string;
   firstName?: string;
   lastName?: string;
+  birthDate?: Date;
+  hairColor?: string;
 }
 
 const USERS_ENDPOINT = 'https://us-central1-ng-in-action-2.cloudfunctions.net/users';
