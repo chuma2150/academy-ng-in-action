@@ -9,7 +9,7 @@
   <span class="title">Last Name: </span><span>{{ user?.lastName}}</span>
 </p>
 <p>
-  <span class="title">Birth Date: </span><span>{{ user?.birthDate | date }}</span>
+  <span class="title">Birth Date: </span><span>{{ user?.birthDate | date:'dd.MM.YYYY' }}</span>
 </p>
 <p>
   <span class="title">Hair Color: </span><span [ngClass]="user.hairColor">{{ user?.hairColor }}</span>
