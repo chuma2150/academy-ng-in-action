@@ -1,6 +1,6 @@
 <mat-nav-list>
   <mat-list-item *ngFor="let _user of users | async | filterUser:user"
-                 [ngClass]="{'selected': _user === selected}"
+                 [ngClass]="{'selected': _user.id === selected?.id }"
                  (click)="toggleUser(_user)" >
     <app-avatar [name]="_user.name"></app-avatar>
     <span >{{_user.name}}</span>
