@@ -14,6 +14,8 @@ export class AvatarComponent {
   constructor(private sanitizer: DomSanitizer) {
   }
 
+  @Input() size: 'large' | 'small' = 'large';
+
   @Input()
   set name(aName: string) {
     this._name = aName;

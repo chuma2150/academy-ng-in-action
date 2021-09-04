@@ -1,5 +1,9 @@
-<a *ngIf="user|async"  [routerLink]="['profile', (user|async)?.name]">
-  <tim-nav-item-user
-    avatar="{{ (user|async)?.name}}">{{ (user|async)?.name}}</tim-nav-item-user>
-</a>
-<tim-nav-item *ngIf="user|async" title="Logout" (click)="logout()"></tim-nav-item>
+
+<button mat-button class="mat-button" *ngIf="user|async"  [routerLink]="['profile', (user|async)?.name]">
+  <div class="profile-button-content">
+    <app-avatar [name]="(user|async)?.name" size="small"></app-avatar>
+    <div class="user-name">{{ (user|async)?.name}}</div>
+  </div>
+</button>
+<div class="spacer"></div>
+<button mat-button class="mat-button" *ngIf="user|async" title="Logout" (click)="logout()">Logout</button>
