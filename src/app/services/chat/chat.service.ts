@@ -36,7 +36,7 @@ export class ChatService {
       .pipe(
         map(messagesByCollection => [].concat(...messagesByCollection)
         .map(message => {
-          return {...message, date: new Date(((message.date as any).seconds * 1000))};
+          return {...message, date: new Date(message.date) };
         })
         .sort((message1: Message, message2: Message) =>
           message1.date.valueOf() - message2.date.valueOf())));
