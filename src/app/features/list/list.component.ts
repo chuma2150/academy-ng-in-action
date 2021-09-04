@@ -12,7 +12,7 @@ export class ListComponent implements OnInit {
   @Output() selectUser: EventEmitter<User> = new EventEmitter<User>();
   public users: Observable<User[]>;
 
-  selected: User;
+  @Input() selected: User;
 
   constructor(private userService: UserService) {
   }
