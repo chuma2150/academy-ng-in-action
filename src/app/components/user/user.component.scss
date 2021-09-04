@@ -1,0 +1,18 @@
+.profile-button-content {
+    display: flex;
+    align-items: center;
+}
+
+.user-name {
+    margin-left: 5px;
+}
+
+:host {
+    display: flex;
+}
+
+.spacer {
+    margin: 0 1px;
+    width: 1px;
+    background-color: gray;
+}

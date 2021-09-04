@@ -1,23 +1,24 @@
-<header *ngIf="false">
+<header *ngIf="true">
   <mat-toolbar color="primary" class="navigation">
     <mat-toolbar-row>
-      <button mat-button routerLink="/profile" mat-list-item>Profile</button>
-      <button mat-button routerLink="/main" mat-list-item>Main</button>
-      <button mat-button routerLink="/chat" mat-list-item>Chat</button>
-      <button mat-button routerLink="/list" mat-list-item>List</button>
+      <button mat-button routerLink="/profile" routerLinkActive="active" mat-list-item>Profile</button>
+      <button mat-button routerLink="/main" routerLinkActive="active" mat-list-item>Main</button>
+      <button mat-button routerLink="/chat" routerLinkActive="active" mat-list-item>Chat</button>
+      <button mat-button routerLink="/list" routerLinkActive="active" mat-list-item>List</button>
 
       <span class="example-fill-remaining-space"></span>
       <app-user></app-user>
     </mat-toolbar-row>
   </mat-toolbar>
 </header>
-<header>
+<header *ngIf="false">
   <tim-nav-bar>
     <tim-logo routerLink="/" ></tim-logo>
     <tim-nav-item-group *ngIf="user$|async">
       <tim-nav-item routerLink="/profile" routerLinkActive="active" title="Profile"></tim-nav-item>
       <!--<tim-nav-item routerLink="/main" routerLinkActive="active" title="Main"></tim-nav-item>-->
       <tim-nav-item routerLink="/chat" routerLinkActive="active" title="Chat"></tim-nav-item>
+      <tim-nav-item routerLink="/list" routerLinkActive="active" title="List"></tim-nav-item>
       <app-user></app-user>
     </tim-nav-item-group>
   </tim-nav-bar>
