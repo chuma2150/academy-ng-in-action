@@ -22,7 +22,6 @@ export class SettingsComponent implements OnInit {
   }
 
   save(updatedProfile: User): void {
-    console.log(updatedProfile);
     this.userService.update(updatedProfile);
   }
 }
