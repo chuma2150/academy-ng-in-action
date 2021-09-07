@@ -2,6 +2,7 @@ import {User, UserService} from './../../services/user/user.service';
 import {Component} from '@angular/core';
 import {Router} from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent {
   constructor(private router: Router,
               private user: UserService,
               public snackBar: MatSnackBar) {
-    this.user.user().subscribe(currentUser => {
+    this.user.user().pipe(first()).subscribe(currentUser => {
       if (currentUser) {
         this.navigate();
       }
