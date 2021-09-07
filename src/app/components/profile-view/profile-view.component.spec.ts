@@ -17,6 +17,7 @@ describe('ProfileViewComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ProfileViewComponent);
     component = fixture.componentInstance;
+    component.user = { name: 'some name' };
     fixture.detectChanges();
   });
 
