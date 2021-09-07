@@ -16,6 +16,6 @@ import {LoginModule} from './login/login.module';
     ChatModule,
     LoginModule,
     ComponentsModule,
-  ]
+  ],
 })
 export class FeaturesModule { }

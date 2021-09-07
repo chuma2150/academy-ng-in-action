@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { ProfileRoutingModule } from './profile-routing.module';
 import { ProfileComponent } from './profile.component';
 import { ComponentsModule } from '../../components/components.module';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { ComponentsModule } from '../../components/components.module';
     ListModule,
     ProfileRoutingModule
   ],
-  declarations: [ProfileComponent]
+  declarations: [ProfileComponent, SettingsComponent]
 })
 export class ProfileModule { }

@@ -1,5 +1,5 @@
 
-<button mat-button class="mat-button" *ngIf="user|async"  [routerLink]="['profile', (user|async)?.name]">
+<button mat-button class="mat-button" *ngIf="user|async"  [routerLink]="['profile', (user|async)?.name, 'edit']">
   <div class="profile-button-content">
     <app-avatar [name]="(user|async)?.name" size="small"></app-avatar>
     <div class="user-name">{{ (user|async)?.name}}</div>
