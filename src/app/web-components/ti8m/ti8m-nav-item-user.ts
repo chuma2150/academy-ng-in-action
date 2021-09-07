@@ -50,7 +50,7 @@ export class Ti8mNavItemUserCustomComponent extends LitElement {
   }
 
   getUrl(avatar: string) {
-    return `https://api.adorable.io/avatars/40/${avatar}.png`;
+    return `https://api.adorable.io/avatars/human/${avatar}.svg`;
   }
 
   render() {
