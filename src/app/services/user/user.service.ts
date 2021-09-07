@@ -4,13 +4,16 @@ import {Injectable} from '@angular/core';
 
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
+export const HairColors = ['', 'black', 'blonde', 'red', 'darkbrown'] as const;
+export type HairColor = typeof HairColors[number];
+
 export interface UserDto {
   id?: string;
   name: string;
   firstName?: string;
   lastName?: string;
   birthDate?: Date;
-  hairColor?: string;
+  hairColor?: HairColor;
 }
 
 export interface User {
