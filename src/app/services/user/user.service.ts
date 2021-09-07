@@ -1,8 +1,17 @@
 import {Observable, BehaviorSubject, Subject} from 'rxjs';
-import {tap} from 'rxjs/operators';
+import {map, tap} from 'rxjs/operators';
 import {Injectable} from '@angular/core';
 
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+
+export interface UserDto {
+  id?: string;
+  name: string;
+  firstName?: string;
+  lastName?: string;
+  birthDate?: Date;
+  hairColor?: string;
+}
 
 export interface User {
   id?: string;
@@ -48,18 +57,18 @@ export class UserService {
 
   public update(user: User) {
     return this.http
-      .patch(USER_ENDPOINT, user, httpOptions)
+      .patch(USER_ENDPOINT, { ...user, birthDate: user.birthDate?.toISOString() }, httpOptions)
       .pipe(tap((_) => this.set(user)));
   }
 
   public add(user: User): Observable<any> {
     return this.http
-      .post(USER_ENDPOINT, user, httpOptions)
+      .post(USER_ENDPOINT, { ...user, birthDate: user.birthDate?.toISOString() }, httpOptions)
       .pipe(tap((_) => this.set(user)));
   }
 
   public list(): Observable<User[]> {
-    return this.http.get<User[]>(USERS_ENDPOINT);
+    return this.http.get<UserDto[]>(USERS_ENDPOINT).pipe(map(users => users.map(u => ({ ...u, birthDate: new Date(u.birthDate) }))));
   }
 
   public user(): Observable<User> {
