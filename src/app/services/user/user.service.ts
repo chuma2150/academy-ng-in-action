@@ -43,9 +43,9 @@ export class UserService {
   constructor(private http: HttpClient) {
     const currentUser = localStorage.getItem('currentUser');
 
-    if (currentUser) {
+    if (currentUser && currentUser !== 'null') {
       const parsedUser = JSON.parse(currentUser);
-      this.set({ ...parsedUser, birthDate: new Date(parsedUser.birthDate) });
+      this.set({ ...parsedUser, birthDate: parsedUser.birthDate ? new Date(parsedUser.birthDate) : undefined });
     }
   }
 
@@ -68,11 +68,11 @@ export class UserService {
   public add(user: User): Observable<any> {
     return this.http
       .post(USER_ENDPOINT, { ...user, birthDate: user.birthDate?.toISOString() }, httpOptions)
-      .pipe(tap((_) => this.set(user)));
+      .pipe(tap((retrievedUser) => this.set(retrievedUser)));
   }
 
   public list(): Observable<User[]> {
-    return this.http.get<UserDto[]>(USERS_ENDPOINT).pipe(map(users => users.map(u => ({ ...u, birthDate: new Date(u.birthDate) }))));
+    return this.http.get<UserDto[]>(USERS_ENDPOINT).pipe(map(users => users.map(u => ({ ...u, birthDate: u.birthDate ? new Date(u.birthDate): undefined }))));
   }
 
   public user(): Observable<User> {
