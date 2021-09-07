@@ -9,11 +9,10 @@
         <form #loginForm="ngForm" (ngSubmit)="save(currentProfile)">
           <div>
             <mat-form-field [ngClass]="{'has-error': name.errors && (name.touched || name.dirty)}">
-              <mat-label for="name">Name</mat-label>
+              <mat-label>Name</mat-label>
               <input matInput
                      type="text"
                      name="name"
-                     id="name"
                      [(ngModel)]="currentProfile.name"
                      #name="ngModel"
                      required>
@@ -22,37 +21,46 @@
           </div>
           <div>
             <mat-form-field>
-              <mat-label for="firstName">First Name</mat-label>
+              <mat-label>First Name</mat-label>
               <input matInput
                      type="text"
                      name="firstName"
-                     id="firstName"
                      [(ngModel)]="currentProfile.firstName"
                      #firstName="ngModel">
             </mat-form-field>
           </div>
           <div>
             <mat-form-field>
-              <mat-label for="lastName">Last Name</mat-label>
+              <mat-label>Last Name</mat-label>
               <input matInput
                      type="text"
                      name="lastName"
-                     id="lastName"
                      [(ngModel)]="currentProfile.lastName"
                      #lastName="ngModel">
             </mat-form-field>
           </div>
           <div>
             <mat-form-field>
-              <mat-label for="birthDate">Birth Date</mat-label>
+              <mat-label>Birth Date</mat-label>
               <input matInput
                      [matDatepicker]="picker"
                      name="birthDate"
-                     id="birthDate"
                      [(ngModel)]="currentProfile.birthDate"
                      #birthDate="ngModel">
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field appearance="fill">
+              <mat-label>Hair color</mat-label>
+              <mat-select name="hairColor"
+                          [(ngModel)]="currentProfile.hairColor"
+                          #hairColor="ngModel">
+                <mat-option *ngFor="let hairColor of availableHairColors" [value]="hairColor">
+                  {{ hairColor }}
+                </mat-option>
+              </mat-select>
             </mat-form-field>
           </div>
           <div>

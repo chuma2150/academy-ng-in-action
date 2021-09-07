@@ -11,6 +11,9 @@ import { User, UserService } from 'src/app/services/user/user.service';
 })
 export class SettingsComponent implements OnInit {
   public currentProfile$: Observable<User>;
+  public availableHairColors: string[] = [
+
+  ];
   
   constructor(private route: ActivatedRoute, private userService: UserService) { }
 
@@ -22,6 +25,7 @@ export class SettingsComponent implements OnInit {
   }
 
   save(updatedProfile: User): void {
+    console.log(updatedProfile);
     this.userService.update(updatedProfile);
   }
 }
