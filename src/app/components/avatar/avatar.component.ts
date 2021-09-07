@@ -19,21 +19,11 @@ export class AvatarComponent {
   @Input()
   set name(aName: string) {
     this._name = aName;
-    const avatar = `url(https://api.adorable.io/avatars/40/${encodeURIComponent(this.name)}.png)`;
+    const avatar = `url(https://api.adorable.io/avatars/human/${encodeURIComponent(this.name)}.svg)`;
     this.url = this.sanitizer.bypassSecurityTrustStyle(avatar);
   }
 
   get name() {
     return this._name;
   }
-
-  /*private _url: string;
-
-  get url() {
-    return `https://api.adorable.io/avatars/48/${this.name}.png`;
-  }
-
-  set url(url: string) {
-    this._url = url;
-  }*/
 }
