@@ -36,6 +36,6 @@ describe('AvatarComponent', () => {
     component.name = name;
     fixture.detectChanges();
     const iconStyle = fixture.debugElement.query(By.css('i')).styles;
-    expect(iconStyle['background-image']).toEqual(`url("https://api.adorable.io/avatars/human/${name}.svg")`);
+    expect(iconStyle['background-image']).toEqual(`url("https://avatars.dicebear.com/api/human/${name}.svg")`);
   });
 });
