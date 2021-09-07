@@ -9,7 +9,7 @@ export interface User {
   name: string;
   firstName?: string;
   lastName?: string;
-  birthDate?: string;
+  birthDate?: Date;
   hairColor?: string;
 }
 
