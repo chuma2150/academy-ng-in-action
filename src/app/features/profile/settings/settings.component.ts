@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { pluck } from 'rxjs/operators';
-import { User } from 'src/app/services/user/user.service';
+import { map, pluck } from 'rxjs/operators';
+import { User, UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-settings',
@@ -12,9 +12,16 @@ import { User } from 'src/app/services/user/user.service';
 export class SettingsComponent implements OnInit {
   public currentProfile$: Observable<User>;
   
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private userService: UserService) { }
 
   ngOnInit(): void {
-    this.currentProfile$ = this.route.data.pipe(pluck('user'))
+    this.currentProfile$ = this.route.data.pipe(
+      pluck('user'),
+      map(u =>  Object.assign({}, u)),
+    );
+  }
+
+  save(updatedProfile: User): void {
+    this.userService.update(updatedProfile);
   }
 }

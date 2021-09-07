@@ -5,8 +5,25 @@
           Settings
         </mat-card-title>
       </mat-card-header>
-      <mat-card-content class="profile-content">
-        {{ currentProfile$ | async | json }}
+      <mat-card-content class="profile-content" *ngIf="currentProfile$ | async as currentProfile">
+        <form #loginForm="ngForm" (ngSubmit)="save(currentProfile)">
+          <div>
+            <mat-form-field [ngClass]="{'has-error': name.errors && (name.touched || name.dirty)}">
+              <mat-label for="name">Name</mat-label>
+              <input matInput
+                     type="text"
+                     name="name"
+                     id="name"
+                     [(ngModel)]="currentProfile.name"
+                     #name="ngModel"
+                     required>
+              <mat-error *ngIf="!name.valid && (name.touched || name.dirty)" class="help-block">User Name must not be empty</mat-error> 
+            </mat-form-field>
+          </div>
+          <div>
+           <button type="submit" mat-raised-button color="primary" [disabled]="loginForm.invalid">Save</button>
+          </div>
+        </form>
       </mat-card-content>
     </mat-card>
   </div>
