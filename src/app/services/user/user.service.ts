@@ -44,7 +44,8 @@ export class UserService {
     const currentUser = localStorage.getItem('currentUser');
 
     if (currentUser) {
-      this.set(JSON.parse(currentUser));
+      const parsedUser = JSON.parse(currentUser);
+      this.set({ ...parsedUser, birthDate: new Date(parsedUser.birthDate) });
     }
   }
 

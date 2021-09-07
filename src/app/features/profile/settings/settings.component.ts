@@ -23,6 +23,6 @@ export class SettingsComponent implements OnInit {
   }
 
   save(updatedProfile: User): void {
-    this.userService.update(updatedProfile);
+    this.userService.update(updatedProfile).subscribe();
   }
 }
