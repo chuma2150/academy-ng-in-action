@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent {
-  user: Observable<User>;
+  user: Observable<User | null>;
 
   constructor(private router: Router, private userService: UserService) {
     this.user = this.userService.user();

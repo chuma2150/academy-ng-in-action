@@ -40,8 +40,8 @@ export class Ti8mNavItemUserCustomComponent extends LitElement {
       }
   `;
 
-  @property( { type : String }  ) url;
-  @property( { type : String }  ) avatar;
+  @property( { type : String }  ) url: string;
+  @property( { type : String }  ) avatar: string;
   // @property( { type : String }  ) user;
 
   constructor() {

@@ -53,7 +53,7 @@ describe('ChatboardComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should call chatService on Init', inject([ChatService], chatService => {
+  it('should call chatService on Init', inject([ChatService], (chatService: ChatService) => {
     const spy = spyOn(chatService, 'messages').and.callThrough();
 
     fixture.detectChanges();

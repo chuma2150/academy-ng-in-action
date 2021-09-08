@@ -7,11 +7,11 @@ import { User, UserService } from '../../services/user/user.service';
 @Injectable({
     providedIn: 'root'
 })
-export class CurrentUserResolver implements Resolve<User> {
+export class CurrentUserResolver implements Resolve<User | null> {
     constructor(private userService: UserService) {
     }
 
-    resolve(): Observable<User> {
+    resolve(): Observable<User | null> {
         return this.userService.user().pipe(first());
     }
 }

@@ -13,9 +13,9 @@ export class ChatComponent implements OnInit, OnDestroy {
   public text: string;
   public msg: Message;
 
-  public user: User;
+  public user: User | null;
   private subscription: Subscription;
-  private receiver: User = null;
+  private receiver: User | null = null;
 
   constructor(private userService: UserService, private chat: ChatService) {
   }
@@ -30,12 +30,12 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   public send() {
-    this.msg = {text: this.text, sender: this.user.name, receiver: this.receiver && this.receiver.name};
+    this.msg = {text: this.text, sender: this.user?.name ?? '', receiver: this.receiver && this.receiver.name};
     this.reset();
     this.sendMessage(this.msg);
   }
 
-  public selectReceiver(user: User) {
+  public selectReceiver(user: User | null) {
     this.receiver = user;
   }
 

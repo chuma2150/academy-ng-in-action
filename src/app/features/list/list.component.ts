@@ -8,21 +8,21 @@ import {Observable} from 'rxjs';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-  @Input() user: User;
-  @Output() selectUser: EventEmitter<User> = new EventEmitter<User>();
-  public users: Observable<User[]>;
+  @Input() user: User | null;
+  @Output() selectUser: EventEmitter<User | null> = new EventEmitter<User | null>();
+  public users$: Observable<User[]>;
 
-  @Input() selected: User;
+  @Input() selected: User | null;
 
   constructor(private userService: UserService) {
   }
 
   ngOnInit() {
-    this.users = this.userService.list();
+    this.users$ = this.userService.list();
   }
 
   toggleUser(user: User) {
-    let newUser = user;
+    let newUser: User | null = user;
     if (this.selected === user) {
       newUser = null;
     }

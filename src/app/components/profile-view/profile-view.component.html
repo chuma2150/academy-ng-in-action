@@ -15,5 +15,5 @@
   <span class="title">Age: </span><span>{{ user?.birthDate | age }}</span>
 </p>
 <p>
-  <span class="title">Hair Color: </span><span [ngClass]="user.hairColor">{{ user?.hairColor }}</span>
+  <span class="title">Hair Color: </span><span [ngClass]="user?.hairColor ?? ''">{{ user?.hairColor }}</span>
 </p>

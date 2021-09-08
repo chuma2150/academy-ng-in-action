@@ -11,7 +11,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  public currentProfile$: Observable<User>;
+  public currentProfile$: Observable<User | undefined>;
   constructor(private userService: UserService,
               private route: ActivatedRoute,
               private router: Router) { }
@@ -29,7 +29,7 @@ export class ProfileComponent implements OnInit {
     );
   }
 
-  selectProfile(user: User) {
-    this.router.navigate(['profile', user.name]);
+  selectProfile(user: User | null) {
+    this.router.navigate(['profile', user?.name]);
   }
 }

@@ -8,7 +8,7 @@ import {Observable} from 'rxjs';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  public user$: Observable<User>;
+  public user$: Observable<User | null>;
   constructor(private userService: UserService) {
   }
 

@@ -4,9 +4,9 @@ import { UserService, User } from '../../services/user/user.service';
 import { Subject } from 'rxjs';
 
 describe('HasUserGuard', () => {
-  let userSubject: Subject<User>;
+  let userSubject: Subject<User | null>;
   beforeEach(() => {
-    userSubject = new Subject<User>();
+    userSubject = new Subject<User | null>();
     TestBed.configureTestingModule({
       providers: [
         { provide: UserService, useValue: { user() { return userSubject; }}}

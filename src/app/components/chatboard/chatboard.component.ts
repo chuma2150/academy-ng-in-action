@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./chatboard.component.scss']
 })
 export class ChatboardComponent implements OnInit {
-  @Input() user: User = null;
+  @Input() user: User | null = null;
   public msgs: Observable<Message[]>;
 
   constructor(public service: ChatService) {}
