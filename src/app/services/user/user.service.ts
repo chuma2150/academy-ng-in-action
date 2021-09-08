@@ -22,7 +22,7 @@ export interface User {
   firstName?: string;
   lastName?: string;
   birthDate?: Date;
-  hairColor?: string;
+  hairColor?: HairColor;
 }
 
 const USERS_ENDPOINT = 'https://us-central1-ng-in-action-2.cloudfunctions.net/users';
