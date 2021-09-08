@@ -9,5 +9,5 @@ import {Message} from '../../services/chat/message';
 })
 export class ChatmessageComponent {
   @Input() message: Message;
-  @Input() current: User;
+  @Input() current: User | null;
 }

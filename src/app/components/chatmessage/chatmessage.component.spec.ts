@@ -1,10 +1,10 @@
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-import {By} from '@angular/platform-browser';
+import { By } from '@angular/platform-browser';
 
 import { ChatmessageComponent } from './chatmessage.component';
-import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
 
-const getSentCssClass = <T>(fixture: ComponentFixture<T>) => fixture.debugElement.query(By.css('.sent'));
+const getSentCssClass = <T>(fixture: ComponentFixture<T>): DebugElement | null => fixture.debugElement.query(By.css('.sent'));
 
 describe('ChatmessageComponent', () => {
   let component: ChatmessageComponent;
@@ -12,7 +12,7 @@ describe('ChatmessageComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ChatmessageComponent ],
+      declarations: [ChatmessageComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();

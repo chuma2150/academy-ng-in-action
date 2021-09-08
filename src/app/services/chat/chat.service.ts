@@ -16,30 +16,30 @@ export class ChatService {
     db.collection<Message>('messages');
   }
 
-  public messages(user: User): Observable<Message[]> {
+  public messages(user: User | null): Observable<Message[]> {
     const senderCollection = this.db.collection<Message>('messages', ref => ref
-      .where('sender', '==', user.name));
+      .where('sender', '==', user?.name));
 
     const receiverCollection = this.db.collection<Message>('messages', ref => ref
-      .where('receiver', '==', user.name));
+      .where('receiver', '==', user?.name));
 
     const publicCollection1 = this.db.collection<Message>('messages', ref => ref
       .where('receiver', '==', null)
-      .where('sender', '<', user.name));
+      .where('sender', '<', user?.name));
 
     const publicCollection2 = this.db.collection<Message>('messages', ref => ref
       .where('receiver', '==', null)
-      .where('sender', '>', user.name));
+      .where('sender', '>', user?.name));
 
     const collections = [senderCollection, receiverCollection, publicCollection1, publicCollection2];
     return combineLatest(collections.map(c => c.valueChanges()))
       .pipe(
-        map(messagesByCollection => [].concat(...messagesByCollection)
+        map(messagesByCollection => ([] as Message[]).concat(...messagesByCollection)
         .map(message => {
-          return {...message, date: new Date(message.date) };
+          return {...message, date: message.date ? new Date(message.date) : new Date() };
         })
         .sort((message1: Message, message2: Message) =>
-          message1.date.valueOf() - message2.date.valueOf())));
+          (message1.date?.valueOf() ?? 0) - (message2.date?.valueOf() ?? 0))));
   }
 
   public add(message: Message) {

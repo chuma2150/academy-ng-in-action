@@ -24,7 +24,8 @@
     "strictPropertyInitialization": false,
     "noUnusedParameters": true,
     "noUnusedLocals": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "strict": true,
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

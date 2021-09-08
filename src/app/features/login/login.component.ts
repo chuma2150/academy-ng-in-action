@@ -10,7 +10,7 @@ import { first } from 'rxjs/operators';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  public name: string;
+  public name: string | null;
 
   constructor(private router: Router,
               private user: UserService,
@@ -23,7 +23,7 @@ export class LoginComponent {
   }
 
   register() {
-    const user: User = {name: this.name};
+    const user: User = { name: this.name ?? '' };
     this.user.add(user)
       .subscribe(
         () => this.navigate(),
@@ -33,7 +33,7 @@ export class LoginComponent {
         });
   }
 
-  login(user: User) {
+  login(user: User | null) {
     this.user.set(user);
     this.navigate();
   }
@@ -45,7 +45,7 @@ export class LoginComponent {
   }
 
   showError(error: string) {
-    this.snackBar.open(error, null, {duration: 5000});
+    this.snackBar.open(error, undefined, { duration: 5000 });
   }
 
   private navigate() {

@@ -38,7 +38,7 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class UserService {
-  private user$: Subject<User> = new BehaviorSubject<User>(null);
+  private user$: Subject<User | null> = new BehaviorSubject<User | null>(null);
 
   constructor(private http: HttpClient) {
     const currentUser = localStorage.getItem('currentUser');
@@ -49,7 +49,7 @@ export class UserService {
     }
   }
 
-  public set(user: User) {
+  public set(user: User | null) {
     localStorage.setItem('currentUser', JSON.stringify(user));
     this.user$.next(user);
   }
@@ -67,7 +67,7 @@ export class UserService {
 
   public add(user: User): Observable<any> {
     return this.http
-      .post(USER_ENDPOINT, { ...user, birthDate: user.birthDate?.toISOString() }, httpOptions)
+      .post<User>(USER_ENDPOINT, { ...user, birthDate: user.birthDate?.toISOString() }, httpOptions)
       .pipe(tap((retrievedUser) => this.set(retrievedUser)));
   }
 
@@ -75,7 +75,7 @@ export class UserService {
     return this.http.get<UserDto[]>(USERS_ENDPOINT).pipe(map(users => users.map(u => ({ ...u, birthDate: u.birthDate ? new Date(u.birthDate): undefined }))));
   }
 
-  public user(): Observable<User> {
+  public user(): Observable<User | null> {
     return this.user$.asObservable();
   }
 
