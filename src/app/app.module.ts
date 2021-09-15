@@ -5,8 +5,8 @@ import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
-import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { HttpClientModule } from '@angular/common/http';
 import { MatNativeDateModule } from '@angular/material/core';
 
