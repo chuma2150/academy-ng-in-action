@@ -2,7 +2,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import {inject, TestBed} from '@angular/core/testing';
 
 import {ChatService} from './chat.service';
-import {AngularFirestore} from '@angular/fire/firestore';
+import {AngularFirestore} from '@angular/fire/compat/firestore';
 
 export class MockAngularFireStore {
   public collection() {}
