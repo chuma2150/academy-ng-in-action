@@ -28,12 +28,13 @@
     "audit": "0.0.6",
     "firebase": "^9.0.0",
     "lit-element": "^2.0.1",
+    "rxfire": "^6.0.0",
     "rxjs": "~6.6.6",
     "tslib": "^2.0.1",
-    "zone.js": "~0.11.4",
-    "rxfire": "^6.0.0"
+    "zone.js": "~0.11.4"
   },
   "devDependencies": {
+    "@angular-devkit/architect": "^0.1200.0",
     "@angular-devkit/build-angular": "~12.2.5",
     "@angular-eslint/builder": "12.2.0",
     "@angular-eslint/eslint-plugin": "12.2.0",
@@ -49,8 +50,13 @@
     "@typescript-eslint/eslint-plugin": "4.23.0",
     "@typescript-eslint/parser": "4.23.0",
     "eslint": "^7.26.0",
+    "firebase-tools": "^9.0.0",
+    "fuzzy": "^0.1.3",
+    "inquirer": "^6.2.2",
+    "inquirer-autocomplete-prompt": "^1.0.1",
     "jasmine-core": "~3.7.1",
     "jasmine-spec-reporter": "~5.0.0",
+    "jsonc-parser": "^3.0.0",
     "karma": "~6.3.4",
     "karma-chrome-launcher": "~3.1.0",
     "karma-coverage-istanbul-reporter": "~3.0.2",
@@ -59,15 +65,9 @@
     "karma-jasmine-html-reporter": "^1.5.3",
     "karma-phantomjs-launcher": "^1.0.4",
     "karma-safari-launcher": "^1.0.0",
+    "open": "^7.0.3",
     "protractor": "~7.0.0",
     "ts-node": "~8.6.2",
-    "typescript": "4.3.5",
-    "@angular-devkit/architect": "^0.1200.0",
-    "firebase-tools": "^9.0.0",
-    "fuzzy": "^0.1.3",
-    "inquirer": "^6.2.2",
-    "inquirer-autocomplete-prompt": "^1.0.1",
-    "open": "^7.0.3",
-    "jsonc-parser": "^3.0.0"
+    "typescript": "4.3.5"
   }
 }
