@@ -5,10 +5,10 @@
   <div class="chat-message">
     <header>
       <div>
-        <span>{{message.sender}}</span>
-        <span>Receiver: {{message.receiver}}</span>
+        <span>From: {{message.sender}}; </span>
+        <span>Receiver: {{message.receiver ?? 'All'}}</span>
       </div>
-      <span class="date">{{message.date|date:'long'}}</span>
+      <span class="date">{{message.date | date:'long'}}</span>
     </header>
     <main>
       {{message.text}}
