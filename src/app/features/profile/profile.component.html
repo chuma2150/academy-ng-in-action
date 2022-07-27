@@ -5,14 +5,14 @@
           Profile
         </mat-card-title>
       </mat-card-header>
-      <mat-card-content class="profile-content" *ngIf="currentProfile$ | async as currentProfile">
+      <mat-card-content class="profile-content" *ngIf="{ currrentProfile: currentProfile$ | async } as observables">
         <div class="profile-users">
           View Profile:
-          <app-list [selected]="currentProfile"
+          <app-list [selected]="observables.currrentProfile"
                     (selectUser)="selectProfile($event)"></app-list>
         </div>
-        <div class="profile-view">
-          <app-profile-view [user]="currentProfile"></app-profile-view>
+        <div class="profile-view" *ngIf="observables.currrentProfile">
+          <app-profile-view [user]="observables.currrentProfile"></app-profile-view>
         </div>
       </mat-card-content>
     </mat-card>
