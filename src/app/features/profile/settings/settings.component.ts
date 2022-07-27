@@ -27,7 +27,10 @@ export class SettingsComponent implements OnInit, OnDestroy {
   save(updatedProfile: User): void {
     this.userServiceSubscription = this.userService
       .update(updatedProfile)
-      .subscribe(() => this.snackbar.open('User updated!', undefined, { duration: 5000 }));
+      .subscribe({
+        complete:() => this.snackbar.open('User updated!', undefined, { duration: 5000 }),
+        error: error => this.snackbar.open(`Update failed: ${error}`, undefined, { duration: 5000 }),
+      });
   }
   
   ngOnDestroy(): void {
