@@ -25,12 +25,13 @@ export class LoginComponent {
   register() {
     const user: User = { name: this.name ?? '' };
     this.user.add(user)
-      .subscribe(
-        () => this.navigate(),
-        () => {
-          this.showError(`User ${this.name} exists already!!`);
+      .subscribe({
+        complete: () => this.navigate(),
+        error: error => {
+          this.showError(`User could not be added: ${error}`);
           this.name = null;
-        });
+        },
+      });
   }
 
   login(user: User | null) {
