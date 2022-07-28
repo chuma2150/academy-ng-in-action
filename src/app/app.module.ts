@@ -5,14 +5,15 @@ import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
+import {AppRoutingModule} from './app-routing.module';
+
+import { AppComponent } from './app.component';
+import { FeaturesModule } from './features/features.module';
+import { MatNativeDateModule } from '@angular/material/core';
+
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { HttpClientModule } from '@angular/common/http';
-import { MatNativeDateModule } from '@angular/material/core';
-
-import {AppRoutingModule} from './app-routing.module';
-import { AppComponent } from './app.component';
-import { FeaturesModule } from './features/features.module';
 
 @NgModule({
   declarations: [
