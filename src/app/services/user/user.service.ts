@@ -1,5 +1,5 @@
-import {Observable, BehaviorSubject, Subject} from 'rxjs';
-import {map, tap} from 'rxjs/operators';
+import {Observable, BehaviorSubject, Subject, throwError} from 'rxjs';
+import {map, switchMap, tap} from 'rxjs/operators';
 import {Injectable} from '@angular/core';
 
 import {HttpClient, HttpHeaders} from '@angular/common/http';
@@ -66,17 +66,29 @@ export class UserService {
   }
 
   public add(user: User): Observable<any> {
-    return this.http
-      .post<User>(USER_ENDPOINT, { ...user, birthDate: user.birthDate?.toISOString() }, httpOptions)
-      .pipe(tap((retrievedUser) => this.set(retrievedUser)));
+    return this
+      .userExists(user)
+      .pipe(switchMap(exists => exists
+        ? throwError(() => new Error(`User ${user.name} already exists.`))
+        : this.http
+            .post<User>(USER_ENDPOINT, { ...user, birthDate: user.birthDate?.toISOString() }, httpOptions)
+            .pipe(tap((retrievedUser) => this.set(retrievedUser)))
+      ));
   }
 
   public list(): Observable<User[]> {
-    return this.http.get<UserDto[]>(USERS_ENDPOINT).pipe(map(users => users.map(u => ({ ...u, birthDate: u.birthDate ? new Date(u.birthDate): undefined }))));
+    return this.http
+      .get<UserDto[]>(USERS_ENDPOINT)
+      .pipe(map(users => users.map(u => ({ ...u, birthDate: u.birthDate ? new Date(u.birthDate): undefined }))));
   }
 
   public user(): Observable<User | null> {
     return this.user$.asObservable();
   }
 
+  private userExists(user: User): Observable<boolean> {
+    return this
+      .list()
+      .pipe(map(users => users.some(u => u.name.toUpperCase() === user.name.toUpperCase())))
+  }
 }
