@@ -6,14 +6,14 @@
       </mat-card-title>
     </mat-card-header>
     <mat-card-content class="profile-content"
-                      *ngIf="currentProfile$ | async as currrentProfile">
+                      *ngIf="{ currrentProfile: currentProfile$ | async } as observables">
       <div class="profile-users">
         View Profile:
-        <app-list [selected]="currrentProfile"
+        <app-list [selected]="observables.currrentProfile"
                   (selectUser)="selectProfile($event)"></app-list>
       </div>
       <div class="profile-view"
-           *ngIf="currrentProfile">
+           *ngIf="observables.currrentProfile">
         <!--  Exercise 1: Use new created UserComponent and pass currentProfile as parmameter -->
       </div>
     </mat-card-content>
