@@ -5,12 +5,8 @@
 
 export const environment = {
   production: false,
-  firebase: {
-    apiKey: "AIzaSyDimwlcXcx3Z2-2LYn37n5IKgefF1miXDg",
-    authDomain: "ng-in-action-2.firebaseapp.com",
-    projectId: "ng-in-action-2",
-    storageBucket: "ng-in-action-2.appspot.com",
-    messagingSenderId: "526461906159",
-    appId: "1:526461906159:web:76ce9ae45f017bf4dcff1a"
+  cosmos: {
+    endpoint: 'https://academynginaction.documents.azure.com',
+    key: 'OwS7XILmZR7XTqOZpi0mASBLhLOBEWCxWcECId85P3hG3apUIeKgQKAIaKknwROb1F562KcipRwYACDbVkdLbA=='
   }
 };

@@ -6,6 +6,13 @@ import { RouterModule } from '@angular/router';
 import { AgePipe } from 'src/app/components/profile-view/age.pipe';
 
 import { SettingsComponent } from './settings.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 describe('SettingsComponent', () => {
   let component: SettingsComponent;
@@ -13,10 +20,28 @@ describe('SettingsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [SettingsComponent, AgePipe],
-      imports: [RouterModule.forRoot([]), HttpClientModule, FormsModule, MatSnackBarModule],
+      declarations: [
+        SettingsComponent,
+        AgePipe,
+      ],
+      imports: [
+        RouterModule.forRoot([]),
+        HttpClientModule,
+        FormsModule,
+        MatSnackBarModule,
+        MatCardModule,
+        MatOptionModule,
+        MatNativeDateModule,
+        MatDatepickerModule,
+        MatInputModule,
+        MatFormFieldModule,
+        MatSelectModule,
+      ],
+      providers: [
+        provideAnimations(),
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

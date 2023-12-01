@@ -1,5 +1,18 @@
 {
+  "html.format.wrapAttributes": "force-aligned",
+  "[html]": {
+    "files.insertFinalNewline": true,
+  },
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "editor.useTabStops": false,
+  "beautify.options": {
+    "end_with_newline": true,
+    "preserve_newlines": true,
+    "max_preserve_newlines": 10
+  },
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
-  }
+  },
+  "editor.formatOnSave": true
 }

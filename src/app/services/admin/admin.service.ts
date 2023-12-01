@@ -1,26 +1,21 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-
-const ADMIN_ENDPOINT = 'https://us-central1-ng-in-action.cloudfunctions.net/admin';
+import { Injectable } from '@angular/core';
+import { UserService } from '../user/user.service';
+import { ChatService } from '../chat/chat.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AdminService {
 
-  constructor(private http: HttpClient) {
+  constructor(private readonly userService: UserService, private readonly chatService: ChatService) { }
+
+  async user() {
+    const users = await this.userService.list()
+    console.log(users);
   }
 
-  user() {
-    return this.http.get(`${ADMIN_ENDPOINT}/user/`).subscribe(console.log);
+  async message() {
+    const messages = await this.chatService.list()
+    console.log(messages);
   }
-
-  msg() {
-    return this.http.get(`${ADMIN_ENDPOINT}/messages/`).subscribe(console.log);
-  }
-
-  all() {
-    return this.http.get(`${ADMIN_ENDPOINT}/all/`).subscribe(console.log);
-  }
-
 }

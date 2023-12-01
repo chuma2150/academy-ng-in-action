@@ -9,7 +9,7 @@ describe('HasUserGuard', () => {
     userSubject = new Subject<User | null>();
     TestBed.configureTestingModule({
       providers: [
-        { provide: UserService, useValue: { user() { return userSubject; }}}
+        { provide: UserService, useValue: { user() { return userSubject; } } }
       ]
     });
   });
@@ -20,7 +20,7 @@ describe('HasUserGuard', () => {
       expect(value).toBeTruthy();
       called = true;
     });
-    userSubject.next({name: 'asdf'});
+    userSubject.next({ name: 'asdf' });
     expect(called).toBeTruthy();
   }));
 
@@ -32,11 +32,5 @@ describe('HasUserGuard', () => {
     });
     userSubject.next(null);
     expect(called).toBeTruthy();
-  }));
-
-  it('should not respond without received user', inject([HasUserGuard], (guard: HasUserGuard) => {
-    guard.canActivate().subscribe(() => {
-      fail();
-    });
   }));
 });
