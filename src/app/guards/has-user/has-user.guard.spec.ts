@@ -9,14 +9,16 @@ describe('HasUserGuard', () => {
     userSubject = new Subject<User | null>();
     TestBed.configureTestingModule({
       providers: [
-        { provide: UserService, useValue: { user() { return userSubject; } } }
-      ]
+        { provide: UserService, useValue: { user() {
+ return userSubject;
+} } },
+      ],
     });
   });
 
   it('should allow navigation if user is present', inject([HasUserGuard], (guard: HasUserGuard) => {
     let called = false;
-    guard.canActivate().subscribe((value) => {
+    guard.canActivate().subscribe(value => {
       expect(value).toBeTruthy();
       called = true;
     });
@@ -26,7 +28,7 @@ describe('HasUserGuard', () => {
 
   it('should not allow navigation if user is not present', inject([HasUserGuard], (guard: HasUserGuard) => {
     let called = false;
-    guard.canActivate().subscribe((value) => {
+    guard.canActivate().subscribe(value => {
       expect(value).toBeFalsy();
       called = true;
     });

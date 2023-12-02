@@ -12,12 +12,12 @@ import { FilterUserPipe } from '../../pipe/filter-user.pipe';
     CommonModule,
     ListRoutingModule,
     MatListModule,
-    ComponentsModule
+    ComponentsModule,
   ],
   declarations: [
     ListComponent,
-    FilterUserPipe
+    FilterUserPipe,
   ],
-  exports: [ListComponent]
+  exports: [ListComponent],
 })
 export class ListModule { }

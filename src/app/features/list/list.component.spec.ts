@@ -13,10 +13,10 @@ describe('ListComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         ListComponent,
-        FilterUserPipe
+        FilterUserPipe,
       ],
       providers: [{ provide: UserService, useClass: MockUserService }],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
       .compileComponents();
   }));

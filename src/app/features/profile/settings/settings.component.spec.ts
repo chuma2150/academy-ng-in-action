@@ -39,7 +39,7 @@ describe('SettingsComponent', () => {
       ],
       providers: [
         provideAnimations(),
-      ]
+      ],
     })
       .compileComponents();
   });

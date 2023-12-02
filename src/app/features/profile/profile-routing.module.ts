@@ -12,22 +12,22 @@ const routes: Routes = [
     canActivate: [HasUserGuard],
     resolve: {
       user: CurrentUserResolver,
-    }
+    },
   },
   {
     path: 'profile/:username',
     component: ProfileComponent,
-    canActivate: [HasUserGuard]
+    canActivate: [HasUserGuard],
   },
   {
     path: 'profile',
     redirectTo: 'profile/',
     pathMatch: 'full',
-  }
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class ProfileRoutingModule { }

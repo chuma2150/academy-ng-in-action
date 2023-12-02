@@ -5,11 +5,11 @@ import { map, Observable, zip } from 'rxjs';
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss']
+  styleUrls: ['./list.component.scss'],
 })
 export class ListComponent implements OnInit {
   @Input() user: User | null;
-  @Input() hideCurrentUser = false
+  @Input() hideCurrentUser = false;
   @Input() selected?: User | null;
   @Output() selectUser: EventEmitter<User | null> = new EventEmitter<User | null>();
   public users$: Observable<User[]>;
@@ -19,7 +19,7 @@ export class ListComponent implements OnInit {
   ngOnInit() {
     this.users$ = zip(
       this.userService.list(),
-      this.userService.user()
+      this.userService.user(),
     ).pipe(map(([users, user]) => this.hideCurrentUser
       ? users.filter(u => u.name !== user?.name)
       : users));
@@ -30,6 +30,7 @@ export class ListComponent implements OnInit {
     if (this.selected === user) {
       newUser = null;
     }
+
     this.selectUser.emit(newUser);
     this.selected = newUser;
   }

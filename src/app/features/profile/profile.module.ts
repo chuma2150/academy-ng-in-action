@@ -28,6 +28,6 @@ import { SettingsComponent } from './settings/settings.component';
     MatDatepickerModule,
     MatSelectModule,
   ],
-  declarations: [ProfileComponent, SettingsComponent]
+  declarations: [ProfileComponent, SettingsComponent],
 })
 export class ProfileModule { }

@@ -25,8 +25,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatInputModule,
     MatFormFieldModule,
     MatDividerModule,
-    MatCardModule
+    MatCardModule,
   ],
-  declarations: [ChatComponent]
+  declarations: [ChatComponent],
 })
 export class ChatModule { }

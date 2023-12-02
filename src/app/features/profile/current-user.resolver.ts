@@ -5,7 +5,7 @@ import { first } from 'rxjs/operators';
 import { User, UserService } from '../../services/user/user.service';
 
 @Injectable({
-    providedIn: 'root'
+    providedIn: 'root',
 })
 export class CurrentUserResolver implements Resolve<User | null> {
     constructor(private userService: UserService) {

@@ -8,7 +8,7 @@ import { HairColors, User, UserService } from 'src/app/services/user/user.servic
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
-  styleUrls: ['./settings.component.scss']
+  styleUrls: ['./settings.component.scss'],
 })
 export class SettingsComponent implements OnInit {
   public currentProfile$: Observable<User>;
@@ -19,7 +19,7 @@ export class SettingsComponent implements OnInit {
   ngOnInit(): void {
     this.currentProfile$ = this.route.data.pipe(
       pluck('user'),
-      map(u => Object.assign({}, u)),
+      map(u => ({ ...u })),
     );
   }
 

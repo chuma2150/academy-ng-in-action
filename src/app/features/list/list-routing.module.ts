@@ -7,12 +7,12 @@ const routes: Routes = [
   {
     path: 'list',
     component: ListComponent,
-    canActivate: [HasUserGuard]
-  }
+    canActivate: [HasUserGuard],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class ListRoutingModule { }

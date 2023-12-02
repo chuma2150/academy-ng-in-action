@@ -9,12 +9,12 @@ import { ChatService } from '../../services/chat/chat.service';
 const mockMessages = [{
   text: 'test',
   sender: 'test',
-  receiver: 'test'
+  receiver: 'test',
 },
 {
   text: 'test',
   sender: 'test',
-  receiver: 'test'
+  receiver: 'test',
 }];
 
 export class MockChatService {
@@ -27,17 +27,19 @@ describe('ChatboardComponent', () => {
   function getChatmessages() {
     return fixture.debugElement.queryAll(By.css('app-chatmessage'));
   }
+
   function getFirstChatmessage() {
     return fixture.debugElement.query(By.css('app-chatmessage'));
   }
+
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ChatboardComponent],
       providers: [{
         provide: ChatService,
-        useClass: MockChatService
+        useClass: MockChatService,
       }],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
       .compileComponents();
   }));
