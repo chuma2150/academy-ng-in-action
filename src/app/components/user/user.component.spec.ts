@@ -8,7 +8,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 const users: User[] = [
   { name: 'TEST USER' },
-  { name: 'TEST USER 2' }
+  { name: 'TEST USER 2' },
 ];
 
 export class MockUserService {
@@ -25,7 +25,7 @@ describe('UserComponent', () => {
       imports: [RouterTestingModule],
       declarations: [UserComponent],
       providers: [{ provide: UserService, useClass: MockUserService }],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
       .compileComponents();
   }));

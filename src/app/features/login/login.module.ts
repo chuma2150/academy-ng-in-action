@@ -25,8 +25,8 @@ import { ComponentsModule } from '../../components/components.module';
     ListModule,
     ComponentsModule,
     MatCardModule,
-    MatSnackBarModule
+    MatSnackBarModule,
   ],
-  declarations: [LoginComponent]
+  declarations: [LoginComponent],
 })
 export class LoginModule { }

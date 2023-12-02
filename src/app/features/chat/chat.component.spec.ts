@@ -18,9 +18,9 @@ describe('ChatComponent', () => {
       declarations: [ChatComponent],
       providers: [
         { provide: UserService, useClass: MockUserService },
-        { provide: ChatService, useClass: MockChatService }
+        { provide: ChatService, useClass: MockChatService },
       ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
       .compileComponents();
   }));

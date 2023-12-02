@@ -11,8 +11,8 @@ import { MatCardModule } from '@angular/material/card';
     CommonModule,
     MainRoutingModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
   ],
-  declarations: [MainComponent]
+  declarations: [MainComponent],
 })
 export class MainModule { }

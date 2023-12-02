@@ -24,7 +24,7 @@ export interface User {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
   private user$: Subject<User | null> = new BehaviorSubject<User | null>(null);
@@ -50,7 +50,7 @@ export class UserService {
 
   public async update(user: User): Promise<void> {
     if (!await this.userExists(user)) {
-      throw new Error(`User ${user.name} doesn't exist.`)
+      throw new Error(`User ${user.name} doesn't exist.`);
     }
 
     await this.cosmosService.users.items.upsert({ ...user, birthDate: user.birthDate?.toISOString() });
@@ -58,7 +58,7 @@ export class UserService {
 
   public async add(user: User): Promise<void> {
     if (await this.userExists(user)) {
-      throw new Error(`User ${user.name} already exists.`)
+      throw new Error(`User ${user.name} already exists.`);
     }
 
     await this.cosmosService.users.items.create({ ...user, birthDate: user.birthDate?.toISOString() });
@@ -76,7 +76,7 @@ export class UserService {
   }
 
   private async userExists(user: User): Promise<boolean> {
-    const users = await this.list()
+    const users = await this.list();
     return users.some(u => u.name.toUpperCase() === user.name.toUpperCase());
   }
 }

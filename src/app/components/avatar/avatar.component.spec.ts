@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-test-cmpt',
-  template: `<app-avatar [name]="name"></app-avatar>`
+  template: '<app-avatar [name]="name"></app-avatar>',
 })
 class TestComponent {
   name: string;
@@ -16,7 +16,7 @@ describe('AvatarComponent', () => {
   let fixture: ComponentFixture<TestComponent>;
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [TestComponent, AvatarComponent]
+      declarations: [TestComponent, AvatarComponent],
     })
       .compileComponents();
   }));

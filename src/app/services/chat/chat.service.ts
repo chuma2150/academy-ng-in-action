@@ -4,7 +4,7 @@ import { Message } from './message';
 import { CosmosService } from '../cosmos/cosmos.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ChatService {
   constructor(private readonly cosmosService: CosmosService) { }
@@ -31,7 +31,7 @@ export class ChatService {
       .query<Message>('select * from m')
       .fetchAll();
 
-    return messages.resources
+    return messages.resources;
   }
 
   public async add(message: Message): Promise<void> {

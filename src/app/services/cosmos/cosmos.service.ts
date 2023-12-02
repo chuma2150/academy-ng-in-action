@@ -1,9 +1,9 @@
-import { Injectable } from "@angular/core";
-import { Container, CosmosClient, Database } from "@azure/cosmos";
-import { environment } from "src/environments/environment";
+import { Injectable } from '@angular/core';
+import { Container, CosmosClient, Database } from '@azure/cosmos';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CosmosService {
   private readonly client: CosmosClient;

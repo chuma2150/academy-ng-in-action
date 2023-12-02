@@ -9,8 +9,8 @@ describe('ChatService', () => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [
-        { provide: CosmosService, useValue: {} }
-      ]
+        { provide: CosmosService, useValue: {} },
+      ],
     });
   });
 

@@ -5,25 +5,17 @@ import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
   selector: 'app-avatar',
   templateUrl: './avatar.component.html',
   styleUrls: ['./avatar.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AvatarComponent {
-  private _name: string;
-  public url: SafeStyle;
 
-  constructor(private sanitizer: DomSanitizer) {
-  }
+  constructor(private sanitizer: DomSanitizer) { }
 
   @Input() size: 'large' | 'small' = 'large';
+  @Input() name: string;
 
-  @Input()
-  set name(aName: string) {
-    this._name = aName;
+  get url(): SafeStyle {
     const avatar = `url(https://avatars.dicebear.com/api/human/${encodeURIComponent(this.name)}.svg)`;
-    this.url = this.sanitizer.bypassSecurityTrustStyle(avatar);
-  }
-
-  get name() {
-    return this._name;
+    return this.sanitizer.bypassSecurityTrustStyle(avatar);
   }
 }

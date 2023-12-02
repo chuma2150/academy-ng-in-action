@@ -7,7 +7,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
   public currentProfile$: Observable<User | undefined>;
@@ -25,7 +25,7 @@ export class ProfileComponent implements OnInit {
   private getCurrentFromList(list: User[]) {
     return this.route.params.pipe(
       pluck<Params, string>('username'),
-      map(profile => list.find(u => u.name === profile))
+      map(profile => list.find(u => u.name === profile)),
     );
   }
 

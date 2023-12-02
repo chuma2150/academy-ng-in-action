@@ -12,7 +12,7 @@ describe('MainComponent', () => {
     TestBed.configureTestingModule({
       declarations: [MainComponent],
       providers: [{ provide: AdminService, useValue: {} }],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
       .compileComponents();
   }));

@@ -13,8 +13,8 @@ import { ComponentsModule } from '../../components/components.module';
     MatCardModule,
     ComponentsModule,
     ListModule,
-    ProfileRoutingModule
+    ProfileRoutingModule,
   ],
-  declarations: [ProfileComponent]
+  declarations: [ProfileComponent],
 })
 export class ProfileModule { }

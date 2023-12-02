@@ -5,7 +5,7 @@ import { first, map } from 'rxjs/operators';
 import { UserService } from '../../services/user/user.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class HasUserGuard implements CanActivate {
   constructor(private userService: UserService) {

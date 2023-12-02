@@ -4,7 +4,7 @@ import { User } from '../services/user/user.service';
 const filterUser = ({ name: testUserName }: User) => ({ name }: User) => name.localeCompare(testUserName);
 
 @Pipe({
-  name: 'filterUser'
+  name: 'filterUser',
 })
 export class FilterUserPipe implements PipeTransform {
 

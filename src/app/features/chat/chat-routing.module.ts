@@ -7,12 +7,12 @@ export const routes: Routes = [
   {
     path: 'chat',
     component: ChatComponent,
-    canActivate: [HasUserGuard]
-  }
+    canActivate: [HasUserGuard],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class ChatRoutingModule { }

@@ -24,9 +24,9 @@ describe('LoginComponent', () => {
       declarations: [LoginComponent],
       providers: [
         { provide: UserService, useClass: MockUserService },
-        { provide: MatSnackBar, userClass: { open: () => { } } }
+        { provide: MatSnackBar, useValue: {} },
       ],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
       .compileComponents();
   }));
