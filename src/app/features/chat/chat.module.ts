@@ -1,11 +1,11 @@
-import {ListModule} from './../list/list.module';
-import {ComponentsModule} from './../../components/components.module';
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import { ListModule } from './../list/list.module';
+import { ComponentsModule } from './../../components/components.module';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
-import {ChatRoutingModule} from './chat-routing.module';
-import {ChatComponent} from './chat.component';
-import {FormsModule} from '@angular/forms';
+import { ChatRoutingModule } from './chat-routing.module';
+import { ChatComponent } from './chat.component';
+import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';

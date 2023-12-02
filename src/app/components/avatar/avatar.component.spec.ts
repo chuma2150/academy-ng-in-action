@@ -16,16 +16,16 @@ describe('AvatarComponent', () => {
   let fixture: ComponentFixture<TestComponent>;
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ TestComponent, AvatarComponent ]
+      declarations: [TestComponent, AvatarComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
-   beforeEach(() => {
-     fixture = TestBed.createComponent(TestComponent);
-     component = fixture.componentInstance;
-     fixture.detectChanges();
-   });
+  beforeEach(() => {
+    fixture = TestBed.createComponent(TestComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
 
   it('should create', () => {
     expect(component).toBeTruthy();

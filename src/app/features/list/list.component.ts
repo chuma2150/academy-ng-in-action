@@ -1,6 +1,6 @@
-import {UserService, User} from './../../services/user/user.service';
-import {Component, OnInit, EventEmitter, Output, Input} from '@angular/core';
-import {map, Observable, zip} from 'rxjs';
+import { UserService, User } from './../../services/user/user.service';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { map, Observable, zip } from 'rxjs';
 
 @Component({
   selector: 'app-list',
@@ -14,7 +14,7 @@ export class ListComponent implements OnInit {
   @Output() selectUser: EventEmitter<User | null> = new EventEmitter<User | null>();
   public users$: Observable<User[]>;
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
     this.users$ = zip(

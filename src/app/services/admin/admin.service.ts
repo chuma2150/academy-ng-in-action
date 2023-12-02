@@ -6,7 +6,6 @@ import { ChatService } from '../chat/chat.service';
   providedIn: 'root'
 })
 export class AdminService {
-
   constructor(private readonly userService: UserService, private readonly chatService: ChatService) { }
 
   async user() {

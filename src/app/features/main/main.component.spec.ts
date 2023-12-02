@@ -10,11 +10,11 @@ describe('MainComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ MainComponent ],
-      providers: [ {provide: AdminService, useValue: {}} ],
+      declarations: [MainComponent],
+      providers: [{ provide: AdminService, useValue: {} }],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

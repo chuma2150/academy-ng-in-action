@@ -1,4 +1,4 @@
-import {LitElement, html, css, property} from 'lit-element';
+import { LitElement, html, css, property } from 'lit-element';
 
 // Extend the LitElement base class
 // export the class, so it can be imported where it is needed
@@ -47,8 +47,8 @@ export class Ti8mNavItemCustomComponent extends LitElement {
     }
   `;
 
-  @property( { type : String }  ) href;
-  @property( { type : String }  ) title;
+  @property({ type: String }) href;
+  @property({ type: String }) title;
 
   constructor() {
     super();

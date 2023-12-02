@@ -2,13 +2,13 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserComponent } from './user.component';
-import {User, UserService} from '../../services/user/user.service';
-import {of} from 'rxjs';
+import { User, UserService } from '../../services/user/user.service';
+import { of } from 'rxjs';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 const users: User[] = [
-  {name: 'TEST USER'},
-  {name: 'TEST USER 2'}
+  { name: 'TEST USER' },
+  { name: 'TEST USER 2' }
 ];
 
 export class MockUserService {
@@ -23,11 +23,11 @@ describe('UserComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
-      declarations: [ UserComponent ],
-      providers: [{ provide: UserService, useClass: MockUserService}],
+      declarations: [UserComponent],
+      providers: [{ provide: UserService, useClass: MockUserService }],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
