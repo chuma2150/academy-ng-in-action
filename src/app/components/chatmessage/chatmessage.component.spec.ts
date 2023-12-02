@@ -15,14 +15,14 @@ describe('ChatmessageComponent', () => {
       declarations: [ChatmessageComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ChatmessageComponent);
     component = fixture.componentInstance;
 
-    component.message = {text: 'TEST', sender: 'ABC', receiver: null};
+    component.message = { text: 'TEST', sender: 'ABC', receiver: null };
     fixture.detectChanges();
   });
 
@@ -31,7 +31,7 @@ describe('ChatmessageComponent', () => {
   });
 
   it('should have a sent class', () => {
-    component.current = {name: 'ABC'};
+    component.current = { name: 'ABC' };
     fixture.detectChanges();
     const sent = getSentCssClass(fixture);
 
@@ -39,7 +39,7 @@ describe('ChatmessageComponent', () => {
   });
 
   it('should have a not sent class', () => {
-    component.current = {name: 'NOTABC'};
+    component.current = { name: 'NOTABC' };
     fixture.detectChanges();
     const sent = getSentCssClass(fixture);
 

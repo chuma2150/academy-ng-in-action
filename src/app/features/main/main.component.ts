@@ -8,6 +8,5 @@ import { AdminService } from '../../services/admin/admin.service';
 })
 export class MainComponent {
 
-  constructor(public admin: AdminService) {
-  }
+  constructor(public admin: AdminService) { }
 }

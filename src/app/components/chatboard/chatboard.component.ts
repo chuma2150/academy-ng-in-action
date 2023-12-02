@@ -17,5 +17,4 @@ export class ChatboardComponent implements OnInit {
   ngOnInit() {
     this.messages = this.service.messages(this.user);
   }
-
 }

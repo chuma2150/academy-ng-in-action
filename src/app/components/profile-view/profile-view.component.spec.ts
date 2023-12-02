@@ -9,9 +9,9 @@ describe('ProfileViewComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProfileViewComponent, AgePipe ]
+      declarations: [ProfileViewComponent, AgePipe]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

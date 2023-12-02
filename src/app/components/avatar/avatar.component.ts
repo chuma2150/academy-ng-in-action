@@ -1,5 +1,5 @@
-import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
-import {DomSanitizer, SafeStyle} from '@angular/platform-browser';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-avatar',

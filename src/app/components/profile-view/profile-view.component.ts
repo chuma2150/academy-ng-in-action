@@ -1,5 +1,5 @@
-import {Component, Input} from '@angular/core';
-import {User} from '../../services/user/user.service';
+import { Component, Input } from '@angular/core';
+import { User } from '../../services/user/user.service';
 
 @Component({
   selector: 'app-profile-view',

@@ -1,12 +1,12 @@
 import { Pipe, PipeTransform } from "@angular/core";
 
 @Pipe({
-    name: 'age'
-  })
+  name: 'age'
+})
 export class AgePipe implements PipeTransform {
-    transform(birthDate?: Date): string {
-        if (!birthDate) { return ''; }
+  transform(birthDate?: Date): string {
+    if (!birthDate) { return ''; }
 
-        return (new Date().getFullYear() - birthDate.getFullYear()).toString();
-    }
+    return (new Date().getFullYear() - birthDate.getFullYear()).toString();
+  }
 }
