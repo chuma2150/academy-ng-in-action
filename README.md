@@ -8,10 +8,10 @@ It consists of two branches. The main branch, which serves as a starting point a
 
 The repo consists of two parts. A UI where the exercises can be found and a API service to provide a fill UI-to-BE-to-UI flow.
 
-## For the UI, please refeer to
+## For the UI, please refer to
 
 [UI](./ui/README.md).
 
-## For the API service, please refeer to
+## For the API service, please refer to
 
-(Content will follow).
+[API service](./api/README.md).
