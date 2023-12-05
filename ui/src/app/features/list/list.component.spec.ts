@@ -1,9 +1,9 @@
-import { FilterUserPipe } from './../../pipe/filter-user.pipe';
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ListComponent } from './list.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { UserService } from '../../services/user/user.service';
-import { MockUserService } from '../../components/user/user.component.spec';
+import { ListComponent } from './list.component';
+import { FilterUserPipe } from 'src/app/pipes';
+import { UserService } from 'src/app/services';
+import { MockUserService } from 'src/app/components/user/user.component.spec';
 
 describe('ListComponent', () => {
   let component: ListComponent;

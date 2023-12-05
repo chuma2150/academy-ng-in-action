@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { User } from '../../services/user/user.service';
-import { Message } from '../../services/chat/message';
+import { Message, User } from 'src/app/services';
 
 @Component({
   selector: 'app-chatmessage',
@@ -9,5 +8,5 @@ import { Message } from '../../services/chat/message';
 })
 export class ChatmessageComponent {
   @Input() message: Message;
-  @Input() current: User | null;
+  @Input() current: User | undefined;
 }

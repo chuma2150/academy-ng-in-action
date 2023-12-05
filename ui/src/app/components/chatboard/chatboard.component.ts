@@ -1,7 +1,6 @@
-import { User } from './../../services/user/user.service';
-import { ChatService } from '../../services/chat/chat.service';
 import { Component, OnInit, Input } from '@angular/core';
-import { Message } from '../../services/chat/message';
+import { ChatService, Message, User } from 'src/app/services';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-chat-board',
@@ -9,8 +8,8 @@ import { Message } from '../../services/chat/message';
   styleUrls: ['./chatboard.component.scss'],
 })
 export class ChatboardComponent implements OnInit {
-  @Input() user: User | null = null;
-  public messages: Promise<Message[]>;
+  @Input() user: User | undefined;
+  public messages: Observable<Message[]>;
 
   constructor(public service: ChatService) { }
 

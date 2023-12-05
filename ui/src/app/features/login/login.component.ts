@@ -1,8 +1,8 @@
-import { User, UserService } from './../../services/user/user.service';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { first } from 'rxjs/operators';
+import { User, UserService } from 'src/app/services';
 
 @Component({
   selector: 'app-login',
@@ -32,7 +32,7 @@ export class LoginComponent {
     }
   }
 
-  async login(user: User | null) {
+  async login(user: User | undefined) {
     this.user.set(user);
     await this.navigate();
   }

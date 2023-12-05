@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ProfileComponent } from './profile.component';
-import { HasUserGuard } from '../../guards/has-user/has-user.guard';
+import { HasUserGuard } from 'src/app/guards';
 
 const routes: Routes = [
   {

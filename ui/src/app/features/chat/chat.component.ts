@@ -1,6 +1,4 @@
-import { ChatService } from '../../services/chat/chat.service';
-import { User, UserService } from './../../services/user/user.service';
-import { Message } from '../../services/chat/message';
+import { ChatService, Message, User, UserService } from 'src/app/services';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 
@@ -11,11 +9,11 @@ import { Subscription } from 'rxjs';
 })
 export class ChatComponent implements OnInit, OnDestroy {
   public text: string;
-  public msg: Message;
+  public message: Message;
 
-  public user: User | null;
+  public user?: User;
   private subscription: Subscription;
-  private receiver: User | null = null;
+  private receiver?: User;
 
   constructor(private userService: UserService, private chat: ChatService) {
   }
@@ -30,12 +28,12 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   public send() {
-    this.msg = { text: this.text, sender: this.user?.name ?? '', receiver: this.receiver && this.receiver.name };
+    this.message = { text: this.text, sender: this.user?.name ?? '', receiver: this.receiver?.name, date: new Date() };
     this.reset();
-    this.sendMessage(this.msg);
+    this.sendMessage(this.message);
   }
 
-  public selectReceiver(user: User | null) {
+  public selectReceiver(user: User | undefined) {
     this.receiver = user;
   }
 

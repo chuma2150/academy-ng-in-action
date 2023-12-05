@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { UserService } from '../user/user.service';
-import { ChatService } from '../chat/chat.service';
+import { Subscription } from 'rxjs';
+import { UserService } from '../user';
+import { ChatService } from '../chat';
 
 @Injectable({
   providedIn: 'root',
@@ -8,13 +9,15 @@ import { ChatService } from '../chat/chat.service';
 export class AdminService {
   constructor(private readonly userService: UserService, private readonly chatService: ChatService) { }
 
-  async user() {
-    const users = await this.userService.list();
-    console.log(users);
+  user(): Subscription {
+    return this.userService
+      .list()
+      .subscribe(console.log);
   }
 
-  async message() {
-    const messages = await this.chatService.list();
-    console.log(messages);
+  message(): Subscription {
+    return this.chatService
+      .list()
+      .subscribe(console.log);
   }
 }

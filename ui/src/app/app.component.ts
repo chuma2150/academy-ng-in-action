@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { User, UserService } from './services/user/user.service';
 import { Observable } from 'rxjs';
+import { User, UserService } from './services';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  public user$: Observable<User | null>;
+  public user$: Observable<User | undefined>;
   constructor(private userService: UserService) {
   }
 

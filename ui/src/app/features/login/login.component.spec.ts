@@ -1,14 +1,13 @@
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { LoginComponent } from './login.component';
 import { FormsModule } from '@angular/forms';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
-import { UserService } from '../../services/user/user.service';
-import { MockUserService } from '../../components/user/user.component.spec';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { LoginComponent } from './login.component';
+import { ChatModule } from '../chat';
 import { routes } from '../chat/chat-routing.module';
-import { ChatModule } from '../chat/chat.module';
+import { UserService } from 'src/app/services';
+import { MockUserService } from 'src/app/components/user/user.component.spec';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;

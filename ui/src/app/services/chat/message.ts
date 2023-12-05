@@ -1,6 +1,7 @@
 export interface Message {
+  id?: string;
   text: string;
   sender: string;
-  receiver: string | null;
-  date?: Date;
+  receiver?: string;
+  date: Date;
 }

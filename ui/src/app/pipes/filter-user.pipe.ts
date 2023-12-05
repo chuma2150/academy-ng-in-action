@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { User } from '../services/user/user.service';
+import { User } from '../services';
 
 const filterUser = ({ name: testUserName }: User) => ({ name }: User) => name.localeCompare(testUserName);
 
@@ -7,7 +7,6 @@ const filterUser = ({ name: testUserName }: User) => ({ name }: User) => name.lo
   name: 'filterUser',
 })
 export class FilterUserPipe implements PipeTransform {
-
   transform(users: User[], args?: User): User[] | null {
     if (!Array.isArray(users)) {
       return null;
@@ -15,5 +14,4 @@ export class FilterUserPipe implements PipeTransform {
 
     return args ? users.filter(filterUser(args)) : users;
   }
-
 }
