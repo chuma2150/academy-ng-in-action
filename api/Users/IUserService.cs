@@ -3,8 +3,8 @@
 public interface IUserService
 {
     Task<IReadOnlyCollection<UserDto>> GetAsync();
-    
-    Task AddAsync(UserDto user);
-    
+
+    Task<string> AddAsync(UserDto user);
+
     Task UpdateAsync(UserDto user);
 }

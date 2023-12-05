@@ -1,6 +1,5 @@
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { AgePipe } from './age.pipe';
-
 import { ProfileViewComponent } from './profile-view.component';
 
 describe('ProfileViewComponent', () => {

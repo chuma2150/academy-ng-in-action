@@ -1,41 +1,37 @@
-import { User } from './../user/user.service';
 import { Injectable } from '@angular/core';
 import { Message } from './message';
-import { CosmosService } from '../cosmos/cosmos.service';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+import { Observable, map, tap } from 'rxjs';
+import { User } from '../user';
+
+const MESSAGES_ENDPOINT = `${environment.endpoint}/messages`;
 
 @Injectable({
   providedIn: 'root',
 })
 export class ChatService {
-  constructor(private readonly cosmosService: CosmosService) { }
+  constructor(private readonly http: HttpClient) { }
 
-  public async messages(user: User | null): Promise<Message[]> {
-    const senderCollection = await this.cosmosService.messages.items
-      .query<Message>(`select * from m where m.name = '${user?.name}'`)
-      .fetchAll();
-
-    const receiverCollection = await this.cosmosService.messages.items
-      .query<Message>(`select * from m where m.receiver = '${user?.name}'`)
-      .fetchAll();
-
-    const publicCollection = await this.cosmosService.messages.items
-      .query<Message>(`select * from m where m.receiver = null and m.sender != '${user?.name}'`)
-      .fetchAll();
-
-    return [senderCollection, receiverCollection, publicCollection]
-      .flatMap(c => c.resources);
+  public messages(user: User | undefined): Observable<Message[]> {
+    return this.http
+      .get<Message[]>(`${MESSAGES_ENDPOINT}/user/${user?.name}`)
+      .pipe(map(this.mapMessages));
   }
 
-  public async list(): Promise<Message[]> {
-    const messages = await this.cosmosService.messages.items
-      .query<Message>('select * from m')
-      .fetchAll();
-
-    return messages.resources;
+  public list(): Observable<Message[]> {
+    return this.http
+      .get<Message[]>(MESSAGES_ENDPOINT)
+      .pipe(map(messages => messages.map(m => ({ ...m, date: new Date(m.date) }))));
   }
 
-  public async add(message: Message): Promise<void> {
-    const dbMessage = await this.cosmosService.messages.items.create(message);
-    console.log(`ChatService.add, chatId: ${dbMessage.item.id}`);
+  public add(message: Message): Observable<string> {
+    return this.http
+      .post<string>(MESSAGES_ENDPOINT, message)
+      .pipe(tap(id => console.log('CharService.add', { ...message, id })));
+  }
+
+  private mapMessages(messages: Message[]): Message[] {
+    return messages.map(m => ({ ...m, date: new Date(m.date) }));
   }
 }

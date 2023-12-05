@@ -1,8 +1,8 @@
 import { Observable, from } from 'rxjs';
 import { map, switchMap, pluck } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
-import { UserService, User } from '../../services/user/user.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { User, UserService } from 'src/app/services';
 
 @Component({
   selector: 'app-profile',
@@ -29,7 +29,7 @@ export class ProfileComponent implements OnInit {
     );
   }
 
-  async selectProfile(user: User | null) {
+  async selectProfile(user: User | undefined) {
     await this.router.navigate(['profile', user?.name]);
   }
 }

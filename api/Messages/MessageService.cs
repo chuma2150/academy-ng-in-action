@@ -16,20 +16,21 @@ public class MessageService(ICosmosService service) : IMessageService
            .ToList();
     }
 
-    public async Task AddAsync(MessageDto message) => await service.Messages.CreateItemAsync(message);
-    
+    public async Task<string> AddAsync(MessageDto message)
+       => (await service.Messages.CreateItemAsync(message)).Resource.Id;
+
     public async Task<IReadOnlyCollection<MessageDto>> GetForUserAsync(string userName)
     {
         using var senderIterator = service.Messages
            .GetItemLinqQueryable<MessageDto>()
            .Where(m => m.Sender == userName)
            .ToFeedIterator();
-        
+
         using var receiverIterator = service.Messages
            .GetItemLinqQueryable<MessageDto>()
            .Where(m => m.Receiver == userName)
            .ToFeedIterator();
-        
+
         using var publicIterator = service.Messages
            .GetItemLinqQueryable<MessageDto>()
            .Where(m => m.Receiver == null && m.Sender != userName)

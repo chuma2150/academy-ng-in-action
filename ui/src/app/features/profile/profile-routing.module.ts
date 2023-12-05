@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { HasUserGuard } from 'src/app/guards';
+import { SettingsComponent } from './settings';
 import { ProfileComponent } from './profile.component';
-import { HasUserGuard } from '../../guards/has-user/has-user.guard';
-import { SettingsComponent } from './settings/settings.component';
 import { CurrentUserResolver } from './current-user.resolver';
 
 const routes: Routes = [

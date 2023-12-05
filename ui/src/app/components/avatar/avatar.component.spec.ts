@@ -1,8 +1,7 @@
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { AvatarComponent } from './avatar.component';
 import { By } from '@angular/platform-browser';
 import { Component } from '@angular/core';
+import { AvatarComponent } from './avatar.component';
 
 @Component({
   selector: 'app-test-cmpt',

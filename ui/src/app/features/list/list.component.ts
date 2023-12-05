@@ -1,6 +1,6 @@
-import { UserService, User } from './../../services/user/user.service';
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { map, Observable, zip } from 'rxjs';
+import { User, UserService } from 'src/app/services';
 
 @Component({
   selector: 'app-list',
@@ -8,10 +8,10 @@ import { map, Observable, zip } from 'rxjs';
   styleUrls: ['./list.component.scss'],
 })
 export class ListComponent implements OnInit {
-  @Input() user: User | null;
+  @Input() user: User | undefined;
   @Input() hideCurrentUser = false;
   @Input() selected?: User | null;
-  @Output() selectUser: EventEmitter<User | null> = new EventEmitter<User | null>();
+  @Output() selectUser: EventEmitter<User | undefined> = new EventEmitter<User | undefined>();
   public users$: Observable<User[]>;
 
   constructor(private userService: UserService) { }
@@ -26,9 +26,9 @@ export class ListComponent implements OnInit {
   }
 
   toggleUser(user: User) {
-    let newUser: User | null = user;
+    let newUser: User | undefined = user;
     if (this.selected === user) {
-      newUser = null;
+      newUser = undefined;
     }
 
     this.selectUser.emit(newUser);

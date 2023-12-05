@@ -1,10 +1,9 @@
 import { RouterTestingModule } from '@angular/router/testing';
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { UserComponent } from './user.component';
-import { User, UserService } from '../../services/user/user.service';
-import { of } from 'rxjs';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { of } from 'rxjs';
+import { UserComponent } from './user.component';
+import { User, UserService } from 'src/app/services';
 
 const users: User[] = [
   { name: 'TEST USER' },

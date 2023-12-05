@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ChatComponent } from './chat.component';
-import { HasUserGuard } from '../../guards/has-user/has-user.guard';
+import { HasUserGuard } from 'src/app/guards';
 
 export const routes: Routes = [
   {

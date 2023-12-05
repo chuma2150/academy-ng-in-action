@@ -1,8 +1,7 @@
 import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
-
-import { ChatmessageComponent } from './chatmessage.component';
 import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
+import { ChatmessageComponent } from './chatmessage.component';
 
 const getSentCssClass = <T>(fixture: ComponentFixture<T>): DebugElement | null => fixture.debugElement.query(By.css('.sent'));
 
@@ -22,7 +21,7 @@ describe('ChatmessageComponent', () => {
     fixture = TestBed.createComponent(ChatmessageComponent);
     component = fixture.componentInstance;
 
-    component.message = { text: 'TEST', sender: 'ABC', receiver: null };
+    component.message = { text: 'TEST', sender: 'ABC', receiver: undefined, date: new Date() };
     fixture.detectChanges();
   });
 

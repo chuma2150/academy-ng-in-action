@@ -14,16 +14,16 @@ public class UserService(ICosmosService service) : IUserService
         return (await iterator.ReadNextAsync()).ToList();
     }
 
-    public async Task AddAsync(UserDto user)
+    public async Task<string> AddAsync(UserDto user)
     {
         var userFromCosmos = await GetUserAsync(service, user);
 
         if (userFromCosmos != null)
         {
-            throw new InvalidOperationException($"User with name '{user.Name}' already exists. Id: {user.Id}");
+            throw new InvalidOperationException($"User '{user.Name}' already exists. Id: {user.Id}");
         }
-        
-        await service.Users.CreateItemAsync(user);
+
+        return (await service.Users.CreateItemAsync(user)).Resource.Id;
     }
 
     public async Task UpdateAsync(UserDto user)
@@ -32,10 +32,10 @@ public class UserService(ICosmosService service) : IUserService
 
         if (userFromCosmos == null)
         {
-            throw new InvalidOperationException($"User with name '{user.Name}' does not exist.");
+            throw new InvalidOperationException($"User '{user.Name}' does not exist.");
         }
-        
-        await service.Users.CreateItemAsync(user);
+
+        await service.Users.UpsertItemAsync(user);
     }
 
     private static async Task<UserDto?> GetUserAsync(ICosmosService service, UserDto user)

@@ -4,8 +4,8 @@ import { CommonModule } from '@angular/common';
 import { ListRoutingModule } from './list-routing.module';
 import { ListComponent } from './list.component';
 import { MatListModule } from '@angular/material/list';
-import { ComponentsModule } from '../../components/components.module';
-import { FilterUserPipe } from '../../pipe/filter-user.pipe';
+import { FilterUserPipe } from 'src/app/pipes';
+import { ComponentsModule } from 'src/app/components';
 
 @NgModule({
   imports: [

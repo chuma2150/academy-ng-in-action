@@ -1,18 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { map, pluck } from 'rxjs/operators';
-import { HairColors, User, UserService } from 'src/app/services/user/user.service';
+import { HairColors, User, UserService } from 'src/app/services';
 
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss'],
 })
-export class SettingsComponent implements OnInit {
+export class SettingsComponent implements OnInit, OnDestroy {
   public currentProfile$: Observable<User>;
   public availableHairColors = HairColors;
+
+  userServiceSubscription?: Subscription;
 
   constructor(private route: ActivatedRoute, private userService: UserService, private snackbar: MatSnackBar) { }
 
@@ -23,12 +25,16 @@ export class SettingsComponent implements OnInit {
     );
   }
 
-  async save(updatedProfile: User): Promise<void> {
-    try {
-      await this.userService.update(updatedProfile);
-      this.snackbar.open('User updated!', undefined, { duration: 5000 });
-    } catch (error) {
-      this.snackbar.open(`Update failed: ${error}`, undefined, { duration: 5000 });
-    }
+  save(updatedProfile: User): void {
+    this.userServiceSubscription = this.userService
+      .update(updatedProfile)
+      .subscribe({
+        complete: () => this.snackbar.open('User updated!', undefined, { duration: 5000 }),
+        error: error => this.snackbar.open(`Update failed: ${error}`, undefined, { duration: 5000 }),
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.userServiceSubscription?.unsubscribe();
   }
 }

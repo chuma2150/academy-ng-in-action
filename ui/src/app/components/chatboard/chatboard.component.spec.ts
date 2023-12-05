@@ -1,10 +1,9 @@
 import { By } from '@angular/platform-browser';
 import { waitForAsync, ComponentFixture, TestBed, inject } from '@angular/core/testing';
-import { ChatboardComponent } from './chatboard.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { of } from 'rxjs';
-
-import { ChatService } from '../../services/chat/chat.service';
+import { ChatService } from 'src/app/services';
+import { ChatboardComponent } from './chatboard.component';
 
 const mockMessages = [{
   text: 'test',
