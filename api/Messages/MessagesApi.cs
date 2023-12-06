@@ -1,4 +1,4 @@
-﻿namespace api.Messages;
+﻿namespace Api.Messages;
 
 public static class MessagesApi
 {

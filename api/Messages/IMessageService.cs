@@ -1,6 +1,6 @@
-﻿using api.Users;
+﻿using Api.Users;
 
-namespace api.Messages;
+namespace Api.Messages;
 
 public interface IMessageService
 {

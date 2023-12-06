@@ -1,4 +1,4 @@
-﻿namespace api.Users;
+﻿namespace Api.Users;
 
 public interface IUserService
 {

@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace api.Messages;
+namespace Api.Messages;
 
 public class MessageDto
 {

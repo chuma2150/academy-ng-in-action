@@ -1,8 +1,8 @@
-﻿using api.Cosmos;
+﻿using Api.Cosmos;
 using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.Cosmos.Linq;
 
-namespace api.Messages;
+namespace Api.Messages;
 
 public class MessageService(ICosmosService service) : IMessageService
 {

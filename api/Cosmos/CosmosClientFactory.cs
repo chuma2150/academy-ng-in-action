@@ -1,7 +1,7 @@
 ﻿using Azure.Identity;
 using Microsoft.Azure.Cosmos;
 
-namespace api.Cosmos;
+namespace Api.Cosmos;
 
 public class CosmosClientFactory : ICosmosClientFactory
 {

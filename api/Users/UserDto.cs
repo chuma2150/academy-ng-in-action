@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace api.Users;
+namespace Api.Users;
 
 public class UserDto
 {

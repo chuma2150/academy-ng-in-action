@@ -1,7 +1,7 @@
-﻿using api.Cosmos;
+﻿using Api.Cosmos;
 using Microsoft.Azure.Cosmos.Linq;
 
-namespace api.Users;
+namespace Api.Users;
 
 public class UserService(ICosmosService service) : IUserService
 {

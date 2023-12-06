@@ -1,6 +1,6 @@
-using api.Cosmos;
-using api.Messages;
-using api.Users;
+using Api.Cosmos;
+using Api.Messages;
+using Api.Users;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Azure.Cosmos;
 
-namespace api.Cosmos;
+namespace Api.Cosmos;
 
 public interface ICosmosService
 {
