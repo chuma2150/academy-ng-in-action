@@ -1,0 +1,6 @@
+{
+  "/api": {
+    "target": "https://academy-ng-in-action-api.azurewebsites.net",
+    "secure": false
+  }
+}
