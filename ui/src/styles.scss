@@ -67,3 +67,8 @@ h1, h2, h3, h4 {
 .mat-tab-body-wrapper{
   height: 60vh;
 }
+
+.mat-mdc-list-item-unscoped-content {
+  display: flex;
+  align-items: center;
+}
