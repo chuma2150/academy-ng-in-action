@@ -1,12 +1,4 @@
-import {
-  Observable,
-  BehaviorSubject,
-  Subject,
-  tap,
-  map,
-  switchMap,
-  throwError,
-} from 'rxjs';
+import { Observable, BehaviorSubject, Subject, tap, map, switchMap, throwError } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
@@ -18,9 +10,7 @@ const USER_ENDPOINT = `${environment.endpoint}/users`;
   providedIn: 'root',
 })
 export class UserService {
-  private user$: Subject<User | undefined> = new BehaviorSubject<
-    User | undefined
-  >(undefined);
+  private user$: Subject<User | undefined> = new BehaviorSubject<User | undefined>(undefined);
 
   constructor(private readonly http: HttpClient) {
     const currentUser = localStorage.getItem('currentUser');
@@ -41,19 +31,20 @@ export class UserService {
   }
 
   public update(user: User): Observable<unknown> {
-    return this.http.put(USER_ENDPOINT, user).pipe(tap(() => this.set(user)));
+    return this.http
+      .put(USER_ENDPOINT, user)
+      .pipe(tap(() => this.set(user)));
   }
 
   public add(user: User): Observable<string> {
-    return this.userExists(user).pipe(
-      switchMap(exists =>
-        exists
-          ? throwError(() => new Error(`User '${user.name}' already exists.`))
-          : this.http
-            .post<string>(USER_ENDPOINT, user)
-            .pipe(tap(id => this.set({ ...user, id }))),
-      ),
-    );
+    return this
+      .userExists(user)
+      .pipe(switchMap(exists => exists
+        ? throwError(() => new Error(`User '${user.name}' already exists.`))
+        : this.http
+          .post<string>(USER_ENDPOINT, user)
+          .pipe(tap(id => this.set({ ...user, id }))),
+      ));
   }
 
   public list(): Observable<User[]> {
@@ -67,17 +58,11 @@ export class UserService {
   }
 
   private mapUser(user: User): User {
-    return {
-      ...user,
-      birthDate: user.birthDate ? new Date(user.birthDate) : undefined,
-    };
+    return { ...user, birthDate: user.birthDate ? new Date(user.birthDate) : undefined };
   }
 
   private userExists(user: User): Observable<boolean> {
-    return this.list().pipe(
-      map(users =>
-        users.some(u => u.name.toUpperCase() === user.name.toUpperCase()),
-      ),
-    );
+    return this.list()
+      .pipe(map(users => users.some(u => u.name.toUpperCase() === user.name.toUpperCase())));
   }
 }
