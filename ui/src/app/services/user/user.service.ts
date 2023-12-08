@@ -22,7 +22,7 @@ export class UserService {
 
   public set(user: User | undefined) {
     localStorage.setItem('currentUser', JSON.stringify(user));
-    this.user$.next(undefined);
+    this.user$.next(user);
   }
 
   public unset() {
