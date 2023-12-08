@@ -25,7 +25,7 @@ export class UserService {
   constructor(private readonly http: HttpClient) {
     const currentUser = localStorage.getItem('currentUser');
 
-    if (currentUser && currentUser !== 'null') {
+    if (currentUser && currentUser !== 'undefined') {
       this.set(this.mapUser(JSON.parse(currentUser)));
     }
   }
