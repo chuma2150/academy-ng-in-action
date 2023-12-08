@@ -59,18 +59,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ng-in-action:build"
+            "buildTarget": "ng-in-action:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ng-in-action:build:production"
+              "buildTarget": "ng-in-action:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ng-in-action:build"
+            "buildTarget": "ng-in-action:build"
           }
         },
         "test": {
