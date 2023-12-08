@@ -12,7 +12,7 @@
     "max_preserve_newlines": 10
   },
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   },
   "editor.formatOnSave": true,
   "eslint.workingDirectories": [
