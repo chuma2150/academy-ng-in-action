@@ -23,13 +23,13 @@ $theme: mat.define-light-theme($primary, $accent, $warn);
 @include mat.all-component-themes($theme);*/
 
 body {
-    font-family: Roboto, 'Helvetica Neue', sans-serif;
-    font-weight: normal;
-    margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  font-weight: normal;
+  margin: 0;
 }
 
 h1, h2, h3, h4 {
-    font-weight: normal;
+  font-weight: normal;
 }
 
 .full-width{
