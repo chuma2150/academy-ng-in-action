@@ -15,21 +15,29 @@ export class LoginComponent {
   constructor(private router: Router,
     private user: UserService,
     public snackBar: MatSnackBar) {
-    this.user.user().pipe(first()).subscribe(async currentUser => {
-      if (currentUser) {
-        await this.navigate();
-      }
-    });
+    this.user
+      .user()
+      .pipe(first())
+      .subscribe(async currentUser => {
+        if (currentUser) {
+          await this.navigate();
+        }
+      });
   }
 
-  async register() {
+  register() {
     const user: User = { name: this.name ?? '' };
-    try {
-      await this.user.add(user);
-      await this.login(user);
-    } catch (error) {
-      this.showError(`User could not be added: ${error}`);
-    }
+
+    this.user
+      .add(user)
+      .subscribe({
+        complete: async () => await this.navigate(),
+        error: error => {
+          console.log(error);
+          this.showError(`User could not be added: ${error}`);
+          this.name = null;
+        },
+      });
   }
 
   async login(user: User | undefined) {
