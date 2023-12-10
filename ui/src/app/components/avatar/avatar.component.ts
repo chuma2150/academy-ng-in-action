@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
-import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
+import { DomSanitizer } from '@angular/platform-browser';
+import { personas } from '@dicebear/collection';
+import { createAvatar } from '@dicebear/core';
 
 @Component({
   selector: 'app-avatar',
@@ -14,8 +16,11 @@ export class AvatarComponent {
   @Input() size: 'large' | 'small' = 'large';
   @Input() name: string;
 
-  get url(): SafeStyle {
-    const avatar = `url(https://avatars.dicebear.com/api/human/${encodeURIComponent(this.name)}.svg)`;
-    return this.sanitizer.bypassSecurityTrustStyle(avatar);
+  get url() {
+    const avatar = createAvatar(personas, {
+      seed: this.name,
+    });
+
+    return this.sanitizer.bypassSecurityTrustUrl(avatar.toDataUriSync());
   }
 }

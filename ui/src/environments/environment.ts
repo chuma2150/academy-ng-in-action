@@ -4,6 +4,6 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 export const environment = {
   production: false,
-  // If BE is hosted locally (dotnet run) then use http://localhost:5125 or https//localhost:7157.
+  // If BE is hosted locally (dotnet run) then use http://localhost:5125 or https://localhost:7157.
   endpoint: 'https://academy-ng-in-action-api.azurewebsites.net',
 };

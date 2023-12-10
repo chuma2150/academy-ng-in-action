@@ -14,7 +14,7 @@ public class UserService(ICosmosService service) : IUserService
         return (await iterator.ReadNextAsync()).ToList();
     }
 
-    public async Task<string> AddAsync(UserDto user)
+    public async Task<UserDto> AddAsync(UserDto user)
     {
         var userFromCosmos = await GetUserAsync(service, user);
 
@@ -23,7 +23,7 @@ public class UserService(ICosmosService service) : IUserService
             throw new InvalidOperationException($"User '{user.Name}' already exists. Id: {user.Id}");
         }
 
-        return (await service.Users.CreateItemAsync(user)).Resource.Id;
+        return (await service.Users.CreateItemAsync(user)).Resource;
     }
 
     public async Task UpdateAsync(UserDto user)

@@ -16,8 +16,8 @@ public class MessageService(ICosmosService service) : IMessageService
            .ToList();
     }
 
-    public async Task<string> AddAsync(MessageDto message) 
-       => (await service.Messages.CreateItemAsync(message)).Resource.Id;
+    public async Task<MessageDto> AddAsync(MessageDto message) 
+       => (await service.Messages.CreateItemAsync(message)).Resource;
     
     public async Task<IReadOnlyCollection<MessageDto>> GetForUserAsync(string userName)
     {
