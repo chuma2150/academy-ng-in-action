@@ -30,20 +30,20 @@ export class UserService {
     this.set(undefined);
   }
 
-  public update(user: User): Observable<unknown> {
+  public update(user: User): Observable<void> {
     return this.http
-      .put(USER_ENDPOINT, user)
+      .put<void>(USER_ENDPOINT, user)
       .pipe(tap(() => this.set(user)));
   }
 
-  public add(user: User): Observable<string> {
+  public add(user: User): Observable<User> {
     return this
       .userExists(user)
       .pipe(switchMap(exists => exists
         ? throwError(() => new Error(`User '${user.name}' already exists.`))
         : this.http
-          .post<string>(USER_ENDPOINT, user)
-          .pipe(tap(id => this.set({ ...user, id }))),
+          .post<User>(USER_ENDPOINT, user)
+          .pipe(tap(({ id }) => this.set({ ...user, id }))),
       ));
   }
 

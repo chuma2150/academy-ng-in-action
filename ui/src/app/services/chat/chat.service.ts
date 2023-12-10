@@ -25,10 +25,10 @@ export class ChatService {
       .pipe(map(messages => messages.map(m => ({ ...m, date: new Date(m.date) }))));
   }
 
-  public add(message: Message): Observable<string> {
+  public add(message: Message): Observable<Message> {
     return this.http
-      .post<string>(MESSAGES_ENDPOINT, message)
-      .pipe(tap(id => console.log('CharService.add', { ...message, id })));
+      .post<Message>(MESSAGES_ENDPOINT, message)
+      .pipe(tap(({ id }) => console.log('CharService.add', { ...message, id })));
   }
 
   private mapMessages(messages: Message[]): Message[] {
