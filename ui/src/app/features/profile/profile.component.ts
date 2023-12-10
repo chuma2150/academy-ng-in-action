@@ -18,8 +18,7 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.currentProfile$ = from(this.userService.list())
-      .pipe(switchMap(list =>
-        this.getCurrentFromList(list)));
+      .pipe(switchMap(list => this.getCurrentFromList(list)));
   }
 
   private getCurrentFromList(list: User[]) {

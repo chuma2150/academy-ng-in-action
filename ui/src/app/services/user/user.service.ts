@@ -15,7 +15,7 @@ export class UserService {
   constructor(private readonly http: HttpClient) {
     const currentUser = localStorage.getItem('currentUser');
 
-    if (currentUser && currentUser !== 'null') {
+    if (currentUser && currentUser !== 'undefined') {
       this.set(this.mapUser(JSON.parse(currentUser)));
     }
   }
@@ -30,20 +30,20 @@ export class UserService {
     this.set(undefined);
   }
 
-  public update(user: User): Observable<unknown> {
+  public update(user: User): Observable<void> {
     return this.http
-      .put(USER_ENDPOINT, user)
+      .put<void>(USER_ENDPOINT, user)
       .pipe(tap(() => this.set(user)));
   }
 
-  public add(user: User): Observable<string> {
+  public add(user: User): Observable<User> {
     return this
       .userExists(user)
       .pipe(switchMap(exists => exists
         ? throwError(() => new Error(`User '${user.name}' already exists.`))
         : this.http
-          .post<string>(USER_ENDPOINT, user)
-          .pipe(tap(id => this.set({ ...user, id }))),
+          .post<User>(USER_ENDPOINT, user)
+          .pipe(tap(({ id }) => this.set({ ...user, id }))),
       ));
   }
 
@@ -62,8 +62,7 @@ export class UserService {
   }
 
   private userExists(user: User): Observable<boolean> {
-    return this
-      .list()
+    return this.list()
       .pipe(map(users => users.some(u => u.name.toUpperCase() === user.name.toUpperCase())));
   }
 }

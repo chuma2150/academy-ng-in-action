@@ -4,10 +4,10 @@ namespace Api.Messages;
 
 public interface IMessageService
 {
-    Task<IReadOnlyCollection<MessageDto>> GetAsync();
+  Task<IReadOnlyCollection<MessageDto>> GetAsync();
 
-    Task<string> AddAsync(MessageDto message);
+  Task<MessageDto> AddAsync(MessageDto message);
 
 
-    Task<IReadOnlyCollection<MessageDto>> GetForUserAsync(string userName);
+  Task<IReadOnlyCollection<MessageDto>> GetForUserAsync(string userName);
 }

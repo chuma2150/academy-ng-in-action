@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HasUserGuard } from 'src/app/guards';
 import { SettingsComponent } from './settings';
 import { ProfileComponent } from './profile.component';
+import { hasUserGuard } from 'src/app/guards';
 import { CurrentUserResolver } from './current-user.resolver';
 
 const routes: Routes = [
@@ -17,7 +17,7 @@ const routes: Routes = [
   {
     path: 'profile/:username',
     component: ProfileComponent,
-    canActivate: [HasUserGuard],
+    canActivate: [hasUserGuard],
   },
   {
     path: 'profile',

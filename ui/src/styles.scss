@@ -1,9 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @use '@angular/material' as mat;
-@import '@angular/material/theming';
 @import "@angular/material/prebuilt-themes/indigo-pink.css";
 @import url('//fonts.googleapis.com/icon?family=Material+Icons');
 
+@include mat.all-component-typographies();
 @include mat.core();
 
 /*$primary: mat.define-palette(mat.$lime-palette, 500);
@@ -15,13 +15,13 @@ $theme: mat.define-light-theme($primary, $accent, $warn);
 @include mat.all-component-themes($theme);*/
 
 body {
-    font-family: Roboto, 'Helvetica Neue', sans-serif;
-    font-weight: normal;
-    margin: 0;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  font-weight: normal;
+  margin: 0;
 }
 
 h1, h2, h3, h4 {
-    font-weight: normal;
+  font-weight: normal;
 }
 
 .full-width{
@@ -38,23 +38,24 @@ h1, h2, h3, h4 {
   margin: 5vh auto;
 }
 
-.mat-card > .mat-card-header> :first-child{
-  margin: -16px -16px 0 -16px;
-  padding: 16px 16px 0 16px;
+.mat-mdc-card > .mat-mdc-card-header> :first-child{
+  margin: -16px -16px 16px -16px;
+  padding: 16px;
   width: 100%;
   background-color: #3f51b5;
   font-weight: bold;
 }
 
-.mat-card-title{
+.mat-mdc-card-title{
   font-weight: bold;
   color: white;
 }
 
-.mat-card-content{
+.mat-mdc-card-content{
   padding-top: 16px;
 }
 
-.mat-tab-body-wrapper{
-  height: 60vh;
+.mat-mdc-list-item-unscoped-content {
+  display: flex;
+  align-items: center;
 }

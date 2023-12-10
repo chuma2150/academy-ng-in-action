@@ -15,8 +15,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
   private receiver?: User;
 
-  constructor(private userService: UserService, private chat: ChatService) {
-  }
+  constructor(private userService: UserService, private chat: ChatService) { }
 
   ngOnInit() {
     this.subscription = this.userService.user().subscribe(user => this.user = user);
