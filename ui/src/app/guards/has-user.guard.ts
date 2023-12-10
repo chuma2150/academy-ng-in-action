@@ -1,16 +1,11 @@
-import { Injectable } from '@angular/core';
+import { inject } from '@angular/core';
+import { CanActivateFn } from '@angular/router';
 
-import { Observable } from 'rxjs';
 import { first, map } from 'rxjs/operators';
 import { UserService } from '../services';
 
-@Injectable({
-  providedIn: 'root',
-})
-export class HasUserGuard  {
-  constructor(private userService: UserService) { }
+export const hasUserGuard: CanActivateFn = () => {
+  const userService = inject(UserService);
 
-  canActivate(): Observable<boolean> {
-    return this.userService.user().pipe(first(), map(user => !!user));
-  }
-}
+  return userService.user().pipe(first(), map(user => !!user));
+};
