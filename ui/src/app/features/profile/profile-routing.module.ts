@@ -3,15 +3,15 @@ import { Routes, RouterModule } from '@angular/router';
 import { SettingsComponent } from './settings';
 import { ProfileComponent } from './profile.component';
 import { hasUserGuard } from 'src/app/guards';
-import { CurrentUserResolver } from './current-user.resolver';
+import { currentUserResolver } from './current-user.resolver';
 
 const routes: Routes = [
   {
     path: 'profile/edit',
     component: SettingsComponent,
-    canActivate: [HasUserGuard],
+    canActivate: [hasUserGuard],
     resolve: {
-      user: CurrentUserResolver,
+      user: currentUserResolver,
     },
   },
   {

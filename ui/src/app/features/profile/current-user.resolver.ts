@@ -1,17 +1,10 @@
-import { Injectable } from '@angular/core';
-import { Resolve } from '@angular/router';
-import { Observable } from 'rxjs';
+import { inject } from '@angular/core';
+import { ResolveFn } from '@angular/router';
 import { first } from 'rxjs/operators';
 import { User, UserService } from 'src/app/services';
 
-@Injectable({
-  providedIn: 'root',
-})
-export class CurrentUserResolver implements Resolve<User | undefined> {
-  constructor(private userService: UserService) {
-  }
+export const currentUserResolver: ResolveFn<User | undefined> = () => {
+  const userService = inject(UserService);
 
-  resolve(): Observable<User | undefined> {
-    return this.userService.user().pipe(first());
-  }
+  return userService.user().pipe(first());
 }
