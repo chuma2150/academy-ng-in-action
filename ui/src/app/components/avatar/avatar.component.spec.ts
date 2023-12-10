@@ -34,7 +34,7 @@ describe('AvatarComponent', () => {
     const name = 'Hans';
     component.name = name;
     fixture.detectChanges();
-    const iconStyle = fixture.debugElement.query(By.css('i')).styles;
-    expect(iconStyle['background-image']).toEqual(`url("https://avatars.dicebear.com/api/human/${name}.svg")`);
+    const imgAttributes = fixture.debugElement.query(By.css('img')).attributes;
+    expect(imgAttributes['src']).toContain('data:image/svg+xml;utf8,');
   });
 });
