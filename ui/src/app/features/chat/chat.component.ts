@@ -18,8 +18,9 @@ export class ChatComponent implements OnInit, OnDestroy {
   constructor(private userService: UserService, private chat: ChatService) { }
 
   ngOnInit() {
-    this.subscription = this.userService.user().subscribe(user => this.user = user);
-    // init the message field
+    this.subscription = this.userService
+      .user()
+      .subscribe(user => this.user = user);
   }
 
   ngOnDestroy(): void {
@@ -27,7 +28,13 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   public send() {
-    this.message = { text: this.text, sender: this.user?.name ?? '', receiver: this.receiver?.name, date: new Date() };
+    this.message = {
+      text: this.text,
+      sender: this.user?.name ?? '',
+      receiver: this.receiver?.name,
+      date: new Date(),
+    };
+
     this.reset();
     this.sendMessage(this.message);
   }
@@ -37,7 +44,9 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   private sendMessage(message: Message) {
-    this.chat.add(message);
+    this.chat
+      .add(message)
+      .subscribe();
   }
 
   private reset() {
