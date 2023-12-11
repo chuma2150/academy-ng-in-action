@@ -7,4 +7,4 @@ export const currentUserResolver: ResolveFn<User | undefined> = () => {
   const userService = inject(UserService);
 
   return userService.user().pipe(first());
-}
+};
