@@ -12,7 +12,7 @@ export class ListComponent implements OnInit {
   @Input() hideCurrentUser = false;
   @Input() selected?: User | null;
   @Output() selectUser: EventEmitter<User | undefined> = new EventEmitter<User | undefined>();
-  public users$: Observable<User[]>;
+  users$: Observable<User[]>;
 
   constructor(private userService: UserService) { }
 

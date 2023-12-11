@@ -8,9 +8,9 @@ import { User, UserService } from './services';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  public user$: Observable<User | undefined>;
-  constructor(private userService: UserService) {
-  }
+  user$: Observable<User | undefined>;
+
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
     this.user$ = this.userService.user();

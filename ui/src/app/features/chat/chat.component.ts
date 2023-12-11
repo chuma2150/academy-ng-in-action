@@ -8,35 +8,45 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./chat.component.scss'],
 })
 export class ChatComponent implements OnInit, OnDestroy {
-  public text: string;
-  public message: Message;
+  text: string;
+  message: Message;
 
-  public user?: User;
-  private subscription: Subscription;
-  private receiver?: User;
+  user?: User;
+  subscription: Subscription;
+  receiver?: User;
 
   constructor(private userService: UserService, private chat: ChatService) { }
 
   ngOnInit() {
-    this.subscription = this.userService.user().subscribe(user => this.user = user);
+    this.subscription = this.userService
+      .user()
+      .subscribe(user => this.user = user);
   }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
 
-  public send() {
-    this.message = { text: this.text, sender: this.user?.name ?? '', receiver: this.receiver?.name, date: new Date() };
+  send() {
+    this.message = {
+      text: this.text,
+      sender: this.user?.name ?? '',
+      receiver: this.receiver?.name,
+      date: new Date(),
+    };
+
     this.reset();
     this.sendMessage(this.message);
   }
 
-  public selectReceiver(user: User | undefined) {
+  selectReceiver(user: User | undefined) {
     this.receiver = user;
   }
 
   private sendMessage(message: Message) {
-    this.chat.add(message);
+    this.chat
+      .add(message)
+      .subscribe();
   }
 
   private reset() {

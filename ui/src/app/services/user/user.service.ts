@@ -20,17 +20,17 @@ export class UserService {
     }
   }
 
-  public set(user: User | undefined) {
+  set(user: User | undefined) {
     localStorage.setItem('currentUser', JSON.stringify(user));
     this.user$.next(user);
   }
 
-  public unset() {
+  unset() {
     localStorage.clear();
     this.set(undefined);
   }
 
-  public add(user: User): Observable<User> {
+  add(user: User): Observable<User> {
     return this
       .userExists(user)
       .pipe(switchMap(exists => exists
@@ -47,13 +47,13 @@ export class UserService {
       .pipe(tap(() => this.set(user)));
   }
 
-  public list(): Observable<User[]> {
+  list(): Observable<User[]> {
     return this.http
       .get<User[]>(USER_ENDPOINT)
       .pipe(map(users => users.map(this.mapUser)));
   }
 
-  public user(): Observable<User | undefined> {
+  user(): Observable<User | undefined> {
     return this.user$.asObservable();
   }
 

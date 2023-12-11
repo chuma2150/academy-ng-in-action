@@ -9,9 +9,9 @@ import { Observable } from 'rxjs';
 })
 export class ChatboardComponent implements OnInit {
   @Input() user: User | undefined;
-  public messages: Observable<Message[]>;
+  messages: Observable<Message[]>;
 
-  constructor(public service: ChatService) { }
+  constructor(private service: ChatService) { }
 
   ngOnInit() {
     this.messages = this.service.messages(this.user);
