@@ -30,12 +30,6 @@ export class UserService {
     this.set(undefined);
   }
 
-  public update(user: User): Observable<void> {
-    return this.http
-      .put<void>(USER_ENDPOINT, user)
-      .pipe(tap(() => this.set(user)));
-  }
-
   public add(user: User): Observable<User> {
     return this
       .userExists(user)
@@ -45,6 +39,12 @@ export class UserService {
           .post<User>(USER_ENDPOINT, user)
           .pipe(tap(({ id }) => this.set({ ...user, id }))),
       ));
+  }
+
+  public update(user: User): Observable<void> {
+    return this.http
+      .put<void>(USER_ENDPOINT, user)
+      .pipe(tap(() => this.set(user)));
   }
 
   public list(): Observable<User[]> {
