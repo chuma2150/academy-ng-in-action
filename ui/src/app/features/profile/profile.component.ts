@@ -10,11 +10,13 @@ import { User, UserService } from 'src/app/services';
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
-  public currentProfile$: Observable<User | undefined>;
+  currentProfile$: Observable<User | undefined>;
+
   constructor(
     private userService: UserService,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+  ) { }
 
   ngOnInit() {
     this.currentProfile$ = from(this.userService.list())

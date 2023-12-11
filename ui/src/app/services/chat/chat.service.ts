@@ -13,19 +13,19 @@ const MESSAGES_ENDPOINT = `${environment.endpoint}/messages`;
 export class ChatService {
   constructor(private readonly http: HttpClient) { }
 
-  public messages(user: User | undefined): Observable<Message[]> {
+  messages(user: User | undefined): Observable<Message[]> {
     return this.http
       .get<Message[]>(`${MESSAGES_ENDPOINT}/user/${user?.name}`)
       .pipe(map(this.mapMessages));
   }
 
-  public list(): Observable<Message[]> {
+  list(): Observable<Message[]> {
     return this.http
       .get<Message[]>(MESSAGES_ENDPOINT)
       .pipe(map(messages => messages.map(m => ({ ...m, date: new Date(m.date) }))));
   }
 
-  public add(message: Message): Observable<Message> {
+  add(message: Message): Observable<Message> {
     return this.http
       .post<Message>(MESSAGES_ENDPOINT, message)
       .pipe(tap(({ id }) => console.log('CharService.add', { ...message, id })));

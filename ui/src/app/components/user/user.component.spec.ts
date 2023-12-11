@@ -11,8 +11,8 @@ const users: User[] = [
 ];
 
 export class MockUserService {
-  public user = () => of(users[0]);
-  public list = () => of(users);
+  user = () => of(users[0]);
+  list = () => of(users);
 }
 
 describe('UserComponent', () => {

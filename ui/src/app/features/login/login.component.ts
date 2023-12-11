@@ -10,11 +10,13 @@ import { User, UserService } from 'src/app/services';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  public name: string | null;
+  name: string | null;
 
-  constructor(private router: Router,
+  constructor(
+    private router: Router,
     private user: UserService,
-    public snackBar: MatSnackBar) {
+    private snackBar: MatSnackBar,
+  ) {
     this.user
       .user()
       .pipe(first())

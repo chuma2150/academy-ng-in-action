@@ -8,12 +8,12 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./chat.component.scss'],
 })
 export class ChatComponent implements OnInit, OnDestroy {
-  public text: string;
-  public message: Message;
+  text: string;
+  message: Message;
 
-  public user?: User;
-  private subscription: Subscription;
-  private receiver?: User;
+  user?: User;
+  subscription: Subscription;
+  receiver?: User;
 
   constructor(private userService: UserService, private chat: ChatService) { }
 
@@ -27,7 +27,7 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  public send() {
+  send() {
     this.message = {
       text: this.text,
       sender: this.user?.name ?? '',
@@ -39,7 +39,7 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.sendMessage(this.message);
   }
 
-  public selectReceiver(user: User | undefined) {
+  selectReceiver(user: User | undefined) {
     this.receiver = user;
   }
 

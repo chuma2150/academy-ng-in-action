@@ -15,7 +15,7 @@ export class UserComponent {
     this.user$ = this.userService.user();
   }
 
-  public async logout(): Promise<void> {
+  async logout(): Promise<void> {
     this.userService.unset();
     await this.navigate();
   }

@@ -17,7 +17,7 @@ const mockMessages = [{
 }];
 
 export class MockChatService {
-  public messages = () => of(mockMessages);
+  messages = () => of(mockMessages);
 }
 
 describe('ChatboardComponent', () => {
