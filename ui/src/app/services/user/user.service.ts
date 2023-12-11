@@ -30,12 +30,6 @@ export class UserService {
     this.set(undefined);
   }
 
-  public update(user: User): Observable<void> {
-    return this.http
-      .put<void>(USER_ENDPOINT, user)
-      .pipe(tap(() => this.set(user)));
-  }
-
   public add(user: User): Observable<User> {
     return this
       .userExists(user)
@@ -46,6 +40,8 @@ export class UserService {
           .pipe(tap(({ id }) => this.set({ ...user, id }))),
       ));
   }
+
+  // Exercise 4: Add update function here.
 
   public list(): Observable<User[]> {
     return this.http
