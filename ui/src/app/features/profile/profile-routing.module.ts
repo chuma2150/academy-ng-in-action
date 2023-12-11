@@ -4,6 +4,7 @@ import { ProfileComponent } from './profile.component';
 import { hasUserGuard } from 'src/app/guards';
 
 const routes: Routes = [
+  // Exercise 3: Add new route here.
   {
     path: 'profile/:username',
     component: ProfileComponent,
