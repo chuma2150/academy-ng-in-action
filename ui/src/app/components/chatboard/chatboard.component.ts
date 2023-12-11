@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ChatService, Message, User } from 'src/app/services';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-chat-board',
@@ -9,11 +8,19 @@ import { Observable } from 'rxjs';
 })
 export class ChatboardComponent implements OnInit {
   @Input() user: User | undefined;
-  messages: Observable<Message[]>;
+  private messages: Message[] = [];
 
   constructor(private service: ChatService) { }
 
   ngOnInit() {
-    this.messages = this.service.messages(this.user);
+    this.service
+      .messages(this.user)
+      .subscribe(m => this.messages = m);
+  }
+
+  get sortedMessages() {
+    return this.messages
+      .concat(this.service.receivedMessages)
+      .sort((a: Message, b: Message) => a.date.getTime() - b.date.getTime());
   }
 }

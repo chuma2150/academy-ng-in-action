@@ -1,7 +1,7 @@
 <mat-nav-list>
   <ng-container *ngIf="users$ | async as users">
     <mat-list-item *ngFor="let user of users | filterUser user"
-                   [ngClass]="{'selected': user.id === selected?.id }"
+                   [class.selected]="user.id === selected?.id"
                    (click)="toggleUser(user)">
       <app-avatar [name]="user.name"></app-avatar>
       <span>{{user.name}}</span>

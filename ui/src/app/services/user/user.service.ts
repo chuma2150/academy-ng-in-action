@@ -62,7 +62,8 @@ export class UserService {
   }
 
   private userExists(user: User): Observable<boolean> {
-    return this.list()
+    return this
+      .list()
       .pipe(map(users => users.some(u => u.name.toUpperCase() === user.name.toUpperCase())));
   }
 }
