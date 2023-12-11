@@ -1,3 +1,3 @@
-<app-chatmessage *ngFor="let msg of messages | async"
-                 [message]="msg"
+<app-chatmessage *ngFor="let message of sortedMessages"
+                 [message]="message"
                  [current]="user"></app-chatmessage>

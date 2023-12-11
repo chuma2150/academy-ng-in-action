@@ -36,7 +36,6 @@ public class MessageService(ICosmosService service) : IMessageService
            .Where(m => m.Receiver == null && m.Sender != userName)
            .ToFeedIterator();
 
-
         return (await ReadMessagesAsync(senderIterator))
           .Union(await ReadMessagesAsync(receiverIterator))
           .Union(await ReadMessagesAsync(publicIterator))
