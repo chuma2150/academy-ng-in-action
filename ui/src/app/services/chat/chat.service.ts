@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Message } from './message';
+import { Message, MessageDto, mapMessage, mapMessages } from './message';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable, map, tap } from 'rxjs';
@@ -29,20 +29,20 @@ export class ChatService {
 
     this.connection.on(
       'ReceiveMessage',
-      (message: Message) => this.receivedMessages.push(this.mapMessage(message)),
+      (message: MessageDto) => this.receivedMessages.push(mapMessage(message)),
     );
   }
 
   messages(user: User | undefined): Observable<Message[]> {
     return this.http
-      .get<Message[]>(`${MESSAGES_ENDPOINT}/user/${user?.name}`)
-      .pipe(map(this.mapMessages.bind(this)));
+      .get<MessageDto[]>(`${MESSAGES_ENDPOINT}/user/${user?.name}`)
+      .pipe(map(mapMessages));
   }
 
   list(): Observable<Message[]> {
     return this.http
-      .get<Message[]>(MESSAGES_ENDPOINT)
-      .pipe(map(this.mapMessages.bind(this)));
+      .get<MessageDto[]>(MESSAGES_ENDPOINT)
+      .pipe(map(mapMessages));
   }
 
   add(message: Message): Observable<Message> {
@@ -51,15 +51,10 @@ export class ChatService {
       .catch(error => console.error(error));
 
     return this.http
-      .post<Message>(MESSAGES_ENDPOINT, message)
-      .pipe(tap(({ id }) => console.log('CharService.add', { ...message, id })));
-  }
-
-  private mapMessages(messages: Message[]): Message[] {
-    return messages.map(this.mapMessage);
-  }
-
-  private mapMessage(message: Message): Message {
-    return { ...message, date: new Date(message.date) };
+      .post<MessageDto>(MESSAGES_ENDPOINT, message)
+      .pipe(
+        tap(({ id }) => console.log('CharService.add', { ...message, id })),
+        map(mapMessage),
+      );
   }
 }

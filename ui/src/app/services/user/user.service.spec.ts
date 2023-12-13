@@ -6,9 +6,7 @@ describe('UserService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [
-        // { provide: CosmosService, useValue: {} },
-      ],
+      providers: [],
     });
   });
 
