@@ -8,6 +8,5 @@ public interface IMessageService
 
   Task<MessageDto> AddAsync(MessageDto message);
 
-
   Task<IReadOnlyCollection<MessageDto>> GetForUserAsync(string userName);
 }

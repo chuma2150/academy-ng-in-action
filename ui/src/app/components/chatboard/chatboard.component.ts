@@ -20,7 +20,9 @@ export class ChatboardComponent implements OnInit {
 
   get sortedMessages() {
     return this.messages
-      .concat(this.service.receivedMessages)
+      .concat(this.service.receivedMessages.filter(m => m.sender === this.user?.name
+        || m.receiver === this.user?.name
+        || (!m.receiver && m.sender !== this.user?.name)))
       .sort((a: Message, b: Message) => a.date.getTime() - b.date.getTime());
   }
 }

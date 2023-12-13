@@ -23,14 +23,21 @@ export class ChatService {
     .build();
 
   constructor(private readonly http: HttpClient) {
-    this.connection
-      .start()
-      .catch(error => console.error(error));
-
     this.connection.on(
-      'ReceiveMessage',
+      'messageReceived',
       (message: MessageDto) => this.receivedMessages.push(mapMessage(message)),
     );
+  }
+
+  async openHub() {
+    await this.connection
+      .start()
+      .catch(error => console.error(error));
+  }
+
+  async closeHub() {
+    await this.connection.stop();
+    this.receivedMessages = [];
   }
 
   messages(user: User | undefined): Observable<Message[]> {
@@ -47,7 +54,7 @@ export class ChatService {
 
   add(message: Message): Observable<Message> {
     this.connection
-      .invoke('SendMessage', message)
+      .send('sendMessage', message)
       .catch(error => console.error(error));
 
     return this.http
