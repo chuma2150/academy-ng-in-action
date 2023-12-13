@@ -15,16 +15,20 @@ export class ChatComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   receiver?: User;
 
-  constructor(private userService: UserService, private chat: ChatService) { }
+  constructor(private userService: UserService, private chatService: ChatService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.subscription = this.userService
       .user()
       .subscribe(user => this.user = user);
+
+    await this.chatService.openHub();
   }
 
-  ngOnDestroy(): void {
+  async ngOnDestroy() {
     this.subscription.unsubscribe();
+
+    await this.chatService.closeHub();
   }
 
   send() {
@@ -44,7 +48,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   private sendMessage(message: Message) {
-    this.chat
+    this.chatService
       .add(message)
       .subscribe();
   }
