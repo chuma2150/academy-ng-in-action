@@ -7,9 +7,7 @@ describe('ChatService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [
-        // { provide: CosmosService, useValue: {} },
-      ],
+      providers: [],
     });
   });
 

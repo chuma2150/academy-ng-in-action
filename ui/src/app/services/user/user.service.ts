@@ -2,7 +2,7 @@ import { Observable, BehaviorSubject, Subject, tap, map, switchMap, throwError }
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { User } from './user';
+import { User, UserDto, mapUser } from './user';
 
 const USER_ENDPOINT = `${environment.endpoint}/users`;
 
@@ -16,7 +16,7 @@ export class UserService {
     const currentUser = localStorage.getItem('currentUser');
 
     if (currentUser && currentUser !== 'undefined') {
-      this.set(this.mapUser(JSON.parse(currentUser)));
+      this.set(mapUser(JSON.parse(currentUser)));
     }
   }
 
@@ -36,8 +36,10 @@ export class UserService {
       .pipe(switchMap(exists => exists
         ? throwError(() => new Error(`User '${user.name}' already exists.`))
         : this.http
-          .post<User>(USER_ENDPOINT, user)
-          .pipe(tap(({ id }) => this.set({ ...user, id }))),
+          .post<UserDto>(USER_ENDPOINT, user)
+          .pipe(
+            tap(({ id }) => this.set({ ...user, id })),
+            map(mapUser)),
       ));
   }
 
@@ -49,16 +51,12 @@ export class UserService {
 
   list(): Observable<User[]> {
     return this.http
-      .get<User[]>(USER_ENDPOINT)
-      .pipe(map(users => users.map(this.mapUser)));
+      .get<UserDto[]>(USER_ENDPOINT)
+      .pipe(map(users => users.map(mapUser)));
   }
 
   user(): Observable<User | undefined> {
     return this.user$.asObservable();
-  }
-
-  private mapUser(user: User): User {
-    return { ...user, birthDate: user.birthDate ? new Date(user.birthDate) : undefined };
   }
 
   private userExists(user: User): Observable<boolean> {

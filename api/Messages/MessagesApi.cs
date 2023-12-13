@@ -7,7 +7,6 @@ public static class MessagesApi
         group.MapGet("/", service.GetAsync);
         group.MapPost("/", service.AddAsync);
         
-        
         group.MapGet("/user/{userName}", service.GetForUserAsync);
     }
 }
