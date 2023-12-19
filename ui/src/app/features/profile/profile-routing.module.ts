@@ -1,12 +1,19 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, Params } from '@angular/router';
 import { ProfileComponent } from './profile.component';
 import { hasUserGuard } from 'src/app/guards';
+
+export interface ProfileParams extends Params {
+  username?: string;
+}
+type UserNameParam = keyof Pick<ProfileParams, 'username'>
+
+const userNameParam: UserNameParam = 'username';
 
 const routes: Routes = [
   // Exercise 3: Add new route here.
   {
-    path: 'profile/:username',
+    path: `profile/:${userNameParam}`,
     component: ProfileComponent,
     canActivate: [hasUserGuard],
   },
