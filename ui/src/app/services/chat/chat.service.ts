@@ -60,7 +60,7 @@ export class ChatService {
     return this.http
       .post<MessageDto>(MESSAGES_ENDPOINT, message)
       .pipe(
-        tap(({ id }) => console.log('CharService.add', { ...message, id })),
+        tap(({ id }) => console.log('ChatService.add', { ...message, id })),
         map(mapMessage),
       );
   }
