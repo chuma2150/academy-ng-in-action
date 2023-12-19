@@ -1,8 +1,9 @@
 import { Observable, from } from 'rxjs';
-import { map, switchMap, pluck } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User, UserService } from 'src/app/services';
+import { ProfileParams } from './profile-routing.module';
 
 @Component({
   selector: 'app-profile',
@@ -25,8 +26,7 @@ export class ProfileComponent implements OnInit {
 
   private getCurrentFromList(list: User[]) {
     return this.route.params.pipe(
-      pluck<Params, string>('username'),
-      map(profile => list.find(u => u.name === profile)),
+      map(params => list.find(u => u.name === (params as ProfileParams)?.username)),
     );
   }
 
