@@ -3,16 +3,12 @@ import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { of } from 'rxjs';
 import { UserComponent } from './user.component';
-import { User, UserService } from 'src/app/services';
-
-const users: User[] = [
-  { name: 'TEST USER' },
-  { name: 'TEST USER 2' },
-];
+import { UserService } from 'src/app/services';
+import { MOCK_USERS } from 'src/app/services/user/user.service.spec';
 
 export class MockUserService {
-  user = () => of(users[0]);
-  list = () => of(users);
+  user = () => of(MOCK_USERS[0]);
+  list = () => of(MOCK_USERS);
 }
 
 describe('UserComponent', () => {

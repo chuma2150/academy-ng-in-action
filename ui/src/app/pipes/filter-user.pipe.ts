@@ -8,10 +8,6 @@ const filterUser = ({ name: testUserName }: User) => ({ name }: User) => name.lo
 })
 export class FilterUserPipe implements PipeTransform {
   transform(users: User[], args?: User): User[] | null {
-    if (!Array.isArray(users)) {
-      return null;
-    }
-
     return args ? users.filter(filterUser(args)) : users;
   }
 }
