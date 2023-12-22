@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
-import { map, pluck } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { HairColors, User, UserService } from 'src/app/services';
 
 @Component({
@@ -20,7 +20,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.currentProfile$ = this.route.data.pipe(
-      pluck('user'),
+      map(data => data['user']),
       map(u => ({ ...u })),
     );
   }

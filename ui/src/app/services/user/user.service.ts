@@ -43,7 +43,7 @@ export class UserService {
       ));
   }
 
-  public update(user: User): Observable<void> {
+  update(user: User): Observable<void> {
     return this.http
       .put<void>(USER_ENDPOINT, user)
       .pipe(tap(() => this.set(user)));
