@@ -1,8 +1,9 @@
 import { AgePipe } from './age.pipe';
 
-describe('AgePipe', () => {
-  it('create an instance', () => {
-    const pipe = new AgePipe();
+describe(AgePipe.name, () => {
+  const pipe = new AgePipe();
+
+  it('should create an instance', () => {
     expect(pipe).toBeTruthy();
   });
 });

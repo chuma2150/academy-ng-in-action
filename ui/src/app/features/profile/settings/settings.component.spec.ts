@@ -13,12 +13,12 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { SettingsComponent } from './settings.component';
 import { AgePipe } from 'src/app/components/profile-view';
 
-describe('SettingsComponent', () => {
+describe(SettingsComponent.name, () => {
   let component: SettingsComponent;
   let fixture: ComponentFixture<SettingsComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
+  beforeEach(() => {
+    TestBed.configureTestingModule({
       declarations: [
         SettingsComponent,
         AgePipe,
@@ -41,11 +41,10 @@ describe('SettingsComponent', () => {
       ],
     })
       .compileComponents();
-  });
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(SettingsComponent);
     component = fixture.componentInstance;
+
     fixture.detectChanges();
   });
 
