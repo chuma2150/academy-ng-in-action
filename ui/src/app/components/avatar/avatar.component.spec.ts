@@ -1,4 +1,4 @@
-import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Component } from '@angular/core';
 import { AvatarComponent } from './avatar.component';
@@ -11,9 +11,10 @@ class TestComponent {
   name: string;
 }
 describe(AvatarComponent.name, () => {
-  let component: TestComponent;
   let fixture: ComponentFixture<TestComponent>;
-  beforeEach(waitForAsync(() => {
+  let component: TestComponent;
+
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [TestComponent, AvatarComponent],
     })
@@ -21,7 +22,9 @@ describe(AvatarComponent.name, () => {
 
     fixture = TestBed.createComponent(TestComponent);
     component = fixture.componentInstance;
-  }));
+
+    fixture.detectChanges();
+  });
 
   it('should create', () => {
     expect(component).toBeTruthy();

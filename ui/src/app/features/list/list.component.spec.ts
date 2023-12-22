@@ -6,8 +6,8 @@ import { UserService } from 'src/app/services';
 import { MockUserService } from 'src/app/components/user/user.component.spec';
 
 describe(ListComponent.name, () => {
-  let component: ListComponent;
   let fixture: ComponentFixture<ListComponent>;
+  let component: ListComponent;
 
   beforeEach(() => {
     TestBed.configureTestingModule({

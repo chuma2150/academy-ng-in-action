@@ -35,8 +35,9 @@ export class MockChatService {
 }
 
 describe(ChatboardComponent.name, () => {
-  let component: ChatboardComponent;
   let fixture: ComponentFixture<ChatboardComponent>;
+  let component: ChatboardComponent;
+
   function getChatmessages() {
     return fixture.debugElement.queryAll(By.css('app-chatmessage'));
   }

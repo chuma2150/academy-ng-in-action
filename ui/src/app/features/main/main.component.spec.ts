@@ -4,8 +4,8 @@ import { AdminService } from 'src/app/services';
 import { MainComponent } from './main.component';
 
 describe(MainComponent.name, () => {
-  let component: MainComponent;
   let fixture: ComponentFixture<MainComponent>;
+  let component: MainComponent;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
