@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import * as moment from 'moment';
 
 @Pipe({
   name: 'age',
@@ -9,6 +10,6 @@ export class AgePipe implements PipeTransform {
       return '';
     }
 
-    return (new Date().getFullYear() - birthDate.getFullYear()).toString();
+    return moment().diff(birthDate, 'y').toString();
   }
 }

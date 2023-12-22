@@ -21,11 +21,27 @@ describe(AgePipe.name, () => {
     expect(result).toBe('');
   });
 
-  it('should return age in years when ignoring the month when value is provided', () => {
-    const date = new Date(2020, 2, 1);
+  it('should return correct age in when todays month and day are the same', () => {
+    const date = new Date(2020, 0, 1);
 
     const result = pipe.transform(date);
 
     expect(result).toBe('2');
+  });
+
+  it('should return correct age in when todays month is same but day is not', () => {
+    const date = new Date(2020, 0, 2);
+
+    const result = pipe.transform(date);
+
+    expect(result).toBe('1');
+  });
+
+  it('should return correct age in when todays month and day are not the same', () => {
+    const date = new Date(2020, 1, 2);
+
+    const result = pipe.transform(date);
+
+    expect(result).toBe('1');
   });
 });
