@@ -13,6 +13,7 @@ import { ProfileRoutingModule } from './profile-routing.module';
 import { ProfileComponent } from './profile.component';
 import { ComponentsModule } from '../../components/components.module';
 import { SettingsComponent } from './settings/settings.component';
+import { ReactiveSettingsComponent } from './reactive-settings';
 
 @NgModule({
   imports: [
@@ -28,6 +29,6 @@ import { SettingsComponent } from './settings/settings.component';
     MatDatepickerModule,
     MatSelectModule,
   ],
-  declarations: [ProfileComponent, SettingsComponent],
+  declarations: [ProfileComponent, SettingsComponent, ReactiveSettingsComponent],
 })
 export class ProfileModule { }
