@@ -1,23 +1,21 @@
-import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { CUSTOM_ELEMENTS_SCHEMA, DebugElement } from '@angular/core';
 import { ChatmessageComponent } from './chatmessage.component';
 
 const getSentCssClass = <T>(fixture: ComponentFixture<T>): DebugElement | null => fixture.debugElement.query(By.css('.sent'));
 
-describe('ChatmessageComponent', () => {
+describe(ChatmessageComponent.name, () => {
   let component: ChatmessageComponent;
   let fixture: ComponentFixture<ChatmessageComponent>;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [ChatmessageComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
       .compileComponents();
-  }));
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(ChatmessageComponent);
     component = fixture.componentInstance;
 
@@ -29,17 +27,19 @@ describe('ChatmessageComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should have a sent class', () => {
-    component.current = { name: 'ABC' };
+  it('should have a sent class when current user is sender', () => {
+    component.current = { name: component.message.sender };
     fixture.detectChanges();
+
     const sent = getSentCssClass(fixture);
 
     expect(sent).not.toBe(null);
   });
 
-  it('should have a not sent class', () => {
+  it('should have a not sent class when current user is not sender', () => {
     component.current = { name: 'NOTABC' };
     fixture.detectChanges();
+
     const sent = getSentCssClass(fixture);
 
     expect(sent).toBe(null);

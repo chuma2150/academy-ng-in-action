@@ -1,4 +1,4 @@
-import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MockUserService } from 'src/app/components/user/user.component.spec';
@@ -6,11 +6,11 @@ import { MockChatService } from 'src/app/components/chatboard/chatboard.componen
 import { ChatService, UserService } from 'src/app/services';
 import { ChatComponent } from './chat.component';
 
-describe('ChatComponent', () => {
+describe(ChatComponent.name, () => {
   let component: ChatComponent;
   let fixture: ComponentFixture<ChatComponent>;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule],
       declarations: [ChatComponent],
@@ -21,11 +21,10 @@ describe('ChatComponent', () => {
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
       .compileComponents();
-  }));
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(ChatComponent);
     component = fixture.componentInstance;
+
     fixture.detectChanges();
   });
 

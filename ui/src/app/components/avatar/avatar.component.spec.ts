@@ -10,7 +10,7 @@ import { AvatarComponent } from './avatar.component';
 class TestComponent {
   name: string;
 }
-describe('AvatarComponent', () => {
+describe(AvatarComponent.name, () => {
   let component: TestComponent;
   let fixture: ComponentFixture<TestComponent>;
   beforeEach(waitForAsync(() => {
@@ -18,13 +18,10 @@ describe('AvatarComponent', () => {
       declarations: [TestComponent, AvatarComponent],
     })
       .compileComponents();
-  }));
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(TestComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  }));
 
   it('should create', () => {
     expect(component).toBeTruthy();
@@ -34,7 +31,9 @@ describe('AvatarComponent', () => {
     const name = 'Hans';
     component.name = name;
     fixture.detectChanges();
+
     const imgAttributes = fixture.debugElement.query(By.css('img')).attributes;
+
     expect(imgAttributes['src']).toContain('data:image/svg+xml;utf8,');
   });
 });
