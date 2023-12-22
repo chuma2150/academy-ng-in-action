@@ -28,7 +28,7 @@ export class ReactiveSettingsComponent implements OnInit, OnDestroy {
       firstName: new FormControl<string | null>(null),
       lastName: new FormControl<string | null>(null),
       birthDate: new FormControl<Date | null>(null),
-      hairColor: new FormControl<HairColor>(''),
+      hairColor: new FormControl<HairColor>(HairColors[0]),
     });
   }
 

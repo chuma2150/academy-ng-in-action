@@ -55,7 +55,7 @@ describe('ReactiveSettingsComponent', () => {
       firstName: 'John',
       lastName: 'Doe',
       birthDate: new Date('1990-01-01'),
-      hairColor: 'Black',
+      hairColor: HairColors[1],
     };
 
     component.profileForm.setValue(userData);
@@ -74,7 +74,7 @@ describe('ReactiveSettingsComponent', () => {
       firstName: 'John',
       lastName: 'Doe',
       birthDate: new Date('1990-01-01'),
-      hairColor: 'Black',
+      hairColor: HairColors[1],
     };
 
     component.profileForm.setValue(userData);
