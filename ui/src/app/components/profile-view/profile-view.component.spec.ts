@@ -3,8 +3,8 @@ import { AgePipe } from './age.pipe';
 import { ProfileViewComponent } from './profile-view.component';
 
 describe(ProfileViewComponent.name, () => {
-  let component: ProfileViewComponent;
   let fixture: ComponentFixture<ProfileViewComponent>;
+  let component: ProfileViewComponent;
 
   beforeEach(() => {
     TestBed.configureTestingModule({

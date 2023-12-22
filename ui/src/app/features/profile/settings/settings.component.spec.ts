@@ -14,8 +14,8 @@ import { SettingsComponent } from './settings.component';
 import { AgePipe } from 'src/app/components/profile-view';
 
 describe(SettingsComponent.name, () => {
-  let component: SettingsComponent;
   let fixture: ComponentFixture<SettingsComponent>;
+  let component: SettingsComponent;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
