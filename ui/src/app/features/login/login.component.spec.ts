@@ -1,4 +1,4 @@
-import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -9,11 +9,11 @@ import { routes } from '../chat/chat-routing.module';
 import { UserService } from 'src/app/services';
 import { MockUserService } from 'src/app/components/user/user.component.spec';
 
-describe('LoginComponent', () => {
-  let component: LoginComponent;
+describe(LoginComponent.name, () => {
   let fixture: ComponentFixture<LoginComponent>;
+  let component: LoginComponent;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
         FormsModule,
@@ -28,11 +28,10 @@ describe('LoginComponent', () => {
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
       .compileComponents();
-  }));
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(LoginComponent);
     component = fixture.componentInstance;
+
     fixture.detectChanges();
   });
 

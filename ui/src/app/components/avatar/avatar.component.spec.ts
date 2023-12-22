@@ -1,4 +1,4 @@
-import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Component } from '@angular/core';
 import { AvatarComponent } from './avatar.component';
@@ -10,19 +10,19 @@ import { AvatarComponent } from './avatar.component';
 class TestComponent {
   name: string;
 }
-describe('AvatarComponent', () => {
-  let component: TestComponent;
+describe(AvatarComponent.name, () => {
   let fixture: ComponentFixture<TestComponent>;
-  beforeEach(waitForAsync(() => {
+  let component: TestComponent;
+
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [TestComponent, AvatarComponent],
     })
       .compileComponents();
-  }));
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(TestComponent);
     component = fixture.componentInstance;
+
     fixture.detectChanges();
   });
 
@@ -34,7 +34,9 @@ describe('AvatarComponent', () => {
     const name = 'Hans';
     component.name = name;
     fixture.detectChanges();
+
     const imgAttributes = fixture.debugElement.query(By.css('img')).attributes;
+
     expect(imgAttributes['src']).toContain('data:image/svg+xml;utf8,');
   });
 });
