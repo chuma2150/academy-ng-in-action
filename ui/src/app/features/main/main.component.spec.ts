@@ -1,24 +1,25 @@
-import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { AdminService } from 'src/app/services';
 import { MainComponent } from './main.component';
 
-describe('MainComponent', () => {
+describe(MainComponent.name, () => {
   let component: MainComponent;
   let fixture: ComponentFixture<MainComponent>;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [MainComponent],
-      providers: [{ provide: AdminService, useValue: {} }],
+      providers: [
+        { provide: AdminService, useValue: {} },
+      ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
       .compileComponents();
-  }));
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(MainComponent);
     component = fixture.componentInstance;
+
     fixture.detectChanges();
   });
 

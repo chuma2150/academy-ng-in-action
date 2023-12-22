@@ -42,6 +42,7 @@ describe(hasUserGuard.name, () => {
     });
 
     userSubject.next({ name: 'asdf' });
+
     expect(called).toBeTruthy();
   });
 
@@ -58,6 +59,7 @@ describe(hasUserGuard.name, () => {
     });
 
     userSubject.next(null);
+
     expect(called).toBeTruthy();
   });
 });

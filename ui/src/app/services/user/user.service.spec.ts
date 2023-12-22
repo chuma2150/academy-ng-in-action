@@ -8,7 +8,7 @@ export const MOCK_USERS: User[] = [
   { name: 'TEST USER 2' },
 ];
 
-describe('UserService', () => {
+describe(UserService.name, () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],

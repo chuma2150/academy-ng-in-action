@@ -1,5 +1,5 @@
 import { RouterTestingModule } from '@angular/router/testing';
-import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { of } from 'rxjs';
 import { UserComponent } from './user.component';
@@ -11,23 +11,24 @@ export class MockUserService {
   list = () => of(MOCK_USERS);
 }
 
-describe('UserComponent', () => {
+describe(UserComponent.name, () => {
   let component: UserComponent;
   let fixture: ComponentFixture<UserComponent>;
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
       declarations: [UserComponent],
-      providers: [{ provide: UserService, useClass: MockUserService }],
+      providers: [
+        { provide: UserService, useClass: MockUserService },
+      ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
       .compileComponents();
-  }));
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(UserComponent);
     component = fixture.componentInstance;
+
     fixture.detectChanges();
   });
 

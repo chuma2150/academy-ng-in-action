@@ -1,13 +1,13 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, inject } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { UserService } from './services/user/user.service';
 import { MockUserService } from './components/user/user.component.spec';
 
-describe('AppComponent', () => {
+describe(AppComponent.name, () => {
+  let fixture: ComponentFixture<AppComponent>;
   let component: AppComponent;
-  let injectedService: UserService;
 
   beforeEach(() => {
 
@@ -24,20 +24,20 @@ describe('AppComponent', () => {
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
 
-    const fixture = TestBed.createComponent(AppComponent);
+    fixture = TestBed.createComponent(AppComponent);
     component = fixture.debugElement.componentInstance;
 
-    injectedService = TestBed.inject(UserService);
+    fixture.detectChanges();
   });
 
-  it('should create component', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it(`should call ${UserService.name}.user() on initialize`, () => {
-    spyOn(injectedService, 'user').and.callThrough();
+  it(`should call ${UserService.name}.user() on init`, inject([UserService], (userService: UserService) => {
+    const spy = spyOn(userService, 'user').and.callThrough();
 
     component.ngOnInit();
-    expect(injectedService.user).toHaveBeenCalled();
-  });
+    expect(spy).toHaveBeenCalled();
+  }));
 });

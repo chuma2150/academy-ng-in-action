@@ -5,6 +5,7 @@ import { FilterUserPipe } from './filter-user.pipe';
 describe(FilterUserPipe.name, () => {
   it('should create ann instance', () => {
     const pipe = new FilterUserPipe();
+
     expect(pipe).toBeTruthy();
   });
 
@@ -12,6 +13,7 @@ describe(FilterUserPipe.name, () => {
     const pipe = new FilterUserPipe();
 
     const result = pipe.transform(MOCK_USERS);
+
     expect(result).toBe(MOCK_USERS);
   });
 
@@ -20,6 +22,7 @@ describe(FilterUserPipe.name, () => {
     const user: User = { name: 'findMe' };
 
     const result = pipe.transform([...MOCK_USERS, user], user);
+
     expect(result).toEqual(MOCK_USERS);
   });
 });

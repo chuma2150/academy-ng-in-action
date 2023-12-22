@@ -7,7 +7,7 @@ import { MockUserService } from 'src/app/components/user/user.component.spec';
 import { ChatService } from '../chat';
 import { MockChatService } from 'src/app/components/chatboard/chatboard.component.spec';
 
-describe('AdminService', () => {
+describe(AdminService.name, () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],

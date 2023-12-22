@@ -1,5 +1,5 @@
 import { By } from '@angular/platform-browser';
-import { waitForAsync, ComponentFixture, TestBed, inject } from '@angular/core/testing';
+import { ComponentFixture, TestBed, inject } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { ChatService, Message, User } from 'src/app/services';
@@ -34,7 +34,7 @@ export class MockChatService {
   receivedMessages: Message[] = mockReceivedMessages;
 }
 
-describe('ChatboardComponent', () => {
+describe(ChatboardComponent.name, () => {
   let component: ChatboardComponent;
   let fixture: ComponentFixture<ChatboardComponent>;
   function getChatmessages() {
@@ -45,7 +45,7 @@ describe('ChatboardComponent', () => {
     return fixture.debugElement.query(By.css('app-chatmessage'));
   }
 
-  beforeEach(waitForAsync(() => {
+  beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [ChatboardComponent],
       providers: [{
@@ -55,40 +55,39 @@ describe('ChatboardComponent', () => {
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
       .compileComponents();
-  }));
-
-  beforeEach(() => {
     fixture = TestBed.createComponent(ChatboardComponent);
     component = fixture.componentInstance;
 
     component.user = user;
+    fixture.detectChanges();
   });
 
   it('should create', () => {
-    fixture.detectChanges();
-
     expect(component).toBeTruthy();
   });
 
-  it('should call chatService on Init', inject([ChatService], (chatService: ChatService) => {
+  it(`should call ${ChatService.name} on init`, inject([ChatService], (chatService: ChatService) => {
     const spy = spyOn(chatService, 'messages').and.callThrough();
 
-    fixture.detectChanges();
+    component.ngOnInit();
     expect(spy).toHaveBeenCalled();
   }));
 
   it('should show one chat message component per message', () => {
-    fixture.detectChanges();
-    expect(getChatmessages().length).toBe(mockMessages.length + mockReceivedMessages.length);
+    const result = getChatmessages().length;
+
+    expect(result).toBe(mockMessages.length + mockReceivedMessages.length);
   });
 
   it('should sort chat messages by date and assign chat message to chat message component', () => {
-    fixture.detectChanges();
-    expect(getFirstChatmessage().properties['message']).toEqual(mockReceivedMessages[0]);
+    const result = getFirstChatmessage().properties['message'];
+
+    expect(result).toEqual(mockReceivedMessages[0]);
   });
 
   it('should assign user to chat message component', () => {
-    fixture.detectChanges();
-    expect(getFirstChatmessage().properties['current']).toEqual(user);
+    const result = getFirstChatmessage().properties['current'];
+
+    expect(result).toEqual(user);
   });
 });
