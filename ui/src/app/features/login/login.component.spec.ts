@@ -10,8 +10,8 @@ import { UserService } from 'src/app/services';
 import { MockUserService } from 'src/app/components/user/user.component.spec';
 
 describe(LoginComponent.name, () => {
-  let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
+  let component: LoginComponent;
 
   beforeEach(() => {
     TestBed.configureTestingModule({

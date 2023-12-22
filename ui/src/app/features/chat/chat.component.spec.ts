@@ -7,8 +7,8 @@ import { ChatService, UserService } from 'src/app/services';
 import { ChatComponent } from './chat.component';
 
 describe(ChatComponent.name, () => {
-  let component: ChatComponent;
   let fixture: ComponentFixture<ChatComponent>;
+  let component: ChatComponent;
 
   beforeEach(() => {
     TestBed.configureTestingModule({

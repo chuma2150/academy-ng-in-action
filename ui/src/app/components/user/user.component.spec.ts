@@ -12,8 +12,8 @@ export class MockUserService {
 }
 
 describe(UserComponent.name, () => {
-  let component: UserComponent;
   let fixture: ComponentFixture<UserComponent>;
+  let component: UserComponent;
 
   beforeEach(() => {
     TestBed.configureTestingModule({

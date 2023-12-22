@@ -6,8 +6,8 @@ import { ChatmessageComponent } from './chatmessage.component';
 const getSentCssClass = <T>(fixture: ComponentFixture<T>): DebugElement | null => fixture.debugElement.query(By.css('.sent'));
 
 describe(ChatmessageComponent.name, () => {
-  let component: ChatmessageComponent;
   let fixture: ComponentFixture<ChatmessageComponent>;
+  let component: ChatmessageComponent;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
