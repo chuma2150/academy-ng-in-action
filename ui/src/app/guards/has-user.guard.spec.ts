@@ -29,7 +29,7 @@ describe(hasUserGuard.name, () => {
     stateMock = TestBed.inject(RouterStateSnapshot);
   });
 
-  it('should allow navigation if user is present', () => {
+  it('should be called and allow navigation if user is present', () => {
     let called = false;
 
     TestBed.runInInjectionContext(() => {
@@ -45,7 +45,7 @@ describe(hasUserGuard.name, () => {
     expect(called).toBeTruthy();
   });
 
-  it('should not allow navigation if user is not present', () => {
+  it('should be called and not allow navigation if user is not present', () => {
     let called = false;
 
     TestBed.runInInjectionContext(() => {
