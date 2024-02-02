@@ -1,4 +1,4 @@
-<ng-container *ngIf="user$ | async as user">
+@if (user$ | async; as user) {
   <button mat-button
           class="mdc-button"
           [routerLink]="['profile', 'edit']">
@@ -13,4 +13,4 @@
           class="mdc-button"
           title="Logout"
           (click)="logout()">Logout</button>
-</ng-container>
+}

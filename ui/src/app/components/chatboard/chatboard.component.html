@@ -1,3 +1,6 @@
-<app-chatmessage *ngFor="let message of sortedMessages"
-                 [message]="message"
-                 [current]="user"></app-chatmessage>
+@for (message of sortedMessages; track message.id) {
+  <app-chatmessage
+    [message]="message"
+    [current]="user">
+  </app-chatmessage>
+}
