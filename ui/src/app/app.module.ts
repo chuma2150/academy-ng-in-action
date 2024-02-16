@@ -11,7 +11,7 @@ import { AppComponent } from './app.component';
 import { FeaturesModule } from './features';
 import { LoggingInterceptor } from './interceptors/logging.interceptor';
 import { StoreModule } from '@ngrx/store';
-import { userReducer } from './state/user.reducer';
+import { userReducer } from './state/user/user.reducer';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,7 +24,7 @@ import { userReducer } from './state/user.reducer';
     ComponentsModule,
     HttpClientModule,
     MatNativeDateModule,
-    StoreModule.forRoot({ user: userReducer}, {}),
+    StoreModule.forRoot({ user: userReducer}),
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

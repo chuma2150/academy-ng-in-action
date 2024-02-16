@@ -1,8 +1,11 @@
-import { Observable, BehaviorSubject, Subject, tap, map, switchMap, throwError } from 'rxjs';
+import { Observable, tap, map, switchMap, throwError } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { User, UserDto, mapUser } from './user';
+import { Store } from '@ngrx/store';
+import { setUser } from 'src/app/state/user/user.actions';
+import { selectUser } from 'src/app/state/user/user.selectors';
 
 const USER_ENDPOINT = `${environment.endpoint}/users`;
 
@@ -10,9 +13,7 @@ const USER_ENDPOINT = `${environment.endpoint}/users`;
   providedIn: 'root',
 })
 export class UserService {
-  private user$: Subject<User | undefined> = new BehaviorSubject<User | undefined>(undefined);
-
-  constructor(private readonly http: HttpClient) {
+  constructor(private readonly http: HttpClient, private readonly store: Store) {
     const currentUser = localStorage.getItem('currentUser');
 
     if (currentUser && currentUser !== 'undefined') {
@@ -22,7 +23,7 @@ export class UserService {
 
   set(user: User | undefined) {
     localStorage.setItem('currentUser', JSON.stringify(user));
-    this.user$.next(user);
+    this.store.dispatch(setUser({ user }));
   }
 
   unset() {
@@ -56,7 +57,7 @@ export class UserService {
   }
 
   user(): Observable<User | undefined> {
-    return this.user$.asObservable();
+    return this.store.select(selectUser);
   }
 
   private userExists(user: User): Observable<boolean> {
