@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FeaturesModule } from './features';
 import { LoggingInterceptor } from './interceptors/logging.interceptor';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [AppComponent],
@@ -22,6 +23,7 @@ import { LoggingInterceptor } from './interceptors/logging.interceptor';
     ComponentsModule,
     HttpClientModule,
     MatNativeDateModule,
+    StoreModule.forRoot({}, {}),
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
