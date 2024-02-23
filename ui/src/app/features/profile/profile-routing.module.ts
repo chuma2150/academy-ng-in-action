@@ -29,7 +29,6 @@ const routes: Routes = [
   {
     path: '',
     component: ProfileComponent,
-    // pathMatch: 'full',
   },
 ];
 
