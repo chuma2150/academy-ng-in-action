@@ -28,7 +28,7 @@
         <th>Id</th>
         <th>Json Value</th>
       </tr>
-      <tr *ngFor="let item of items">
+      <tr *ngFor="let item of items; trackBy: trackById">
         <td>{{ item.id }}</td>
         <td>{{ item.value }}</td>
       </tr>
