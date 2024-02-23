@@ -23,15 +23,17 @@
   </mat-card-header>
 
   <mat-card-content class="main-button-list">
-    <table *ngIf="items$ | async as items">
-      <tr>
-        <th>Id</th>
-        <th>Json Value</th>
-      </tr>
-      <tr *ngFor="let item of items; trackBy: trackById">
-        <td>{{ item.id }}</td>
-        <td>{{ item.value }}</td>
-      </tr>
-    </table>
+    <cdk-virtual-scroll-viewport itemSize="50" class="items">
+      <table *ngIf="items$ | async as items">
+        <tr>
+          <th>Id</th>
+          <th>Json Value</th>
+        </tr>
+          <tr *ngFor="let item of items; trackBy: trackById" class="item">
+            <td>{{ item.id }}</td>
+            <td>{{ item.value }}</td>
+          </tr>
+      </table>
+    </cdk-virtual-scroll-viewport>
   </mat-card-content>
 </mat-card>

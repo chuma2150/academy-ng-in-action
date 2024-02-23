@@ -5,6 +5,7 @@ import { MainRoutingModule } from './main-routing.module';
 import { MainComponent } from './main.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
   imports: [
@@ -12,6 +13,7 @@ import { MatCardModule } from '@angular/material/card';
     MainRoutingModule,
     MatCardModule,
     MatButtonModule,
+    ScrollingModule,
   ],
   declarations: [MainComponent],
 })
