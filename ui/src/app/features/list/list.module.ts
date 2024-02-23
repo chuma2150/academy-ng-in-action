@@ -6,6 +6,7 @@ import { ListComponent } from './list.component';
 import { MatListModule } from '@angular/material/list';
 import { FilterUserPipe } from 'src/app/pipes';
 import { ComponentsModule } from 'src/app/components';
+import { AvatarComponent } from 'src/app/components/avatar';
 
 @NgModule({
   imports: [
@@ -13,6 +14,7 @@ import { ComponentsModule } from 'src/app/components';
     ListRoutingModule,
     MatListModule,
     ComponentsModule,
+    AvatarComponent,
   ],
   declarations: [
     ListComponent,

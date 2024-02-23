@@ -12,6 +12,7 @@ import { StoreModule } from '@ngrx/store';
 import { userReducer } from './state/user/user.reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UserComponent } from './components/user';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ComponentsModule,
     HttpClientModule,
     MatNativeDateModule,
+    UserComponent,
     StoreModule.forRoot({ user: userReducer }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
