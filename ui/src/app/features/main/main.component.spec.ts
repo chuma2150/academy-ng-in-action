@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { AdminService } from 'src/app/services';
 import { MainComponent } from './main.component';
+import { ChatService, UserService } from 'src/app/services';
 
 describe(MainComponent.name, () => {
   let fixture: ComponentFixture<MainComponent>;
@@ -11,7 +11,8 @@ describe(MainComponent.name, () => {
     TestBed.configureTestingModule({
       declarations: [MainComponent],
       providers: [
-        { provide: AdminService, useValue: {} },
+        { provide: ChatService, useValue: {} },
+        { provide: UserService, useValue: {} },
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
