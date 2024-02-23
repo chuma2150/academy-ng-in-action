@@ -34,4 +34,8 @@ export class MainComponent {
   mapItems(items: User[] | Message[]): Item[] {
     return items.map(item => ({ id: item.id ?? '', value: JSON.stringify(item) }));
   }
+
+  trackById(_: number, item: Item) {
+    return item.value;
+  }
 }
