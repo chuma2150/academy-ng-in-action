@@ -5,7 +5,7 @@ import { hasUserGuard } from 'src/app/guards';
 
 export const routes: Routes = [
   {
-    path: 'chat',
+    path: '',
     component: ChatComponent,
     canActivate: [hasUserGuard],
   },

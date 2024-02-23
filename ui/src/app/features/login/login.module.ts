@@ -6,7 +6,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { CommonModule } from '@angular/common';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ListModule } from './../list/list.module';
 import { LoginRoutingModule } from './login-routing.module';
@@ -17,7 +16,6 @@ import { ComponentsModule } from '../../components/components.module';
   imports: [
     CommonModule,
     FormsModule,
-    BrowserAnimationsModule,
     LoginRoutingModule,
     MatFormFieldModule,
     MatButtonModule,

@@ -5,7 +5,7 @@ import { hasUserGuard } from 'src/app/guards';
 
 const routes: Routes = [
   {
-    path: 'list',
+    path: '',
     component: ListComponent,
     canActivate: [hasUserGuard],
   },
