@@ -14,7 +14,7 @@ const userNameParam: UserNameParam = 'username';
 
 const routes: Routes = [
   {
-    path: 'profile/edit',
+    path: 'edit',
     component: SettingsComponent,
     canActivate: [hasUserGuard],
     resolve: {
@@ -22,14 +22,14 @@ const routes: Routes = [
     },
   },
   {
-    path: `profile/:${userNameParam}`,
+    path: `:${userNameParam}`,
     component: ProfileComponent,
     canActivate: [hasUserGuard],
   },
   {
-    path: 'profile',
-    redirectTo: 'profile/',
-    pathMatch: 'full',
+    path: '',
+    component: ProfileComponent,
+    // pathMatch: 'full',
   },
 ];
 

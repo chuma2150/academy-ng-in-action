@@ -30,7 +30,7 @@ export class ProfileComponent implements OnInit {
     );
   }
 
-  async selectProfile(user: User | undefined) {
-    await this.router.navigate(['profile', user?.name]);
+  selectProfile(user: User | undefined) {
+    this.router.navigate(['profile', user?.name]);
   }
 }

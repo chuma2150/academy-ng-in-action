@@ -1,6 +1,6 @@
-import { User } from "src/app/services";
-import { setUser } from "./user.actions";
-import { initialState, userReducer } from "./user.reducer";
+import { User } from 'src/app/services';
+import { setUser } from './user.actions';
+import { initialState, userReducer } from './user.reducer';
 
 describe('User Reducer', () => {
   it('should return the initial state', () => {
@@ -11,13 +11,13 @@ describe('User Reducer', () => {
 
   it('should set user on setUser', () => {
     const user: User = {
-      name: 'Max'
+      name: 'Max',
     };
     const action = setUser({ user: user });
     const result = userReducer(initialState, action);
 
     expect(result).toEqual({
-      user: user
-    })
-  })
+      user: user,
+    });
+  });
 });

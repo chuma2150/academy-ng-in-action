@@ -11,7 +11,7 @@ export class ListComponent implements OnInit {
   @Input() user: User | undefined;
   @Input() hideCurrentUser = false;
   @Input() selected?: User | null;
-  @Output() selectUser: EventEmitter<User | undefined> = new EventEmitter<User | undefined>();
+  @Output() selectUser = new EventEmitter<User | undefined>();
   users$: Observable<User[]>;
 
   constructor(private userService: UserService) { }
