@@ -12,6 +12,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { SettingsComponent } from './settings.component';
 import { AgePipe } from 'src/app/components/profile-view';
+import { provideMockStore } from '@ngrx/store/testing';
 
 describe(SettingsComponent.name, () => {
   let fixture: ComponentFixture<SettingsComponent>;
@@ -38,6 +39,7 @@ describe(SettingsComponent.name, () => {
       ],
       providers: [
         provideAnimations(),
+        provideMockStore({})
       ],
     })
       .compileComponents();
