@@ -32,6 +32,6 @@ export class MainComponent {
   }
 
   mapItems(items: User[] | Message[]): Item[] {
-    return items.map(user => ({ id: user.id ?? '', value: JSON.stringify(user) }));
+    return items.map(item => ({ id: item.id ?? '', value: JSON.stringify(item) }));
   }
 }
