@@ -39,9 +39,9 @@ describe(SettingsComponent.name, () => {
       ],
       providers: [
         provideAnimations(),
-        provideMockStore({})
-      ],
-    })
+        provideMockStore({}),
+    ],
+})
       .compileComponents();
 
     fixture = TestBed.createComponent(SettingsComponent);

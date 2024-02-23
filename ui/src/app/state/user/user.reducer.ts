@@ -1,16 +1,16 @@
-import { Action, createReducer, on } from "@ngrx/store";
-import { User } from "../../services";
-import { setUser } from "./user.actions";
+import { Action, createReducer, on } from '@ngrx/store';
+import { User } from '../../services';
+import { setUser } from './user.actions';
 
 export interface UserState {
   user: User | undefined;
 }
 
 export const initialState: UserState = {
-  user: undefined
+  user: undefined,
 };
 
 export const userReducer = createReducer<UserState, Action>(
   initialState,
-  on(setUser, (_, { user }) => ({ user: user}))
-)
+  on(setUser, (_, { user }) => ({ user: user })),
+);
