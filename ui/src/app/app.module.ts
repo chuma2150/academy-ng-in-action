@@ -23,13 +23,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ComponentsModule,
     HttpClientModule,
     MatNativeDateModule,
-    StoreModule.forRoot({ user: userReducer}),
+    StoreModule.forRoot({ user: userReducer }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: LoggingInterceptor,
-    multi: true
+    multi: true,
   }],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
