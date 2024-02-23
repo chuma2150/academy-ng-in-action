@@ -3,8 +3,10 @@
           class="mdc-button"
           [routerLink]="['profile', 'edit']">
     <div class="profile-button-content">
-      <app-avatar [name]="user?.name ?? ''"
-                  size="small"></app-avatar>
+      @defer (when user?.name) {
+        <app-avatar [name]="user?.name ?? ''"
+                    size="small"></app-avatar>
+      }
       <div class="user-name">{{ user?.name}}</div>
     </div>
   </button>

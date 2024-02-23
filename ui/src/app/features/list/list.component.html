@@ -4,7 +4,19 @@
       <mat-list-item
           [class.selected]="user.id === selected?.id"
           (click)="toggleUser(user)">
-        <app-avatar [name]="user.name"></app-avatar>
+          @defer (on viewport) {
+            <app-avatar [name]="user?.name ?? ''"
+                        size="small"></app-avatar>
+          } @placeholder {
+            <span></span>
+          }
+          <!-- @defer (on timer(500ms)) {
+            <app-avatar [name]="user?.name ?? ''"
+                        size="small"></app-avatar>
+          } @placeholder {
+            <span>_</span>
+          } -->
+
         <span>{{user.name}}</span>
       </mat-list-item>
     }

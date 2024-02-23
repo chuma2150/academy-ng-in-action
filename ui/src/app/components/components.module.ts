@@ -5,15 +5,11 @@ import { MatSelectModule } from '@angular/material/select';
 import { RouterModule } from '@angular/router';
 import { ChatboardComponent } from './chatboard';
 import { ChatmessageComponent } from './chatmessage';
-import { AvatarComponent } from './avatar';
-import { UserComponent } from './user';
 import { AgePipe, ProfileViewComponent } from './profile-view';
 
 const components = [
   ChatboardComponent,
   ChatmessageComponent,
-  AvatarComponent,
-  UserComponent,
   ProfileViewComponent,
   AgePipe,
 ];
