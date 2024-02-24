@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { User, UserDto, mapUser } from './user';
 import { Store } from '@ngrx/store';
-import { setUser } from 'src/app/state/user/user.actions';
+import { UserActions } from 'src/app/state/user/user.actions';
 import { selectUser } from 'src/app/state/user/user.selectors';
 
 const USER_ENDPOINT = `${environment.endpoint}/users`;
@@ -23,7 +23,7 @@ export class UserService {
 
   set(user: User | undefined) {
     localStorage.setItem('currentUser', JSON.stringify(user));
-    this.store.dispatch(setUser({ user }));
+    this.store.dispatch(UserActions.set({ user }));
   }
 
   unset() {
