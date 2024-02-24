@@ -1,5 +1,5 @@
 import { User } from 'src/app/services';
-import { setUser } from './user.actions';
+import { UserActions } from './user.actions';
 import { initialState, userReducer } from './user.reducer';
 
 describe('User Reducer', () => {
@@ -13,7 +13,7 @@ describe('User Reducer', () => {
     const user: User = {
       name: 'Max',
     };
-    const action = setUser({ user: user });
+    const action = UserActions.set({ user: user });
     const result = userReducer(initialState, action);
 
     expect(result).toEqual({
