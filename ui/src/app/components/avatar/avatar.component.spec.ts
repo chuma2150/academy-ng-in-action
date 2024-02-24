@@ -16,7 +16,8 @@ describe(AvatarComponent.name, () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [TestComponent, AvatarComponent],
+      imports: [AvatarComponent],
+      declarations: [TestComponent],
     })
       .compileComponents();
 
