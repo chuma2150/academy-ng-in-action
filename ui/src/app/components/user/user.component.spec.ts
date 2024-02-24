@@ -17,8 +17,7 @@ describe(UserComponent.name, () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
-      declarations: [UserComponent],
+      imports: [RouterTestingModule, UserComponent],
       providers: [
         { provide: UserService, useClass: MockUserService },
       ],
