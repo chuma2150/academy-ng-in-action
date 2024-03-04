@@ -7,17 +7,17 @@
     </mat-card-header>
     <mat-card-content
       class="profile-content"
-      *ngIf="currentProfile$ | async as currentProfile"
+      *ngIf="{ currentProfile: currentProfile$ | async } as observable"
     >
       <div class="profile-users">
         View Profile:
         <app-list
-          [selected]="currentProfile"
+          [selected]="observable.currentProfile"
           (selectUser)="selectProfile($event)"
         ></app-list>
       </div>
-      <div class="profile-view" *ngIf="currentProfile">
-        <app-profile-view [user]=".currentProfile"></app-profile-view>
+      <div class="profile-view" *ngIf="observable.currentProfile">
+        <app-profile-view [user]="observable.currentProfile"></app-profile-view>
       </div>
     </mat-card-content>
   </mat-card>
