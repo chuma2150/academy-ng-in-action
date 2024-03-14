@@ -117,9 +117,13 @@
       "extends": [
         "plugin:@angular-eslint/template/recommended"
       ],
+<<<<<<< HEAD
       "rules": {
         "@angular-eslint/template/use-track-by-function": "error"
       }
+=======
+      "rules": {}
+>>>>>>> solution
     },
     {
       "files": [
