@@ -39,7 +39,7 @@ export class ReactiveSettingsComponent implements OnInit, OnDestroy {
     this.calcAge = computed(() => {
       const currentValue = birthDateSignal();
       return moment().diff(currentValue, 'y');
-    })
+    });
   }
 
   ngOnInit(): void {
