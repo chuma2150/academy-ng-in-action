@@ -1,10 +1,16 @@
 import { ComponentFixture, TestBed, tick, fakeAsync } from '@angular/core/testing';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { HairColors, UserService } from 'src/app/services';
 import { ReactiveSettingsComponent } from '../reactive-settings';
+import { MatCardModule } from '@angular/material/card';
+import { MatOptionModule, MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 describe('ReactiveSettingsComponent', () => {
   let component: ReactiveSettingsComponent;
@@ -18,7 +24,17 @@ describe('ReactiveSettingsComponent', () => {
 
     TestBed.configureTestingModule({
       declarations: [ReactiveSettingsComponent],
-      imports: [ReactiveFormsModule],
+      imports: [
+        ReactiveFormsModule,
+        MatSnackBarModule,
+        MatCardModule,
+        MatOptionModule,
+        MatNativeDateModule,
+        MatDatepickerModule,
+        MatInputModule,
+        MatFormFieldModule,
+        MatSelectModule,
+      ],
       providers: [
         { provide: ActivatedRoute, useValue: { data: of({ user: {} }) } },
         { provide: UserService, useValue: userServiceSpy },
