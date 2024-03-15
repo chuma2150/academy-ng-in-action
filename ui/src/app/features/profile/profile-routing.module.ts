@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, Params } from '@angular/router';
-import { SettingsComponent } from './settings';
 import { ProfileComponent } from './profile.component';
 import { hasUserGuard } from 'src/app/guards';
 import { currentUserResolver } from './current-user.resolver';
+import { ReactiveSettingsComponent } from './reactive-settings';
 
 export interface ProfileParams extends Params {
   username?: string;
@@ -15,7 +15,7 @@ const userNameParam: UserNameParam = 'username';
 const routes: Routes = [
   {
     path: 'profile/edit',
-    component: SettingsComponent,
+    component: ReactiveSettingsComponent,
     canActivate: [hasUserGuard],
     resolve: {
       user: currentUserResolver,
