@@ -1,12 +1,12 @@
 import { Component, OnDestroy, OnInit, Signal, computed } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
-import * as moment from 'moment';
 import { Observable, Subscription } from 'rxjs';
-import { toSignal } from '@angular/core/rxjs-interop';
 import { map, take } from 'rxjs/operators';
 import { HairColor, HairColors, User, UserService } from 'src/app/services';
+import { AgePipe } from 'src/app/components/profile-view';
 
 @Component({
   selector: 'app-reactive-settings',
@@ -16,7 +16,7 @@ import { HairColor, HairColors, User, UserService } from 'src/app/services';
 export class ReactiveSettingsComponent implements OnInit, OnDestroy {
   public readonly availableHairColors = HairColors;
   public profileForm: FormGroup;
-  public calcAge: Signal<number>;
+  public calcAge: Signal<string>;
 
   private currentProfile$: Observable<User>;
   private userServiceSubscription?: Subscription;
@@ -36,9 +36,11 @@ export class ReactiveSettingsComponent implements OnInit, OnDestroy {
 
     const birthDate$ = this.profileForm.controls.birthDate.valueChanges;
     const birthDateSignal = toSignal(birthDate$, { initialValue: new Date() });
+    const agePipe = new AgePipe();
+
     this.calcAge = computed(() => {
       const currentValue = birthDateSignal();
-      return moment().diff(currentValue, 'y');
+      return agePipe.transform(currentValue);
     });
   }
 
