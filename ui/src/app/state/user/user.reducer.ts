@@ -12,5 +12,5 @@ export const initialState: UserState = {
 
 export const userReducer = createReducer<UserState, Action>(
   initialState,
-  on(UserActions.set, (state, { user }): UserState => ({ ...state, user: user })),
+  on(UserActions.set, (state, { user }): UserState => ({ ...state, user })),
 );
