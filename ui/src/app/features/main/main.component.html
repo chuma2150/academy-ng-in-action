@@ -29,7 +29,8 @@
           <th>Id</th>
           <th>Json Value</th>
         </tr>
-          <tr *cdkVirtualFor="let item of items; trackBy: trackById" class="item">
+          <tr *cdkVirtualFor="let item of items; trackBy: trackById"
+              class="item">
             <td>{{ item.id }}</td>
             <td>{{ item.value }}</td>
           </tr>
