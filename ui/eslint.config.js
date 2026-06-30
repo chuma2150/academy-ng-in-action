@@ -142,6 +142,7 @@ module.exports = tseslint.config(
         },
       ],
       '@typescript-eslint/no-confusing-non-null-assertion': 'error',
+      '@typescript-eslint/no-deprecated': 'error',
       '@typescript-eslint/no-empty-interface': 'error',
       '@typescript-eslint/no-namespace': 'off',
       '@typescript-eslint/no-non-null-asserted-nullish-coalescing': 'error',
