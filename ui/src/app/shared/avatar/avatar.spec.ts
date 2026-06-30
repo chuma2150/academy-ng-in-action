@@ -36,6 +36,6 @@ describe(Avatar.name, () => {
 
     const imgAttributes = fixture.debugElement.query(By.css('img')).attributes;
 
-    expect(imgAttributes['src']).toContain('data:image/svg+xml;utf8,');
+    expect(imgAttributes['src']).toContain('data:image/svg+xml;charset=utf-8,');
   });
 });

@@ -1,7 +1,9 @@
-import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, input } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { personas } from '@dicebear/collection';
-import { createAvatar } from '@dicebear/core';
+import { Avatar as DicebearAvatar, Style } from '@dicebear/core';
+import personas from '@dicebear/styles/personas.json' with { type: 'json' };
+
+const style = new Style(personas);
 
 @Component({
   selector: 'app-avatar',
@@ -15,11 +17,11 @@ export class Avatar {
   readonly small = input(false);
   readonly name = input.required<string>();
 
-  get url() {
-    const avatar = createAvatar(personas, {
+  readonly url = computed(() => {
+    const avatar = new DicebearAvatar(style, {
       seed: this.name(),
     });
 
     return this.sanitizer.bypassSecurityTrustUrl(avatar.toDataUri());
-  }
+  });
 }
